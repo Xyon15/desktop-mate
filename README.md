@@ -4,7 +4,6 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Unity 2022.3+](https://img.shields.io/badge/unity-2022.3+-black.svg)](https://unity.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 📋 Description
 
@@ -205,7 +204,7 @@ Nous utilisons [Conventional Commits](https://www.conventionalcommits.org/) :
 ## 🙏 Remerciements
 
 - [UniVRM](https://github.com/vrm-c/UniVRM) pour le support VRM
-- [Model VRM](https://acidicdollz.booth.pm/) AcidicDoll pour le modèle VRM
+- [Model VRM](https://acidicdollz.booth.pm/items/4613390) [AcidicDoll](https://acidicdollz.booth.pm/) pour le modèle VRM
 
 ## 📞 Support
 
