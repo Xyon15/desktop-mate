@@ -1,0 +1,39 @@
+# Python dependencies for Desktop-Mate
+# Hybrid Unity + Python desktop avatar application
+
+# GUI Framework
+PySide6>=6.6.0
+
+# Audio Processing
+sounddevice>=0.4.6
+numpy>=1.24.0
+
+# Networking (for Unity IPC)
+# (standard library socket is used, but we may add more later)
+
+# Configuration
+# (using standard library json)
+
+# Optional: Computer Vision (for face tracking - Phase 4)
+# Uncomment when needed:
+# opencv-python>=4.8.0
+# mediapipe>=0.10.0
+
+# Optional: Speech Recognition (for advanced lip-sync - Phase 3)
+# Uncomment when needed:
+# vosk>=0.3.45
+# openai-whisper>=20230314
+
+# Optional: Text-to-Speech (Phase 4)
+# Uncomment when needed:
+# pyttsx3>=2.90
+
+# Development dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Logging
+# (using standard library logging)
