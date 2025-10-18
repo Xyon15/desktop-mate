@@ -105,6 +105,7 @@ desktop-mate/
 │   ├── START_HERE.md    # 👈 Commence ici !
 │   ├── INDEX.md         # Navigation rapide
 │   ├── README.md        # Vue d'ensemble
+│   ├── session_0_git_configuration/ # ⚙️ Configuration Git Unity
 │   ├── session_1_setup/ # Setup Python + GUI
 │   ├── session_2_unity_installation/
 │   ├── session_3_univrm_installation/
@@ -349,6 +350,11 @@ Documentation complète et organisée par sessions de développement :
 
 ### Sessions documentées
 
+0. **[Session 0 - Configuration Git Unity](docs/session_0_git_configuration/)** ⚙️
+   - Configuration `.gitignore` pour Unity
+   - Exclusion des fichiers générés (Library/, Temp/)
+   - Bonnes pratiques Git pour projets Unity
+
 1. **[Session 1 - Setup Python + GUI](docs/session_1_setup/)** ✅
    - Configuration environnement Python
    - Interface Qt avec PySide6
@@ -378,6 +384,7 @@ Documentation complète et organisée par sessions de développement :
 
 ### Guides spécifiques
 
+- [Configuration Git Unity](docs/session_0_git_configuration/GIT_UNITY_FIX.md)
 - [Architecture technique](docs/session_1_setup/architecture.md)
 - [Debug connexion Unity](docs/session_4_python_unity_connection/DEBUG_CONNECTION.md)
 - [Fix script Unity](docs/session_4_python_unity_connection/FIX_SCRIPT_NOT_RUNNING.md)
@@ -474,9 +481,15 @@ Si vous rencontrez des problèmes ou avez des questions :
 - ✅ Interface Python Qt fonctionnelle
 - ✅ Communication IPC Python ↔ Unity stable
 - ✅ Chargement et affichage de modèles VRM
-- ✅ Documentation complète par sessions
+- ✅ Documentation complète par sessions (0-5)
+- ✅ Configuration Git optimisée pour Unity
 - ✅ 8 tests unitaires Python
 - 🎭 **Premier avatar affiché avec succès !**
+
+### Session 0 - Configuration Git (18 octobre 2025)
+- ⚙️ Configuration `.gitignore` pour Unity
+- 📦 Exclusion Library/, Temp/, PackageCache/
+- 📚 Documentation bonnes pratiques Git + Unity
 
 ---
 

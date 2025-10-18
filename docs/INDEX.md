@@ -11,6 +11,10 @@ docs/
 │
 ├── 📄 README.md                                    ← Commence ici !
 │
+├── 📁 session_0_git_configuration/                ← Session 0 : Configuration Git ⚙️
+│   ├── README.md                                   Vue d'ensemble
+│   └── GIT_UNITY_FIX.md                            Fix .gitignore Unity
+│
 ├── 📁 session_1_setup/                            ← Session 1 : Setup Python
 │   ├── SUCCESS_SESSION_1.md                        Récapitulatif succès
 │   └── architecture.md                             Architecture globale
@@ -50,6 +54,7 @@ docs/
 ## 🚀 Démarrage rapide
 
 ### Pour commencer le projet de zéro :
+0. 📁 `session_0_git_configuration/` - Configurer Git pour Unity
 1. 📖 `README.md` - Vue d'ensemble
 2. 📁 `session_1_setup/` - Setup Python
 3. 📁 `session_2_unity_installation/` - Installer Unity
@@ -58,6 +63,7 @@ docs/
 6. 📁 `session_5_vrm_loading/` - Charger les modèles VRM
 
 ### Pour résoudre un problème spécifique :
+- **Problèmes Git avec Unity ?** → `session_0_git_configuration/GIT_UNITY_FIX.md`
 - **Unity ne démarre pas ?** → `session_2_unity_installation/UNITY_INSTALL_GUIDE.md`
 - **UniVRM erreur ?** → `session_3_univrm_installation/UNIVRM_INSTALL_MANUAL.md`
 - **Python ne se connecte pas ?** → `session_4_python_unity_connection/DEBUG_CONNECTION.md`
@@ -70,6 +76,7 @@ docs/
 
 | Session | Objectif | Statut | Fichiers clés |
 |---------|----------|--------|---------------|
+| **0** | Configuration Git Unity | ✅ Complet | `session_0_git_configuration/GIT_UNITY_FIX.md` |
 | **1** | Setup Python + GUI | ✅ Complet | `session_1_setup/SUCCESS_SESSION_1.md` |
 | **2** | Installation Unity | ✅ Complet | `session_2_unity_installation/` |
 | **3** | Installation UniVRM | ✅ Complet | `session_3_univrm_installation/UNIVRM_INSTALL_MANUAL.md` |
@@ -84,12 +91,14 @@ docs/
 ## 🔍 Recherche rapide
 
 ### Par fonctionnalité
+- **Configuration Git Unity** → `session_0_git_configuration/GIT_UNITY_FIX.md`
 - **Architecture du projet** → `session_1_setup/architecture.md`
 - **Communication IPC** → `session_4_python_unity_connection/UNITY_PYTHONBRIDGE_SETUP.md`
 - **Chargement VRM** → `session_5_vrm_loading/LOAD_VRM_MODEL.md`
 - **Threading Unity** → `session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md` (section "Leçons apprises")
 
 ### Par problème
+- **Library/ et Temp/ versionnés par erreur** → `session_0_git_configuration/GIT_UNITY_FIX.md`
 - **Port 5555 déjà utilisé** → `session_4_python_unity_connection/DEBUG_CONNECTION.md`
 - **EnsureRunningOnMainThread error** → `session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md`
 - **Script Unity ne démarre pas** → `session_4_python_unity_connection/FIX_SCRIPT_NOT_RUNNING.md`
