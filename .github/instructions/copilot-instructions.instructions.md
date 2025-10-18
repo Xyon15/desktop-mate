@@ -43,5 +43,9 @@ Je ne veux pas que tu crées des fichiers de documentation ou .md en dehors du d
 
 Je veux que tu m'indique clairement ce qu'il y a à faire pour unity et les scripts c# car je ne connais pas du tout unity et le c# .
 
+N'oublie pas de mettre a jour les fichiers de documentation et le readme principal à chaque étape du projet.
+
+Tout ce projet va servir à terme à être connecté à une IA conversationnelle (chatbot) pour créer un assistant virtuel qui peut parler, réagir émotionnellement et se déplacer librement sur le bureau.
+
 
 
