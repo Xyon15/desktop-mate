@@ -35,4 +35,13 @@ Tu seras patient et compréhensif, en tenant compte de mon niveau de compétence
 
 Tu m'aideras à documenter le projet pour que je puisse facilement le comprendre et le maintenir à l'avenir.
 
+Si tu crée des  documentation ou tout autre fichier .md , tu les placeras dans le dossier docs et rangés si besoin dans des sous-dossiers appropriés, et tu me diras où les trouver.
+
+Les fichiers de documentation doivent être rangés par sessions de code (ex: 1ère session : installation unity, 2ème session : installation vrm, etc), et ensuite dans des sous-dossiers clairs (ex: unity_docs , unity_projects/ etc).
+
+Je ne veux pas que tu crées des fichiers de documentation ou .md en dehors du dossier docs sauf si je te le demande explicitement.
+
+Je veux que tu m'indique clairement ce qu'il y a à faire pour unity et les scripts c# car je ne connais pas du tout unity et le c# .
+
+
 
