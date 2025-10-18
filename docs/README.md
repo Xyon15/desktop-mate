@@ -4,7 +4,52 @@ Organisation de la documentation par sessions de développement.
 
 ---
 
+## ⚠️ IMPORTANT - Pour l'IA et les Développeurs
+
+- 📋 **[DOCUMENTATION_CHECKLIST.md](DOCUMENTATION_CHECKLIST.md)** - Checklist systématique à suivre
+- 🤖 **[AI_DOCUMENTATION_PROMPT.md](AI_DOCUMENTATION_PROMPT.md)** - Instructions pour maintenir la doc à jour
+- 🔧 **[.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)** - Template PR avec vérifications doc
+
+**Règle :** Toujours consulter la checklist avant de terminer une tâche !
+
+---
+
+## 🎯 Système Anti-Oubli Documentation
+
+Ce projet utilise un **système à 3 niveaux** pour garantir que la documentation reste toujours à jour :
+
+1. **GitHub Copilot Chat** → Lit automatiquement `.github/instructions/copilot-instructions.instructions.md`
+2. **VS Code Copilot** → Suit `DOCUMENTATION_CHECKLIST.md` et `AI_DOCUMENTATION_PROMPT.md`
+3. **Pull Requests** → Template obligatoire avec checklist documentation
+
+**Objectif :** L'utilisateur ne devrait **JAMAIS** avoir à demander "as-tu mis à jour la documentation ?"
+
+---
+
 ## 📁 Structure des dossiers
+
+### 📂 chat_transistions/
+**Historique des transitions entre chats**
+- Archive de chaque session de chat avec documentation complète
+- Prompts de transition pour continuité entre chats
+- **chat_1_python_unity_start_session_0_to_5/** - Premier chat (MVP)
+  - `CURRENT_STATE.md` - État technique complet
+  - `prompt_chat1_vers_chat_2.txt` - Prompt pour Chat 2
+  - `CHAT_SUMMARY.md` - Résumé détaillé du chat
+
+---
+
+### 📂 session_0_git_configuration/
+**Configuration Git pour Unity**
+- `GIT_UNITY_FIX.md` - Résolution problème .gitignore Unity
+- `README.md` - Vue d'ensemble de la session
+
+**Réalisations :**
+- ✅ Configuration `.gitignore` pour Unity
+- ✅ Exclusion Library/, Temp/, PackageCache/
+- ✅ Documentation bonnes pratiques Git + Unity
+
+---
 
 ### 📂 session_1_setup/
 **Mise en place initiale du projet Python**
@@ -99,33 +144,49 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
 
 ## 🎯 État actuel du projet
 
-### ✅ Fonctionnel
+### ✅ Phase 1 - MVP Complet
+- **Sessions 0-5 terminées** (Chat 1)
 - Application Python avec interface Qt
 - Communication Python ↔ Unity via socket TCP
 - Chargement de modèles VRM depuis Python
 - Affichage 3D de l'avatar dans Unity
+- Thread-safety résolu (Queue + Update pattern)
+- Documentation complète (30+ fichiers)
 
-### 🚧 En cours / À venir
-- Contrôle des expressions faciales (blendshapes)
-- Animation de l'avatar
-- Lip-sync avec microphone
-- TTS (Text-to-Speech)
-- Face tracking (optionnel)
+### 🚧 Phase 2 - En cours / À venir (Chat 2+)
+- **Session 6** : Contrôle des expressions faciales (blendshapes)
+- **Session 7** : Animation de l'avatar
+- **Session 8** : Lip-sync avec microphone
+- **Session 9** : Face tracking (optionnel)
+- **Sessions 10-12** : Intégration IA conversationnelle
 
 ---
 
 ## 📖 Comment utiliser cette documentation
 
-1. **Débutant :** Lis les sessions dans l'ordre (1 → 5)
-2. **Problème spécifique :** Consulte la session correspondante
-3. **Référence rapide :** Utilise les fichiers de la session concernée
-4. **Code propre :** Les scripts finaux sont dans les dossiers `scripts/`
+1. **Nouveau sur le projet :** 
+   - Commence par `START_HERE.md`
+   - Lis `chat_transistions/chat_1.../CHAT_SUMMARY.md`
+   
+2. **Reprendre le développement :**
+   - Lis `CURRENT_STATE.md` pour l'état actuel
+   - Consulte la roadmap dans `README.md` principal
+   
+3. **Débutant :** Lis les sessions dans l'ordre (0 → 5)
+
+4. **Problème spécifique :** Consulte les fichiers DEBUG_ et FIX_
+
+5. **Référence rapide :** Utilise `INDEX.md` pour navigation
+
+6. **Code propre :** Les scripts finaux sont dans les dossiers `scripts/`
 
 ---
 
 ## 🔗 Liens utiles
 
 - [Repository GitHub](https://github.com/Xyon15/desktop-mate)
+- [État actuel du projet](CURRENT_STATE.md)
+- [Index de navigation](INDEX.md)
 - [Documentation UniVRM](https://github.com/vrm-c/UniVRM)
 - [Documentation Unity](https://docs.unity3d.com/)
 - [Documentation PySide6](https://doc.qt.io/qtforpython/)
@@ -134,4 +195,5 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
 
 **Dernière mise à jour :** 18 octobre 2025  
 **Version du projet :** 0.1.0-alpha  
-**Status :** ✅ Chargement VRM fonctionnel
+**Status :** ✅ MVP Complet - Chat 1 terminé (Sessions 0-5)  
+**Prochain :** Session 6 - Expressions faciales (Chat 2)

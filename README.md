@@ -115,8 +115,16 @@ desktop-mate/
 └── .github/              # CI/CD et workflows
     ├── workflows/
     └── instructions/
-        └── copilot-instructions.instructions.md
+        └── copilot-instructions.instructions.md  # Instructions IA (inclut système anti-oubli doc)
 ```
+
+**📋 Système de Documentation Anti-Oubli :**
+- `docs/DOCUMENTATION_CHECKLIST.md` - Checklist systématique pour l'IA
+- `docs/AI_DOCUMENTATION_PROMPT.md` - Prompt système pour maintenir la doc à jour
+- `docs/.github/PULL_REQUEST_TEMPLATE.md` - Template PR avec vérifications doc obligatoires
+- `.github/instructions/copilot-instructions.instructions.md` - Instructions Copilot (applyTo: `**`)
+
+**Système 3 niveaux garantissant la synchronisation documentation ↔ code.**
 
 ## 🚀 Installation
 

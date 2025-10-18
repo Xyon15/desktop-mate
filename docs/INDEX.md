@@ -10,6 +10,20 @@
 docs/
 │
 ├── 📄 README.md                                    ← Commence ici !
+├── 📄 CURRENT_STATE.md                             ← État actuel du projet
+├── 📄 START_HERE.md                                ← Point d'entrée
+├── 📄 DOCUMENTATION_CHECKLIST.md                   ← ⚠️ Checklist docs (IMPORTANT!)
+├── 📄 AI_DOCUMENTATION_PROMPT.md                   ← 🤖 Instructions IA (système)
+│
+├── 📁 .github/                                    ← Templates GitHub
+│   └── PULL_REQUEST_TEMPLATE.md                    Template PR avec checklist doc
+│
+├── 📁 chat_transistions/                          ← Transitions entre chats 🔄
+│   ├── README.md                                   Historique des chats
+│   └── chat_1_python_unity_start_session_0_to_5/
+│       ├── CURRENT_STATE.md                        État fin Chat 1
+│       ├── prompt_chat1_vers_chat_2.txt           Prompt Chat 2
+│       └── CHAT_SUMMARY.md                         Résumé Chat 1
 │
 ├── 📁 session_0_git_configuration/                ← Session 0 : Configuration Git ⚙️
 │   ├── README.md                                   Vue d'ensemble
@@ -54,13 +68,19 @@ docs/
 ## 🚀 Démarrage rapide
 
 ### Pour commencer le projet de zéro :
-0. 📁 `session_0_git_configuration/` - Configurer Git pour Unity
-1. 📖 `README.md` - Vue d'ensemble
-2. 📁 `session_1_setup/` - Setup Python
-3. 📁 `session_2_unity_installation/` - Installer Unity
-4. 📁 `session_3_univrm_installation/` - Installer UniVRM
-5. 📁 `session_4_python_unity_connection/` - Connecter Python et Unity
-6. 📁 `session_5_vrm_loading/` - Charger les modèles VRM
+0. � `CURRENT_STATE.md` - État actuel complet du projet
+1. �📁 `session_0_git_configuration/` - Configurer Git pour Unity
+2. 📖 `README.md` - Vue d'ensemble
+3. 📁 `session_1_setup/` - Setup Python
+4. 📁 `session_2_unity_installation/` - Installer Unity
+5. 📁 `session_3_univrm_installation/` - Installer UniVRM
+6. 📁 `session_4_python_unity_connection/` - Connecter Python et Unity
+7. 📁 `session_5_vrm_loading/` - Charger les modèles VRM
+
+### Pour reprendre après une pause :
+- **État du projet** → `CURRENT_STATE.md`
+- **Résumé Chat 1** → `chat_transistions/chat_1.../CHAT_SUMMARY.md`
+- **Prompt Chat 2** → `chat_transistions/chat_1.../prompt_chat1_vers_chat_2.txt`
 
 ### Pour résoudre un problème spécifique :
 - **Problèmes Git avec Unity ?** → `session_0_git_configuration/GIT_UNITY_FIX.md`
@@ -74,6 +94,8 @@ docs/
 
 ## 📊 Progression du projet
 
+### 🎊 Chat 1 - Terminé (Sessions 0-5)
+
 | Session | Objectif | Statut | Fichiers clés |
 |---------|----------|--------|---------------|
 | **0** | Configuration Git Unity | ✅ Complet | `session_0_git_configuration/GIT_UNITY_FIX.md` |
@@ -82,15 +104,26 @@ docs/
 | **3** | Installation UniVRM | ✅ Complet | `session_3_univrm_installation/UNIVRM_INSTALL_MANUAL.md` |
 | **4** | Connexion Python ↔ Unity | ✅ Complet | `session_4_python_unity_connection/` |
 | **5** | Chargement VRM | ✅ Complet | `session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md` |
+
+**Résumé Chat 1 :** `chat_transistions/chat_1.../CHAT_SUMMARY.md`
+
+### 🚀 Chat 2 - À venir (Sessions 6+)
+
+| Session | Objectif | Statut | Fichiers clés |
+|---------|----------|--------|---------------|
 | **6** | Expressions faciales | 🚧 À venir | - |
 | **7** | Animations | 🚧 À venir | - |
 | **8** | Audio & Lip-sync | 🚧 À venir | - |
+| **9** | Face Tracking | 🚧 À venir | - |
+| **10-12** | Intégration IA | 🚧 À venir | - |
 
 ---
 
 ## 🔍 Recherche rapide
 
 ### Par fonctionnalité
+- **État actuel du projet** → `CURRENT_STATE.md`
+- **Résumé Chat 1** → `chat_transistions/chat_1.../CHAT_SUMMARY.md`
 - **Configuration Git Unity** → `session_0_git_configuration/GIT_UNITY_FIX.md`
 - **Architecture du projet** → `session_1_setup/architecture.md`
 - **Communication IPC** → `session_4_python_unity_connection/UNITY_PYTHONBRIDGE_SETUP.md`
