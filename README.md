@@ -412,7 +412,7 @@ Nous utilisons [Conventional Commits](https://www.conventionalcommits.org/) :
 - `test:` Ajout de tests
 - `chore:` Maintenance
 
-## � Screenshots
+## 💾 Screenshots
 
 ### Interface Python
 Interface de contrôle avec connexion Unity et bouton de chargement VRM.
