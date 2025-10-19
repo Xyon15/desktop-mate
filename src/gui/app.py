@@ -5,17 +5,27 @@ Manages the GUI and coordinates with Unity via IPC.
 
 import sys
 import logging
+from pathlib import Path
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QPushButton, QLabel, QFileDialog, QMenuBar, QMenu,
     QTabWidget, QSlider, QGroupBox
 )
 from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QIcon
 
 from ..ipc.unity_bridge import UnityBridge
 from ..utils.config import Config
 
 logger = logging.getLogger(__name__)
+
+# Fix pour afficher l'icône dans la taskbar Windows
+try:
+    import ctypes
+    # Définir un AppUserModelID unique pour l'application
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('Xyon15.DesktopMate.1.0')
+except Exception as e:
+    logger.warning(f"Impossible de définir AppUserModelID: {e}")
 
 
 class MainWindow(QMainWindow):
@@ -32,6 +42,13 @@ class MainWindow(QMainWindow):
         """Initialize the user interface."""
         self.setWindowTitle("Desktop-Mate Control Panel")
         self.setGeometry(100, 100, 900, 700)
+        
+        # Set window icon
+        icon_path = Path(__file__).parent.parent.parent / "assets" / "icons" / "mura_fond_violet._ico.ico"
+        if icon_path.exists():
+            self.setWindowIcon(QIcon(str(icon_path)))
+        else:
+            logger.warning(f"Icon not found at {icon_path}")
         
         # Create menu bar
         self.create_menu_bar()
@@ -51,7 +68,7 @@ class MainWindow(QMainWindow):
         layout.addWidget(header)
         
         # Unity connection status
-        self.status_label = QLabel("Unity Status: Not Connected")
+        self.status_label = QLabel("Statut Unity : Non connecté")
         self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(self.status_label)
         
@@ -60,7 +77,7 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.tabs)
         
         # Create tabs
-        self.create_connection_tab()
+        self.create_connexion_tab()
         self.create_expressions_tab()
         
         # Status timer
@@ -68,8 +85,8 @@ class MainWindow(QMainWindow):
         self.status_timer.timeout.connect(self.update_status)
         self.status_timer.start(1000)  # Check every second
 
-    def create_connection_tab(self):
-        """Create the Unity connection tab."""
+    def create_connexion_tab(self):
+        """Create the Unity connexion tab."""
         tab = QWidget()
         layout = QVBoxLayout()
         tab.setLayout(layout)
@@ -77,11 +94,11 @@ class MainWindow(QMainWindow):
         # Buttons
         button_layout = QHBoxLayout()
         
-        self.connect_btn = QPushButton("Connect to Unity")
+        self.connect_btn = QPushButton("Connexion à Unity")
         self.connect_btn.clicked.connect(self.connect_unity)
         button_layout.addWidget(self.connect_btn)
         
-        self.load_vrm_btn = QPushButton("Load VRM Model")
+        self.load_vrm_btn = QPushButton("Charger modèle VRM")
         self.load_vrm_btn.clicked.connect(self.load_vrm_model)
         self.load_vrm_btn.setEnabled(False)
         button_layout.addWidget(self.load_vrm_btn)
@@ -89,7 +106,7 @@ class MainWindow(QMainWindow):
         layout.addLayout(button_layout)
         layout.addStretch()
         
-        self.tabs.addTab(tab, "Connection")
+        self.tabs.addTab(tab, "Connexion")
 
     def create_expressions_tab(self):
         """Create the facial expressions tab with sliders."""
@@ -98,7 +115,7 @@ class MainWindow(QMainWindow):
         tab.setLayout(layout)
         
         # Group box for expressions
-        expressions_group = QGroupBox("Facial Expressions")
+        expressions_group = QGroupBox("Expressions Faciales")
         expressions_layout = QVBoxLayout()
         expressions_group.setLayout(expressions_layout)
         
@@ -153,7 +170,7 @@ class MainWindow(QMainWindow):
         
         # Reset button
         reset_layout = QHBoxLayout()
-        reset_btn = QPushButton("Reset All Expressions")
+        reset_btn = QPushButton("Réinitialiser toutes les expressions")
         reset_btn.setStyleSheet("font-size: 14px; padding: 10px;")
         reset_btn.clicked.connect(self.reset_all_expressions)
         reset_layout.addStretch()
@@ -202,40 +219,40 @@ class MainWindow(QMainWindow):
         menubar = self.menuBar()
         
         # File menu
-        file_menu = menubar.addMenu("File")
+        file_menu = menubar.addMenu("Fichier")
         
-        load_action = file_menu.addAction("Load VRM Model...")
+        load_action = file_menu.addAction("Charger modèle VRM...")
         load_action.triggered.connect(self.load_vrm_model)
         
         file_menu.addSeparator()
         
-        exit_action = file_menu.addAction("Exit")
+        exit_action = file_menu.addAction("Quitter")
         exit_action.triggered.connect(self.close)
         
         # Help menu
-        help_menu = menubar.addMenu("Help")
-        about_action = help_menu.addAction("About")
+        help_menu = menubar.addMenu("Aide")
+        about_action = help_menu.addAction("À propos")
         about_action.triggered.connect(self.show_about)
         
     def connect_unity(self):
         """Connect to Unity application."""
         logger.info("Attempting to connect to Unity...")
         if self.unity_bridge.connect():
-            self.status_label.setText("Unity Status: Connected ✓")
+            self.status_label.setText("Statut Unity : Connecté ✓")
             self.load_vrm_btn.setEnabled(True)
             self.connect_btn.setEnabled(False)
             logger.info("Successfully connected to Unity")
         else:
-            self.status_label.setText("Unity Status: Connection Failed ✗")
+            self.status_label.setText("Statut Unity : Connexion échouée ✗")
             logger.error("Failed to connect to Unity")
             
     def load_vrm_model(self):
         """Open file dialog to load a VRM model."""
         file_path, _ = QFileDialog.getOpenFileName(
             self,
-            "Select VRM Model",
+            "Sélectionner un modèle VRM",
             "",
-            "VRM Files (*.vrm);;All Files (*.*)"
+            "Fichiers VRM (*.vrm);;Tous les fichiers (*.*)"
         )
         
         if file_path:
@@ -245,10 +262,10 @@ class MainWindow(QMainWindow):
     def update_status(self):
         """Update connection status."""
         if self.unity_bridge.is_connected():
-            self.status_label.setText("Unity Status: Connected ✓")
+            self.status_label.setText("Statut Unity : Connecté ✓")
         else:
             if self.connect_btn.isEnabled() == False:
-                self.status_label.setText("Unity Status: Disconnected ✗")
+                self.status_label.setText("Statut Unity : Déconnecté ✗")
                 self.connect_btn.setEnabled(True)
                 self.load_vrm_btn.setEnabled(False)
                 
