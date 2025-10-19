@@ -208,13 +208,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0, y: 0.9999577, z: -0, w: 0.009204227}
+  m_LocalPosition: {x: -0.03, y: 1.224, z: 0.804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 178.945, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +436,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1178006955}
   - component: {fileID: 1178006954}
+  - component: {fileID: 1178006956}
+  - component: {fileID: 1178006957}
   m_Layer: 0
   m_Name: PythonBridge
   m_TagString: Untagged
@@ -455,6 +457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71de5e8e1bd97b7428b1edb52738540c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  port: 5555
+  host: 127.0.0.1
+  isConnected: 0
+  vrmLoader: {fileID: 1178006956}
+  blendshapeController: {fileID: 1178006957}
 --- !u!4 &1178006955
 Transform:
   m_ObjectHideFlags: 0
@@ -470,6 +477,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178006956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178006953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd7a2c923fa15743951529e9f5f3cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrmPrefab: {fileID: 3275912292616628481, guid: 953af0cdc662fde429c6947247531dd1,
+    type: 3}
+  currentModel: {fileID: 0}
+  spawnPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &1178006957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178006953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5279f14d3fde5944ab03b15d442b57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrmInstance: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

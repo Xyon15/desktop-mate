@@ -14,38 +14,34 @@ public class PythonBridge : MonoBehaviour
     [Header("Configuration")]
     [Tooltip("Port d'écoute pour la connexion Python")]
     public int port = 5555;
-
+    
     [Tooltip("Adresse IP d'écoute (127.0.0.1 = localhost)")]
     public string host = "127.0.0.1";
-
+    
     [Header("Status")]
     [Tooltip("État de la connexion")]
     public bool isConnected = false;
-
+    
     [Header("VRM Loader")]
     [Tooltip("Référence au VRMLoader pour charger les modèles")]
     public VRMLoader vrmLoader;
-
-    [Header("VRM Blendshapes")]
-    [Tooltip("Référence au VRMBlendshapeController pour les expressions")]
-    public VRMBlendshapeController blendshapeController;
-
+    
     // Composants réseau
     private TcpListener server;
     private TcpClient client;
     private NetworkStream stream;
     private Thread listenThread;
     private bool isRunning = false;
-
+    
     // Buffer pour les messages
     private string messageBuffer = "";
-
+    
     void Start()
     {
         Debug.Log($"[PythonBridge] Démarrage du serveur sur {host}:{port}");
         StartServer();
     }
-
+    
     /// <summary>
     /// Démarre le serveur socket
     /// </summary>
@@ -57,14 +53,14 @@ public class PythonBridge : MonoBehaviour
             IPAddress ipAddress = IPAddress.Parse(host);
             server = new TcpListener(ipAddress, port);
             server.Start();
-
+            
             isRunning = true;
-
+            
             // Démarrer le thread d'écoute
             listenThread = new Thread(new ThreadStart(ListenForConnections));
             listenThread.IsBackground = true;
             listenThread.Start();
-
+            
             Debug.Log($"[PythonBridge] ✅ Serveur démarré avec succès sur {host}:{port}");
             Debug.Log("[PythonBridge] En attente de connexion Python...");
         }
@@ -73,7 +69,7 @@ public class PythonBridge : MonoBehaviour
             Debug.LogError($"[PythonBridge] ❌ Erreur au démarrage du serveur : {e.Message}");
         }
     }
-
+    
     /// <summary>
     /// Thread d'écoute des connexions entrantes
     /// </summary>
@@ -87,9 +83,9 @@ public class PythonBridge : MonoBehaviour
                 client = server.AcceptTcpClient();
                 stream = client.GetStream();
                 isConnected = true;
-
+                
                 Debug.Log("[PythonBridge] 🔗 Client Python connecté !");
-
+                
                 // Envoyer un message de confirmation
                 SendMessage(new
                 {
@@ -97,7 +93,7 @@ public class PythonBridge : MonoBehaviour
                     status = "connected",
                     message = "Unity server ready"
                 });
-
+                
                 // Recevoir les messages
                 ReceiveMessages();
             }
@@ -112,21 +108,21 @@ public class PythonBridge : MonoBehaviour
             }
         }
     }
-
+    
     /// <summary>
     /// Reçoit les messages du client Python
     /// </summary>
     void ReceiveMessages()
     {
         byte[] buffer = new byte[4096];
-
+        
         while (isRunning && client != null && client.Connected)
         {
             try
             {
                 // Lire les données
                 int bytesRead = stream.Read(buffer, 0, buffer.Length);
-
+                
                 if (bytesRead == 0)
                 {
                     // Connexion fermée
@@ -134,11 +130,11 @@ public class PythonBridge : MonoBehaviour
                     isConnected = false;
                     break;
                 }
-
+                
                 // Convertir en string
                 string data = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                 messageBuffer += data;
-
+                
                 // Traiter les messages complets (séparés par \n)
                 ProcessMessages();
             }
@@ -150,7 +146,7 @@ public class PythonBridge : MonoBehaviour
             }
         }
     }
-
+    
     /// <summary>
     /// Traite les messages reçus du buffer
     /// </summary>
@@ -161,14 +157,14 @@ public class PythonBridge : MonoBehaviour
             int newlineIndex = messageBuffer.IndexOf("\n");
             string message = messageBuffer.Substring(0, newlineIndex);
             messageBuffer = messageBuffer.Substring(newlineIndex + 1);
-
+            
             if (!string.IsNullOrWhiteSpace(message))
             {
                 HandleMessage(message);
             }
         }
     }
-
+    
     /// <summary>
     /// Gère un message reçu de Python
     /// </summary>
@@ -177,26 +173,26 @@ public class PythonBridge : MonoBehaviour
         try
         {
             Debug.Log($"[PythonBridge] 📨 Reçu : {jsonMessage}");
-
+            
             // Parser le JSON (simple pour l'instant)
             // TODO: Utiliser JsonUtility ou Newtonsoft.Json pour un parsing complet
-
+            
             // Pour l'instant, on détecte juste la commande
             if (jsonMessage.Contains("\"command\""))
             {
                 if (jsonMessage.Contains("\"load_model\""))
                 {
                     Debug.Log("[PythonBridge] 🎭 Commande : Charger un modèle VRM");
-
+                    
                     // Extraire le chemin du fichier (parsing simple)
                     string path = ExtractPathFromJson(jsonMessage);
-
+                    
                     // Appeler le VRMLoader
                     if (vrmLoader != null)
                     {
                         Debug.Log($"[PythonBridge] 📂 Chargement depuis : {path}");
                         vrmLoader.LoadVRMFromPath(path);
-
+                        
                         SendMessage(new
                         {
                             type = "response",
@@ -220,65 +216,7 @@ public class PythonBridge : MonoBehaviour
                 else if (jsonMessage.Contains("\"set_expression\""))
                 {
                     Debug.Log("[PythonBridge] 😊 Commande : Changer l'expression");
-
-                    // Extraire le nom de l'expression et la valeur
-                    string expressionName = ExtractStringValue(jsonMessage, "name");
-                    float expressionValue = ExtractFloatValue(jsonMessage, "value");
-
-                    // Appeler le BlendshapeController
-                    if (blendshapeController != null)
-                    {
-                        Debug.Log($"[PythonBridge] 🎭 Expression : {expressionName} = {expressionValue:F2}");
-                        blendshapeController.SetExpression(expressionName, expressionValue);
-
-                        SendMessage(new
-                        {
-                            type = "response",
-                            command = "set_expression",
-                            status = "success",
-                            message = $"Expression '{expressionName}' appliquée à {expressionValue:F2}"
-                        });
-                    }
-                    else
-                    {
-                        Debug.LogError("[PythonBridge] ❌ VRMBlendshapeController non assigné !");
-                        SendMessage(new
-                        {
-                            type = "response",
-                            command = "set_expression",
-                            status = "error",
-                            message = "VRMBlendshapeController non configuré"
-                        });
-                    }
-                }
-                else if (jsonMessage.Contains("\"reset_expressions\""))
-                {
-                    Debug.Log("[PythonBridge] 🔄 Commande : Reset expressions");
-
-                    // Appeler le BlendshapeController
-                    if (blendshapeController != null)
-                    {
-                        blendshapeController.ResetExpressions();
-
-                        SendMessage(new
-                        {
-                            type = "response",
-                            command = "reset_expressions",
-                            status = "success",
-                            message = "Toutes les expressions réinitialisées"
-                        });
-                    }
-                    else
-                    {
-                        Debug.LogError("[PythonBridge] ❌ VRMBlendshapeController non assigné !");
-                        SendMessage(new
-                        {
-                            type = "response",
-                            command = "reset_expressions",
-                            status = "error",
-                            message = "VRMBlendshapeController non configuré"
-                        });
-                    }
+                    // TODO: Implémenter le changement d'expression
                 }
                 else if (jsonMessage.Contains("\"set_blendshape\""))
                 {
@@ -292,7 +230,7 @@ public class PythonBridge : MonoBehaviour
             Debug.LogError($"[PythonBridge] ❌ Erreur de traitement du message : {e.Message}");
         }
     }
-
+    
     /// <summary>
     /// Envoie un message au client Python
     /// </summary>
@@ -303,18 +241,18 @@ public class PythonBridge : MonoBehaviour
             Debug.LogWarning("[PythonBridge] ⚠️ Impossible d'envoyer : pas de connexion");
             return;
         }
-
+        
         try
         {
             // Convertir en JSON (simple)
             string json = JsonUtility.ToJson(data);
             string message = json + "\n";
-
+            
             // Convertir en bytes et envoyer
             byte[] bytes = Encoding.UTF8.GetBytes(message);
             stream.Write(bytes, 0, bytes.Length);
             stream.Flush();
-
+            
             Debug.Log($"[PythonBridge] 📤 Envoyé : {json}");
         }
         catch (Exception e)
@@ -323,45 +261,45 @@ public class PythonBridge : MonoBehaviour
             isConnected = false;
         }
     }
-
+    
     /// <summary>
     /// Nettoyage à la fermeture de l'application
     /// </summary>
     void OnApplicationQuit()
     {
         Debug.Log("[PythonBridge] Fermeture du serveur...");
-
+        
         isRunning = false;
         isConnected = false;
-
+        
         // Fermer les connexions
         if (stream != null)
         {
             stream.Close();
             stream = null;
         }
-
+        
         if (client != null)
         {
             client.Close();
             client = null;
         }
-
+        
         if (server != null)
         {
             server.Stop();
             server = null;
         }
-
+        
         // Arrêter le thread
         if (listenThread != null && listenThread.IsAlive)
         {
             listenThread.Join(1000); // Attendre max 1 seconde
         }
-
+        
         Debug.Log("[PythonBridge] ✅ Serveur fermé");
     }
-
+    
     /// <summary>
     /// Extrait le chemin du fichier depuis le JSON (parsing simple)
     /// </summary>
@@ -372,18 +310,18 @@ public class PythonBridge : MonoBehaviour
             // Chercher "path": "..."
             int pathStart = json.IndexOf("\"path\"");
             if (pathStart == -1) return "";
-
+            
             int valueStart = json.IndexOf("\"", pathStart + 6);
             if (valueStart == -1) return "";
-
+            
             int valueEnd = json.IndexOf("\"", valueStart + 1);
             if (valueEnd == -1) return "";
-
+            
             string path = json.Substring(valueStart + 1, valueEnd - valueStart - 1);
-
+            
             // Convertir les slashes si nécessaire
             path = path.Replace("/", "\\");
-
+            
             return path;
         }
         catch (Exception e)
@@ -392,76 +330,7 @@ public class PythonBridge : MonoBehaviour
             return "";
         }
     }
-
-    /// <summary>
-    /// Extrait une valeur string depuis le JSON (parsing simple)
-    /// </summary>
-    private string ExtractStringValue(string json, string key)
-    {
-        try
-        {
-            string searchKey = $"\"{key}\"";
-            int keyStart = json.IndexOf(searchKey);
-            if (keyStart == -1) return "";
-
-            int valueStart = json.IndexOf("\"", keyStart + searchKey.Length + 1);
-            if (valueStart == -1) return "";
-
-            int valueEnd = json.IndexOf("\"", valueStart + 1);
-            if (valueEnd == -1) return "";
-
-            return json.Substring(valueStart + 1, valueEnd - valueStart - 1);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"[PythonBridge] ❌ Erreur extraction '{key}' : {e.Message}");
-            return "";
-        }
-    }
-
-    /// <summary>
-    /// Extrait une valeur float depuis le JSON (parsing simple)
-    /// </summary>
-    private float ExtractFloatValue(string json, string key)
-    {
-        try
-        {
-            string searchKey = $"\"{key}\"";
-            int keyStart = json.IndexOf(searchKey);
-            if (keyStart == -1) return 0.0f;
-
-            // Chercher le ':' après la clé
-            int colonIndex = json.IndexOf(":", keyStart);
-            if (colonIndex == -1) return 0.0f;
-
-            // Trouver le début de la valeur (après ':' et espaces)
-            int valueStart = colonIndex + 1;
-            while (valueStart < json.Length && (json[valueStart] == ' ' || json[valueStart] == '\t'))
-                valueStart++;
-
-            // Trouver la fin de la valeur (avant ',' ou '}')
-            int valueEnd = valueStart;
-            while (valueEnd < json.Length && json[valueEnd] != ',' && json[valueEnd] != '}' && json[valueEnd] != '\n')
-                valueEnd++;
-
-            string valueStr = json.Substring(valueStart, valueEnd - valueStart).Trim();
-
-            // Parser le float
-            if (float.TryParse(valueStr, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out float result))
-            {
-                return result;
-            }
-
-            Debug.LogWarning($"[PythonBridge] ⚠️ Impossible de parser float '{key}' : '{valueStr}'");
-            return 0.0f;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"[PythonBridge] ❌ Erreur extraction float '{key}' : {e.Message}");
-            return 0.0f;
-        }
-    }
-
+    
     /// <summary>
     /// Affiche le statut dans l'inspecteur Unity
     /// </summary>
@@ -471,7 +340,7 @@ public class PythonBridge : MonoBehaviour
         GUIStyle style = new GUIStyle();
         style.fontSize = 14;
         style.normal.textColor = isConnected ? Color.green : Color.red;
-
+        
         string status = isConnected ? "✅ Python Connecté" : "⏳ En attente de Python...";
         GUI.Label(new Rect(10, 10, 300, 30), status, style);
     }

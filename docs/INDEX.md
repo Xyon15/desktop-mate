@@ -51,8 +51,17 @@ docs/
 ├── 📁 session_5_vrm_loading/                      ← Session 5 : Chargement VRM ✅
 │   ├── SESSION_VRM_LOADING_SUCCESS.md              Récapitulatif complet
 │   ├── LOAD_VRM_MODEL.md                           Guide chargement VRM
+│   ├── README.md                                   Vue d'ensemble session 5
 │   └── scripts/
-│       └── VRMLoader_CLEAN.cs                      Code VRMLoader propre
+│       └── VRMLoader.cs                            Script de référence
+│
+├── 📁 session_6_expressions/                      ← Session 6 : Expressions faciales 😊 ✅
+│   ├── README.md                                   Vue d'ensemble session 6
+│   ├── BLENDSHAPES_GUIDE.md                        Guide technique blendshapes
+│   ├── UNITY_SETUP_GUIDE.md                        Configuration Unity pas-à-pas
+│   ├── SESSION_SUCCESS.md                          Récapitulatif succès
+│   └── scripts/
+│       └── VRMBlendshapeController.cs              Script de référence
 │
 └── 📁 1st/                                        ← Archives premières notes
     ├── START_HERE.md
@@ -68,14 +77,15 @@ docs/
 ## 🚀 Démarrage rapide
 
 ### Pour commencer le projet de zéro :
-0. � `CURRENT_STATE.md` - État actuel complet du projet
-1. �📁 `session_0_git_configuration/` - Configurer Git pour Unity
+0. 📍 `CURRENT_STATE.md` - État actuel complet du projet
+1. ⚙️ `session_0_git_configuration/` - Configurer Git pour Unity
 2. 📖 `README.md` - Vue d'ensemble
 3. 📁 `session_1_setup/` - Setup Python
 4. 📁 `session_2_unity_installation/` - Installer Unity
 5. 📁 `session_3_univrm_installation/` - Installer UniVRM
 6. 📁 `session_4_python_unity_connection/` - Connecter Python et Unity
 7. 📁 `session_5_vrm_loading/` - Charger les modèles VRM
+8. 📁 `session_6_expressions/` - Implémenter expressions faciales (blendshapes)
 
 ### Pour reprendre après une pause :
 - **État du projet** → `CURRENT_STATE.md`
@@ -107,11 +117,11 @@ docs/
 
 **Résumé Chat 1 :** `chat_transistions/chat_1.../CHAT_SUMMARY.md`
 
-### 🚀 Chat 2 - À venir (Sessions 6+)
+### 🚀 Chat 2 - En cours (Sessions 6+)
 
 | Session | Objectif | Statut | Fichiers clés |
 |---------|----------|--------|---------------|
-| **6** | Expressions faciales | 🚧 À venir | - |
+| **6** | Expressions faciales (blendshapes) | ✅ Complet | `session_6_expressions/README.md`, `BLENDSHAPES_GUIDE.md` |
 | **7** | Animations | 🚧 À venir | - |
 | **8** | Audio & Lip-sync | 🚧 À venir | - |
 | **9** | Face Tracking | 🚧 À venir | - |
@@ -129,6 +139,8 @@ docs/
 - **Communication IPC** → `session_4_python_unity_connection/UNITY_PYTHONBRIDGE_SETUP.md`
 - **Chargement VRM** → `session_5_vrm_loading/LOAD_VRM_MODEL.md`
 - **Threading Unity** → `session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md` (section "Leçons apprises")
+- **Expressions faciales (blendshapes)** → `session_6_expressions/BLENDSHAPES_GUIDE.md`
+- **Contrôle blendshapes VRM** → `session_6_expressions/README.md`
 
 ### Par problème
 - **Library/ et Temp/ versionnés par erreur** → `session_0_git_configuration/GIT_UNITY_FIX.md`
@@ -137,7 +149,8 @@ docs/
 - **Script Unity ne démarre pas** → `session_4_python_unity_connection/FIX_SCRIPT_NOT_RUNNING.md`
 
 ### Scripts de référence
-- **VRMLoader.cs** → `session_5_vrm_loading/scripts/VRMLoader_CLEAN.cs`
+- **VRMLoader.cs** → `session_5_vrm_loading/scripts/VRMLoader.cs`
+- **VRMBlendshapeController.cs** → `session_6_expressions/scripts/VRMBlendshapeController.cs`
 - **PythonBridge.cs** → Voir dans `unity/DesktopMateUnity/Assets/Scripts/IPC/`
 
 ---

@@ -71,7 +71,7 @@
 // - Appel vrmLoader.LoadVRMFromPath() dans HandleMessage()
 ```
 
-### 3. `docs/VRMLoader_CLEAN.cs`
+### 3. `docs/VRMLoader.cs`
 ```csharp
 // Version de référence propre du VRMLoader
 // À conserver pour future référence

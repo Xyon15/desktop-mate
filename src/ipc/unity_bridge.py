@@ -150,3 +150,42 @@ class UnityBridge:
             
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse Unity message: {e}")
+
+    # === VRM Control Methods ===
+
+    def load_vrm_model(self, model_path: str) -> bool:
+        """Load a VRM model in Unity.
+        
+        Args:
+            model_path: Path to the VRM model file
+            
+        Returns:
+            True if command sent successfully, False otherwise
+        """
+        return self.send_command("load_model", {"path": model_path})
+
+    def set_expression(self, expression_name: str, value: float) -> bool:
+        """Set a facial expression on the VRM avatar.
+        
+        Args:
+            expression_name: Name of the expression (e.g., "joy", "angry", "sorrow")
+            value: Expression intensity from 0.0 (0%) to 1.0 (100%)
+            
+        Returns:
+            True if command sent successfully, False otherwise
+        """
+        # Clamp value between 0.0 and 1.0
+        value = max(0.0, min(1.0, value))
+        
+        return self.send_command("set_expression", {
+            "name": expression_name,
+            "value": value
+        })
+
+    def reset_expressions(self) -> bool:
+        """Reset all facial expressions to neutral.
+        
+        Returns:
+            True if command sent successfully, False otherwise
+        """
+        return self.send_command("reset_expressions", {})

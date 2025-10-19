@@ -17,7 +17,7 @@ Desktop-Mate est une application qui permet d'afficher un avatar VRM interactif 
 
 **Objectif final :** 🤖 Connecter l'avatar à une **IA conversationnelle (chatbot)** pour créer un assistant virtuel qui peut **parler, réagir émotionnellement et se déplacer librement** sur le bureau. L'avatar deviendra un véritable compagnon interactif intelligent !
 
-**Status actuel :** ✅ Phase 1 (MVP) terminée ! L'avatar VRM s'affiche et répond aux commandes Python.
+**Status actuel :** ✅ Phase 1 (MVP) terminée ! ✅ Phase 2 (Expressions) terminée ! L'avatar s'affiche et peut exprimer des émotions !
 
 ## ⚡ Quick Start
 
@@ -201,18 +201,24 @@ python main.py
 - [x] **Affichage de l'avatar 3D fonctionnel !** 🎭
 
 ### Phase 2 : Expressions & Animations 😊 (En cours)
-- [ ] Contrôle des blendshapes VRM
-- [ ] Système d'émotions prédéfinies
-- [ ] Boutons d'expressions dans l'UI Python
-- [ ] Animations idle (respiration, clignement)
-- [ ] Timeline d'animations
+- [x] **Session 6** : Expressions faciales (blendshapes) ✅ **TERMINÉ !**
+  - VRMBlendshapeController.cs avec thread-safety
+  - Interface GUI avec sliders (joy, angry, sorrow, surprised, fun)
+  - Contrôle précis 0-100% pour chaque expression
+  - Bouton "Reset All Expressions"
+  - Documentation complète
+- [ ] **Session 7** : Animations automatiques
+  - Idle animations (respiration, clignement)
+  - Smooth transitions entre expressions
+  - Timeline d'animations
 
 ### Phase 3 : Audio & Lip-Sync 🎤
-- [ ] Capture audio microphone
-- [ ] Détection d'amplitude vocale
-- [ ] Lip-sync basique (ouverture bouche)
-- [ ] VU-meter dans l'UI
-- [ ] TTS (Text-to-Speech)
+- [ ] **Session 8** : Capture audio et lip-sync
+  - Capture audio microphone
+  - Détection d'amplitude vocale
+  - Lip-sync basique avec phonèmes (A, I, U, E, O)
+  - VU-meter dans l'UI
+  - TTS (Text-to-Speech)
 
 ### Phase 4 : Intégration IA Conversationnelle 🤖 (Objectif Final)
 - [ ] **Session 10** : Connexion chatbot IA
@@ -267,17 +273,18 @@ python main.py
 ## 🎭 Fonctionnalités Actuelles
 
 ### ✅ Opérationnel
-- **Interface Python Qt** : Fenêtre de contrôle avec boutons
+- **Interface Python Qt** : Fenêtre de contrôle avec onglets
 - **Connexion Unity** : Communication bidirectionnelle stable
 - **Chargement VRM** : Import et affichage de modèles VRM
 - **Avatar 3D** : Modèle "Mura Mura" affiché dans Unity
+- **Expressions faciales** : Contrôle blendshapes VRM (joy, angry, sorrow, surprised, fun) ✨ **NOUVEAU**
+- **Interface sliders** : Contrôle précis 0-100% pour chaque expression ✨ **NOUVEAU**
 - **Logs détaillés** : Console + fichiers pour debugging
 - **Tests unitaires** : 8 tests Python qui passent
 
 ### 🚧 En développement
-- Contrôle des blendshapes (expressions faciales)
-- Animations et mouvements
-- Capture audio et lip-sync
+- Animations automatiques et mouvements
+- Capture audio et lip-sync avancé
 
 ## 🔧 Architecture Technique
 
@@ -390,6 +397,12 @@ Documentation complète et organisée par sessions de développement :
    - Affichage de l'avatar 3D
    - **Application fonctionnelle !** 🎉
 
+6. **[Session 6 - Expressions Faciales](docs/session_6_expressions/)** ✅ **NOUVEAU !**
+   - VRMBlendshapeController.cs pour expressions
+   - Interface GUI avec sliders
+   - Contrôle émotions en temps réel
+   - **L'avatar exprime des émotions !** 😊😠😢😲😄
+
 ### Guides spécifiques
 
 - [Configuration Git Unity](docs/session_0_git_configuration/GIT_UNITY_FIX.md)
@@ -484,6 +497,17 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ## 📝 Changelog
 
+### Version 0.2.0-alpha (19 octobre 2025) ✨ **NOUVEAU**
+- ✅ **Session 6 - Expressions faciales terminée !**
+- ✅ VRMBlendshapeController.cs avec contrôle expressions VRM
+- ✅ Interface GUI avec onglet "Expressions"
+- ✅ 5 sliders pour émotions (joy, angry, sorrow, surprised, fun)
+- ✅ Contrôle précis 0-100% pour chaque expression
+- ✅ Bouton "Reset All Expressions"
+- ✅ Commandes IPC : set_expression, reset_expressions
+- ✅ Documentation Session 6 complète
+- 🎭 **L'avatar peut maintenant exprimer des émotions !** 😊😠😢😲😄
+
 ### Version 0.1.0-alpha (18 octobre 2025)
 - ✅ **MVP terminé !**
 - ✅ Interface Python Qt fonctionnelle
@@ -501,6 +525,6 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ---
 
-**🎊 Status actuel : MVP fonctionnel ! L'avatar s'affiche et répond aux commandes ! 🎊**
+**🎊 Status actuel : MVP + Expressions fonctionnels ! L'avatar s'affiche et peut exprimer 5 émotions ! 🎊**
 
 ⭐ **N'oubliez pas de mettre une étoile si ce projet vous plaît !** ⭐

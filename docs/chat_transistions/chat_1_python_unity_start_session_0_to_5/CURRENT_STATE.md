@@ -1,7 +1,7 @@
 # 📍 État Actuel du Projet Desktop-Mate
 
-**Date de mise à jour :** 18 octobre 2025  
-**Version :** 0.1.0-alpha (MVP)
+**Date de mise à jour :** 19 octobre 2025  
+**Version :** 0.2.0-alpha (MVP + Expressions)
 
 ---
 
@@ -44,6 +44,17 @@
    - **Avatar "Mura Mura" s'affiche dans Unity !** 🎭
    - Documentation : `docs/session_5_vrm_loading/`
 
+### Phase 2 - Expressions Faciales ✅
+
+7. **Session 6 - Expressions Faciales (Blendshapes)** ✅ **NOUVEAU !**
+   - `VRMBlendshapeController.cs` créé avec thread-safety
+   - Contrôle des expressions VRM : joy, angry, sorrow, surprised, fun
+   - Interface GUI Python avec onglet "Expressions"
+   - 5 sliders pour contrôle précis (0-100%)
+   - Bouton "Reset All Expressions"
+   - Commandes IPC : `set_expression`, `reset_expressions`
+   - Documentation : `docs/session_6_expressions/`
+
 ---
 
 ## 🎯 État Technique Actuel
@@ -73,22 +84,23 @@
 desktop-mate/
 ├── main.py                  # Point d'entrée
 ├── src/
-│   ├── gui/app.py          # Interface Qt
-│   ├── ipc/unity_bridge.py # Client socket Python
+│   ├── gui/app.py          # Interface Qt avec onglets (Connection, Expressions)
+│   ├── ipc/unity_bridge.py # Client socket + méthodes VRM
 │   └── utils/              # Utilitaires
 ├── unity/DesktopMateUnity/
 │   ├── Assets/
 │   │   ├── Scripts/
-│   │   │   ├── IPC/PythonBridge.cs   # Serveur Unity
-│   │   │   └── VRMLoader.cs          # Loader VRM
-│   │   ├── Models/                    # Modèles VRM importés
-│   │   ├── VRM/                       # Package UniVRM
+│   │   │   ├── IPC/PythonBridge.cs         # Serveur Unity + gestion commandes
+│   │   │   ├── VRMLoader.cs                 # Loader VRM
+│   │   │   └── VRMBlendshapeController.cs  # Contrôle expressions ✅ NOUVEAU
+│   │   ├── Models/                          # Modèles VRM importés
+│   │   ├── VRM/                             # Package UniVRM
 │   │   └── Scenes/SampleScene.unity
 │   └── ProjectSettings/
 ├── assets/
 │   └── Mura Mura - Model.vrm
 ├── tests/                   # 8 tests unitaires
-├── docs/                    # Documentation complète (sessions 0-5)
+├── docs/                    # Documentation complète (sessions 0-6) ✅
 └── .gitignore              # Configuré pour Unity
 ```
 
@@ -126,34 +138,23 @@ public void LoadVRMFromPath(string filePath) {
 
 ## 🚧 Prochaines Sessions (À FAIRE)
 
-### Session 6 - Expressions Faciales 😊
-**Objectif :** Contrôler les blendshapes VRM pour les émotions
-
-**À implémenter :**
-1. `VRMBlendshapeController.cs` dans Unity
-2. Commande IPC `set_blendshape` 
-3. Boutons émotions dans GUI Python (Happy, Sad, Angry, Surprised, etc.)
-4. Mapping blendshape names → valeurs (0.0 à 1.0)
-
-**Fichiers à créer :**
-- `unity/DesktopMateUnity/Assets/Scripts/VRMBlendshapeController.cs`
-- Documentation : `docs/session_6_expressions/`
-
 ### Session 7 - Animations 🎬
-- Idle animations (respiration, clignement)
+- Idle animations (respiration, clignement automatique)
 - Head movement animations
 - Animation timeline system
+- Smooth transitions entre expressions
 
 ### Session 8 - Audio & Lip-Sync 🎤
 - Capture microphone (`sounddevice`)
 - Détection amplitude vocale
-- Mapping volume → mouth blendshape
+- Mapping volume → mouth blendshape (phonèmes A, I, U, E, O)
 - VU-meter UI Python
 
 ### Session 9 - Face Tracking 👁️
 - MediaPipe ou OpenCV
 - Webcam capture
 - Eye tracking basique
+- Mirror mode (copier expressions utilisateur)
 
 ### Session 10-12 - Intégration IA 🤖 (OBJECTIF FINAL)
 - **Session 10 :** LLM chatbot (GPT/Claude/LLaMA)
