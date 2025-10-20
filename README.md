@@ -17,7 +17,7 @@ Desktop-Mate est une application qui permet d'afficher un avatar VRM interactif 
 
 **Objectif final :** 🤖 Connecter l'avatar à une **IA conversationnelle (chatbot)** pour créer un assistant virtuel qui peut **parler, réagir émotionnellement et se déplacer librement** sur le bureau. L'avatar deviendra un véritable compagnon interactif intelligent !
 
-**Status actuel :** ✅ Phase 1 (MVP) terminée ! ✅ Phase 2 (Expressions) terminée ! L'avatar s'affiche et peut exprimer des émotions !
+**Status actuel :** ✅ Phase 1 (MVP) terminée ! ✅ Phase 2 (Expressions & Animations) terminée ! L'avatar s'affiche, exprime des émotions avec **transitions fluides** ! ✨
 
 ## ⚡ Quick Start
 
@@ -200,17 +200,21 @@ python main.py
 - [x] Chargement d'un modèle VRM dans Unity
 - [x] **Affichage de l'avatar 3D fonctionnel !** 🎭
 
-### Phase 2 : Expressions & Animations 😊 (En cours)
-- [x] **Session 6** : Expressions faciales (blendshapes) ✅ **TERMINÉ !**
-  - VRMBlendshapeController.cs avec thread-safety
+### Phase 2 : Expressions & Animations 😊 ✅ **TERMINÉE !**
+- [x] **Session 6** : Expressions faciales (blendshapes) ✅
+  - VRMBlendshapeController.cs v1.6 avec thread-safety
   - Interface GUI avec sliders (joy, angry, sorrow, surprised, fun)
   - Contrôle précis 0-100% pour chaque expression
   - Bouton "Reset All Expressions"
   - Documentation complète
-- [ ] **Session 7** : Animations automatiques
-  - Idle animations (respiration, clignement)
-  - Smooth transitions entre expressions
-  - Timeline d'animations
+- [x] **Session 7** : Animations fluides ✅ **TERMINÉ !**
+  - VRMBlendshapeController.cs v2.0 avec Lerp interpolation
+  - Transitions smooth entre expressions
+  - Slider de vitesse ajustable (1.0-10.0)
+  - Interface française complète avec icône
+  - Système de modèle VRM par défaut
+  - Chargement/déchargement dynamique
+  - Documentation complète (900+ lignes de guides techniques)
 
 ### Phase 3 : Audio & Lip-Sync 🎤
 - [ ] **Session 8** : Capture audio et lip-sync
@@ -273,14 +277,17 @@ python main.py
 ## 🎭 Fonctionnalités Actuelles
 
 ### ✅ Opérationnel
-- **Interface Python Qt** : Fenêtre de contrôle avec onglets
-- **Connexion Unity** : Communication bidirectionnelle stable
-- **Chargement VRM** : Import et affichage de modèles VRM
-- **Avatar 3D** : Modèle "Mura Mura" affiché dans Unity
-- **Expressions faciales** : Contrôle blendshapes VRM (joy, angry, sorrow, surprised, fun) ✨ **NOUVEAU**
-- **Interface sliders** : Contrôle précis 0-100% pour chaque expression ✨ **NOUVEAU**
+- **Interface Python Qt** : Fenêtre de contrôle avec onglets, 100% en français, icône personnalisée
+- **Connexion Unity** : Communication bidirectionnelle stable avec thread-safety
+- **Chargement VRM** : Import, affichage et déchargement dynamique de modèles VRM
+- **Modèle par défaut** : Système de modèle VRM par défaut (pas besoin de naviguer à chaque fois) ✨ **SESSION 7**
+- **Avatar 3D** : Modèle "Mura Mura" affiché dans Unity avec rendu optimisé
+- **Expressions faciales** : Contrôle blendshapes VRM (joy, angry, sorrow, surprised, fun)
+- **Transitions smooth** : Interpolation Lerp pour animations fluides ✨ **SESSION 7**
+- **Vitesse ajustable** : Slider 1.0-10.0 pour contrôler la rapidité des transitions ✨ **SESSION 7**
+- **Interface sliders** : Contrôle précis 0-100% pour chaque expression
 - **Logs détaillés** : Console + fichiers pour debugging
-- **Tests unitaires** : 8 tests Python qui passent
+- **Tests unitaires** : 8 tests Python qui passent (100%)
 
 ### 🚧 En développement
 - Animations automatiques et mouvements
@@ -397,11 +404,20 @@ Documentation complète et organisée par sessions de développement :
    - Affichage de l'avatar 3D
    - **Application fonctionnelle !** 🎉
 
-6. **[Session 6 - Expressions Faciales](docs/session_6_expressions/)** ✅ **NOUVEAU !**
-   - VRMBlendshapeController.cs pour expressions
+6. **[Session 6 - Expressions Faciales](docs/session_6_expressions/)** ✅
+   - VRMBlendshapeController.cs v1.6 pour expressions
    - Interface GUI avec sliders
    - Contrôle émotions en temps réel
    - **L'avatar exprime des émotions !** 😊😠😢😲😄
+
+7. **[Session 7 - Animations Fluides](docs/session_7_animations/)** ✅ **NOUVEAU !**
+   - VRMBlendshapeController.cs v2.0 avec Lerp interpolation
+   - Transitions smooth entre expressions
+   - Slider de vitesse (1.0-10.0)
+   - Interface française + icône
+   - Système modèle VRM par défaut
+   - Thread-safety complet (Queue<Action> pattern)
+   - **L'avatar anime ses expressions de façon fluide !** ✨🎭
 
 ### Guides spécifiques
 
@@ -410,6 +426,8 @@ Documentation complète et organisée par sessions de développement :
 - [Debug connexion Unity](docs/session_4_python_unity_connection/DEBUG_CONNECTION.md)
 - [Fix script Unity](docs/session_4_python_unity_connection/FIX_SCRIPT_NOT_RUNNING.md)
 - [Récapitulatif Session 5](docs/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md)
+- [Guide expressions Session 6](docs/session_6_expressions/BLENDSHAPES_GUIDE.md)
+- [Guide transitions Session 7](docs/session_7_animations/TRANSITIONS_GUIDE.md) ✨ **900+ lignes !**
 
 ## 🤝 Contribution
 
@@ -497,9 +515,24 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ## 📝 Changelog
 
-### Version 0.2.0-alpha (19 octobre 2025) ✨ **NOUVEAU**
+### Version 0.3.0-alpha (20 octobre 2025) ✨ **NOUVEAU - SESSION 7**
+- ✅ **Session 7 - Animations fluides terminée !**
+- ✅ VRMBlendshapeController.cs v2.0 avec Lerp interpolation
+- ✅ Transitions smooth entre expressions (dictionnaires currentValues/targetValues)
+- ✅ Slider de vitesse ajustable (1.0-10.0, défaut 3.0)
+- ✅ Interface 100% en français
+- ✅ Icône personnalisée (avec fix AppUserModelID Windows)
+- ✅ Système de modèle VRM par défaut (menu-based)
+- ✅ Chargement/déchargement dynamique (toggle)
+- ✅ Thread-safety complet (Queue<Action> pattern)
+- ✅ 7 bugs résolus (calibration slider, thread-safety, etc.)
+- ✅ Documentation massive (README, TRANSITIONS_GUIDE 900+ lignes, SESSION_SUCCESS)
+- ✅ Transition Chat 3 → Chat 4 documentée
+- 🎭 **L'avatar anime maintenant ses expressions de façon fluide !** ✨
+
+### Version 0.2.0-alpha (19 octobre 2025)
 - ✅ **Session 6 - Expressions faciales terminée !**
-- ✅ VRMBlendshapeController.cs avec contrôle expressions VRM
+- ✅ VRMBlendshapeController.cs v1.6 avec contrôle expressions VRM
 - ✅ Interface GUI avec onglet "Expressions"
 - ✅ 5 sliders pour émotions (joy, angry, sorrow, surprised, fun)
 - ✅ Contrôle précis 0-100% pour chaque expression
@@ -525,6 +558,8 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ---
 
-**🎊 Status actuel : MVP + Expressions fonctionnels ! L'avatar s'affiche et peut exprimer 5 émotions ! 🎊**
+**🎊 Status actuel : MVP + Expressions + Animations fluides ! L'avatar s'affiche et anime 5 émotions avec transitions smooth ! ✨🎊**
+
+**🚀 Prochaine étape (Chat 4) : Clignement automatique pour encore plus de réalisme ! 👀**
 
 ⭐ **N'oubliez pas de mettre une étoile si ce projet vous plaît !** ⭐
