@@ -1,16 +1,15 @@
 // ============================================================
-// VERSION 2.0 - SMOOTH TRANSITIONS - MODIFIÉ 2025-10-20
+// VERSION 1.6 - SURPRISED FIX - MODIFIÉ 2025-10-19 16:45
 // ============================================================
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using VRM;
 
 /// <summary>
 /// Contrôleur des blendshapes VRM pour gérer les expressions faciales
 /// Thread-safe avec Queue<Action> pour Unity main thread
-/// VERSION 2.0 - Transitions smooth avec Lerp
+/// Version 1.3 - BlendShapePreset au lieu de CreateUnknown
 /// </summary>
 public class VRMBlendshapeController : MonoBehaviour
 {
@@ -18,20 +17,11 @@ public class VRMBlendshapeController : MonoBehaviour
     [Tooltip("Référence au GameObject VRM chargé (auto-détecté si null)")]
     public GameObject vrmInstance;
 
-    [Header("Transition Settings")]
-    [Tooltip("Vitesse de transition (unités/seconde). Plus élevé = plus rapide.")]
-    [Range(0.1f, 10.0f)]
-    public float transitionSpeed = 2.0f;
-
     // Proxy UniVRM pour contrôler les blendshapes
     private VRMBlendShapeProxy blendShapeProxy;
 
     // Queue d'actions pour thread-safety (comme VRMLoader)
     private Queue<Action> mainThreadActions = new Queue<Action>();
-
-    // NOUVEAU : Dictionnaires pour les transitions smooth
-    private Dictionary<BlendShapeKey, float> currentValues = new Dictionary<BlendShapeKey, float>();
-    private Dictionary<BlendShapeKey, float> targetValues = new Dictionary<BlendShapeKey, float>();
 
     // Flag d'initialisation
     private bool isInitialized = false;
@@ -41,7 +31,7 @@ public class VRMBlendshapeController : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Debug.Log("[VRMBlendshape] 🎭 VRMBlendshapeController démarré (VERSION 2.0 - SMOOTH TRANSITIONS)");
+        Debug.Log("[VRMBlendshape] 🎭 VRMBlendshapeController démarré (VERSION 1.6 - SURPRISED FIX)");
 
         if (vrmInstance != null)
         {
@@ -128,78 +118,26 @@ public class VRMBlendshapeController : MonoBehaviour
     }
 
     /// <summary>
-    /// Définit la vitesse de transition (thread-safe)
-    /// </summary>
-    /// <param name="speed">Vitesse de 0.1 à 10.0</param>
-    public void SetTransitionSpeed(float speed)
-    {
-        lock (mainThreadActions)
-        {
-            mainThreadActions.Enqueue(() => SetTransitionSpeedInternal(speed));
-        }
-    }
-
-    /// <summary>
-    /// Exécute le changement de vitesse de transition (main thread Unity)
-    /// </summary>
-    private void SetTransitionSpeedInternal(float speed)
-    {
-        transitionSpeed = Mathf.Clamp(speed, 0.1f, 10.0f);
-        Debug.Log($"[VRMBlendshape] ⚡ Vitesse de transition définie à {transitionSpeed:F2}");
-    }
-
-    /// <summary>
-    /// Obtient la BlendShapeKey appropriée pour une expression
-    /// </summary>
-    private BlendShapeKey GetBlendShapeKey(string expressionName)
-    {
-        BlendShapeKey key;
-        BlendShapePreset preset = BlendShapePreset.Unknown;
-
-        // Mapper les noms vers les presets VRM standards
-        switch (expressionName.ToLower())
-        {
-            case "joy": preset = BlendShapePreset.Joy; break;
-            case "angry": preset = BlendShapePreset.Angry; break;
-            case "sorrow": preset = BlendShapePreset.Sorrow; break;
-            case "fun": preset = BlendShapePreset.Fun; break;
-            case "surprised": preset = BlendShapePreset.Unknown; break; // Pas de preset standard
-            default: preset = BlendShapePreset.Unknown; break;
-        }
-
-        // Créer la clé appropriée
-        if (preset != BlendShapePreset.Unknown)
-        {
-            key = BlendShapeKey.CreateFromPreset(preset);
-        }
-        else
-        {
-            // Pour les expressions sans preset (Surprised), utiliser le nom capitalisé
-            string capitalizedName = char.ToUpper(expressionName[0]) + expressionName.Substring(1).ToLower();
-            key = BlendShapeKey.CreateUnknown(capitalizedName);
-        }
-
-        return key;
-    }
-
-    /// <summary>
     /// Exécute réellement le changement d'expression (main thread Unity)
-    /// VERSION 2.0 : Stocke la valeur CIBLE au lieu d'appliquer immédiatement
     /// </summary>
     private void SetExpressionInternal(string expressionName, float value)
     {
         // Vérifier initialisation
-        if (!isInitialized || blendShapeProxy == null)
+        if (!isInitialized)
         {
             Debug.LogWarning("[VRMBlendshape] ⚠️ Tentative d'initialisation...");
             InitializeBlendShapeProxy();
-            
-            // Si toujours pas initialisé après tentative, abandonner
-            if (!isInitialized || blendShapeProxy == null)
+            if (!isInitialized)
             {
-                Debug.LogWarning("[VRMBlendshape] ⚠️ VRM pas encore chargé, commande ignorée");
+                Debug.LogError("[VRMBlendshape] ❌ Impossible de définir l'expression : non initialisé");
                 return;
             }
+        }
+
+        if (blendShapeProxy == null)
+        {
+            Debug.LogError("[VRMBlendshape] ❌ blendShapeProxy est null !");
+            return;
         }
 
         try
@@ -207,23 +145,64 @@ public class VRMBlendshapeController : MonoBehaviour
             // Clamper la valeur entre 0 et 1
             value = Mathf.Clamp01(value);
 
-            // Obtenir la clé BlendShape
-            BlendShapeKey key = GetBlendShapeKey(expressionName);
+            // Essayer d'abord avec le preset si disponible
+            BlendShapeKey key;
+            BlendShapePreset preset = BlendShapePreset.Unknown;
 
-            // NOUVEAU : Stocker la valeur CIBLE (pas appliquer directement)
-            targetValues[key] = value;
-
-            // Si c'est la première fois pour cette clé, initialiser currentValues
-            if (!currentValues.ContainsKey(key))
+            // Mapper les noms vers les presets VRM standards
+            switch (expressionName.ToLower())
             {
-                currentValues[key] = 0.0f;
+                case "joy": preset = BlendShapePreset.Joy; break;
+                case "angry": preset = BlendShapePreset.Angry; break;
+                case "sorrow": preset = BlendShapePreset.Sorrow; break;
+                case "fun": preset = BlendShapePreset.Fun; break;
+                case "surprised": preset = BlendShapePreset.Unknown; break; // Pas de preset standard
+                default: preset = BlendShapePreset.Unknown; break;
             }
 
-            Debug.Log($"[VRMBlendshape] 🎯 Cible définie : {expressionName} → {value:F2} (actuel: {currentValues[key]:F2})");
+            // Créer la clé appropriée
+            if (preset != BlendShapePreset.Unknown)
+            {
+                key = BlendShapeKey.CreateFromPreset(preset);
+                Debug.Log($"[VRMBlendshape] 🔑 Utilisation du preset : {preset}");
+            }
+            else
+            {
+                // Pour les expressions sans preset (Surprised), essayer avec le nom capitalisé
+                string capitalizedName = char.ToUpper(expressionName[0]) + expressionName.Substring(1).ToLower();
+                key = BlendShapeKey.CreateUnknown(capitalizedName);
+                Debug.Log($"[VRMBlendshape] 🔑 Utilisation de Unknown (capitalisé) : '{capitalizedName}'");
+            }
+
+            // Appliquer la valeur
+            blendShapeProxy.ImmediatelySetValue(key, value);
+
+            // Vérifier si la valeur a bien été définie
+            float actualValue = blendShapeProxy.GetValue(key);
+            Debug.Log($"[VRMBlendshape] 🔍 Valeur stockée après ImmediatelySetValue : {actualValue:F2}");
+
+            // Si la valeur est 0 alors qu'on voulait mettre autre chose, essayer avec le nom capitalisé
+            if (actualValue == 0.0f && value > 0.0f && preset != BlendShapePreset.Unknown)
+            {
+                Debug.LogWarning($"[VRMBlendshape] ⚠️ Le preset {preset} semble ne pas exister, tentative avec le nom capitalisé...");
+
+                // Essayer avec la première lettre en majuscule
+                string capitalizedName = char.ToUpper(expressionName[0]) + expressionName.Substring(1).ToLower();
+                key = BlendShapeKey.CreateUnknown(capitalizedName);
+                blendShapeProxy.ImmediatelySetValue(key, value);
+                actualValue = blendShapeProxy.GetValue(key);
+
+                Debug.Log($"[VRMBlendshape] 🔍 Nouvelle tentative avec '{capitalizedName}' : {actualValue:F2}");
+            }
+
+            // IMPORTANT : Apply() rend le changement visible sur le mesh !
+            blendShapeProxy.Apply();
+
+            Debug.Log($"[VRMBlendshape] ✅ Expression '{expressionName}' (preset: {preset}) appliquée à {value:F2}");
         }
         catch (Exception e)
         {
-            Debug.LogError($"[VRMBlendshape] ❌ Erreur lors de la définition de '{expressionName}' : {e.Message}");
+            Debug.LogError($"[VRMBlendshape] ❌ Erreur lors de l'application de '{expressionName}' : {e.Message}");
         }
     }
 
@@ -242,34 +221,34 @@ public class VRMBlendshapeController : MonoBehaviour
 
     /// <summary>
     /// Exécute le reset des expressions (main thread Unity)
-    /// VERSION 2.0 : Met les cibles à 0 (transition smooth vers neutre)
     /// </summary>
     private void ResetExpressionsInternal()
     {
         if (!isInitialized || blendShapeProxy == null)
         {
-            // Pas d'erreur si le modèle n'est pas chargé (normal après unload)
-            Debug.Log("[VRMBlendshape] ℹ️ Reset ignoré : modèle non chargé");
+            Debug.LogError("[VRMBlendshape] ❌ Impossible de reset : non initialisé");
             return;
         }
 
         try
         {
-            // Définir toutes les expressions principales à 0 (cibles)
+            // Définir toutes les expressions principales à 0
             string[] mainExpressions = { "joy", "angry", "sorrow", "fun", "surprised" };
 
             foreach (string expr in mainExpressions)
             {
-                BlendShapeKey key = GetBlendShapeKey(expr);
-                targetValues[key] = 0.0f;
-                
-                if (!currentValues.ContainsKey(key))
-                {
-                    currentValues[key] = 0.0f;
-                }
+                BlendShapeKey key = BlendShapeKey.CreateUnknown(expr);
+                blendShapeProxy.ImmediatelySetValue(key, 0.0f);
             }
 
-            Debug.Log("[VRMBlendshape] ✅ Toutes les expressions en cours de réinitialisation (smooth)");
+            // Optionnel : définir Neutral à 1.0
+            BlendShapeKey neutralKey = BlendShapeKey.CreateUnknown("neutral");
+            blendShapeProxy.ImmediatelySetValue(neutralKey, 1.0f);
+
+            // IMPORTANT : Apply() rend le changement visible !
+            blendShapeProxy.Apply();
+
+            Debug.Log("[VRMBlendshape] ✅ Toutes les expressions réinitialisées");
         }
         catch (Exception e)
         {
@@ -279,11 +258,11 @@ public class VRMBlendshapeController : MonoBehaviour
 
     /// <summary>
     /// Update est appelé à chaque frame sur le main thread Unity
-    /// VERSION 2.0 : Exécute les commandes IPC + Lerp vers les valeurs cibles
+    /// On exécute ici toutes les actions en queue
     /// </summary>
     void Update()
     {
-        // 1. Exécuter toutes les actions IPC en attente
+        // Exécuter toutes les actions en attente
         lock (mainThreadActions)
         {
             while (mainThreadActions.Count > 0)
@@ -296,31 +275,6 @@ public class VRMBlendshapeController : MonoBehaviour
                 {
                     Debug.LogError($"[VRMBlendshape] ❌ Erreur dans l'exécution d'une action : {e.Message}");
                 }
-            }
-        }
-
-        // 2. NOUVEAU : Lerp vers les valeurs cibles
-        if (isInitialized && blendShapeProxy != null)
-        {
-            foreach (var key in currentValues.Keys.ToList())
-            {
-                float current = currentValues[key];
-                float target = targetValues.ContainsKey(key) ? targetValues[key] : 0.0f;
-
-                // Si la différence est négligeable, snap directement
-                if (Mathf.Abs(current - target) < 0.001f)
-                {
-                    currentValues[key] = target;
-                }
-                else
-                {
-                    // Lerp vers la cible
-                    float newValue = Mathf.Lerp(current, target, Time.deltaTime * transitionSpeed);
-                    currentValues[key] = newValue;
-                }
-
-                // Appliquer la valeur actuelle au blendshape
-                blendShapeProxy.ImmediatelySetValue(key, currentValues[key]);
             }
         }
     }
@@ -369,17 +323,5 @@ public class VRMBlendshapeController : MonoBehaviour
     void TestReset()
     {
         ResetExpressions();
-    }
-
-    [ContextMenu("Test Transition Speed Fast (5.0)")]
-    void TestFastTransition()
-    {
-        SetTransitionSpeed(5.0f);
-    }
-
-    [ContextMenu("Test Transition Speed Slow (0.5)")]
-    void TestSlowTransition()
-    {
-        SetTransitionSpeed(0.5f);
     }
 }

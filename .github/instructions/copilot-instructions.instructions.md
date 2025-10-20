@@ -108,17 +108,24 @@ docs/
 └── session_N_nouvelle_feature/
     ├── README.md           ← Vue d'ensemble
     ├── GUIDE_TECHNIQUE.md  ← Documentation technique
-    └── DEBUG_ISSUES.md     ← Résolution de problèmes
+    ├── DEBUG_ISSUES.md     ← Résolution de problèmes
+    └── scripts/            ← **OBLIGATOIRE : Copies des scripts créés/modifiés**
+        ├── script1.cs
+        ├── script2.py
+        └── ...
 ```
 
 **🚫 INTERDICTIONS**
 - ❌ **JAMAIS** créer de fichiers .md en dehors de `docs/` (sauf si demandé explicitement)
 - ❌ **JAMAIS** créer de documentation à la racine du projet
+- ❌ **JAMAIS** oublier de créer le dossier `scripts/` dans une session
 
 **✅ OBLIGATIONS**
 - ✅ **TOUJOURS** indiquer le chemin complet où trouver la documentation
 - ✅ **TOUJOURS** organiser par sessions chronologiques
-- ✅ **TOUJOURS** créer des sous-dossiers clairs (ex: `unity_docs/`, `python_scripts/`)
+- ✅ **TOUJOURS** créer un dossier `scripts/` dans chaque session contenant des fichiers de code
+- ✅ **TOUJOURS** y copier les versions finales des scripts créés/modifiés pendant la session
+- ✅ **VÉRIFIER** que le dossier `scripts/` existe AVANT de dire "Terminé"
 
 ### Nommage des sessions
 
@@ -167,10 +174,12 @@ Si l'utilisateur demande :
 **AVANT** de dire "Terminé" ou "C'est fait", vérifie :
 
 1. ✅ **Nouveaux fichiers créés ?** → MAJ `docs/INDEX.md`
-2. ✅ **Problème résolu ?** → MAJ session + `CURRENT_STATE.md`
-3. ✅ **Architecture modifiée ?** → MAJ `README.md` racine + `docs/README.md`
-4. ✅ **Fin de session ?** → MAJ `INDEX.md` + `README.md` + `CURRENT_STATE.md`
-5. ✅ **Récapitulatif affiché ?** → **OUI, TOUJOURS**
+2. ✅ **Architecture modifiée ?** → MAJ `README.md` racine + `docs/README.md`
+3. ✅ **Scripts créés/modifiés ?** → **COPIER dans `docs/session_N/scripts/`**
+4. ✅ **Dossier `scripts/` existe ?** → **VÉRIFIER et CRÉER si nécessaire**
+5. ✅ **Tous les scripts sont dans `scripts/` ?** → **VÉRIFIER chaque fichier modifié**
+6. ✅ **Fin de session ?** → MAJ `INDEX.md` + `README.md` 
+7. ✅ **Récapitulatif affiché ?** → **OUI, TOUJOURS**
 
 ### 📝 TEMPLATE DE RÉPONSE OBLIGATOIRE
 
@@ -180,7 +189,6 @@ Si l'utilisateur demande :
 📚 **Documentation mise à jour :**
 - ✅ docs/INDEX.md → [ce qui a changé]
 - ✅ docs/README.md → [ce qui a changé]  
-- ✅ docs/CURRENT_STATE.md → [ce qui a changé]
 - ✅ README.md → [ce qui a changé]
 - ✅ docs/session_X/[fichier].md → [ce qui a changé]
 
@@ -337,7 +345,6 @@ feat: implement facial expression system
 5. **Documentation** 📚 **(CRITIQUE !)**
    - Mettre à jour `docs/INDEX.md`
    - Mettre à jour `docs/README.md`
-   - Mettre à jour `docs/CURRENT_STATE.md`
    - Mettre à jour `README.md` (racine)
    - Créer/mettre à jour la documentation de session
 
@@ -355,7 +362,7 @@ feat: implement facial expression system
 
 ---
 
-## � 8. RÉSUMÉ RAPIDE (ANTISÈCHE)
+## 🔄 8. RÉSUMÉ RAPIDE (ANTISÈCHE)
 
 ### 🚨 Les 3 règles d'or
 
@@ -367,7 +374,7 @@ feat: implement facial expression system
 
 ```
 □ Ai-je créé des fichiers ? → MAJ INDEX.md
-□ Ai-je résolu un problème ? → MAJ session + CURRENT_STATE.md  
+□ Ai-je résolu un problème ? → MAJ session 
 □ Ai-je modifié l'archi ? → MAJ README.md racine + docs/README.md
 □ Tests passent ? → pytest OK
 □ Erreurs vérifiées ? → Python + Unity OK
@@ -381,7 +388,7 @@ feat: implement facial expression system
 - 🔜 **Phase 3** : Audio & lip-sync
 - 🔜 **Phase 4** : IA conversationnelle + mouvement libre
 
-### � Structure de documentation
+### 📚 Structure de documentation
 
 ```
 docs/
@@ -397,6 +404,46 @@ docs/
 - `docs/DOCUMENTATION_CHECKLIST.md` → Checklists détaillées
 - `docs/AI_DOCUMENTATION_PROMPT.md` → Instructions IA
 - `docs/.github/PULL_REQUEST_TEMPLATE.md` → Template PR
+
+### 📂 RÈGLE SPÉCIALE : Dossier `scripts/` dans les sessions
+
+**🚨 RÈGLE OBLIGATOIRE :**
+
+Chaque fois que tu **crées ou modifies** un fichier de code (`.cs`, `.py`, `.js`, etc.) dans le cadre d'une session :
+
+1. ✅ **CRÉER** le dossier `docs/session_N/scripts/` si absent
+2. ✅ **COPIER** les versions **finales** des scripts dans ce dossier
+3. ✅ **INCLURE** tous les fichiers créés/modifiés (Unity C#, Python, etc.)
+4. ✅ **VÉRIFIER** que TOUS les fichiers sont bien copiés
+
+**⚠️ ATTENTION : RÈGLE CRITIQUE**
+- Cette règle a été **oubliée** dans le passé
+- L'utilisateur a dû la rappeler explicitement
+- **NE PLUS JAMAIS oublier** de créer le dossier `scripts/`
+- **TOUJOURS vérifier** avant de dire "Terminé"
+
+**Pourquoi ?**
+- Archive des versions de code par session
+- Permet de retrouver facilement l'état du code à chaque étape
+- Facilite le suivi de l'évolution du projet
+- **CRITIQUE** pour la traçabilité du projet
+
+**Exemple :**
+```
+docs/session_7_animations/
+├── README.md
+├── TRANSITIONS_GUIDE.md
+└── scripts/              ← OBLIGATOIRE !
+    ├── VRMBlendshapeController.cs  ← Version finale
+    ├── PythonBridge.cs             ← Version finale
+    ├── app.py                       ← Version finale
+    ├── unity_bridge.py             ← Version finale
+    └── config.py                    ← Version finale
+```
+
+**🚨 SI TU OUBLIES :**
+L'utilisateur va devoir te le rappeler → **ÉCHEC**  
+**Ce dossier est aussi important que la documentation elle-même !**
 
 ---
 

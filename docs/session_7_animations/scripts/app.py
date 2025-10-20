@@ -1,6 +1,7 @@
 """
 Main application class using PySide6 (Qt).
 Manages the GUI and coordinates with Unity via IPC.
+VERSION SESSION 7 - ANIMATIONS & TRANSITIONS
 """
 
 import sys

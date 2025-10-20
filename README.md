@@ -469,7 +469,7 @@ Organisation par sessions chronologiques facilite la compréhension et la mainte
 ## 🎯 Vision du Projet
 
 Ce projet a pour **objectif final** de créer un **assistant virtuel IA complet** :
-- �️ **Conversation intelligente** : L'avatar pourra discuter naturellement grâce à un LLM (chatbot IA)
+- 🤖 **Conversation intelligente** : L'avatar pourra discuter naturellement grâce à un LLM (chatbot IA)
 - 😊 **Émotions réactives** : Analyse du sentiment et expressions faciales adaptées
 - 🚶 **Mobilité libre** : Déplacement autonome sur le bureau, interactions avec l'environnement
 - 🎤 **Voix naturelle** : Reconnaissance vocale + synthèse vocale synchronisée
@@ -477,7 +477,7 @@ Ce projet a pour **objectif final** de créer un **assistant virtuel IA complet*
 
 **L'avatar deviendra un véritable compagnon numérique interactif et intelligent !**
 
-## �👤 Auteur
+## 👤 Auteur
 
 **Xyon15**
 - GitHub: [@Xyon15](https://github.com/Xyon15)

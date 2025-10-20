@@ -82,8 +82,12 @@
    - Instructions Unity pas-à-pas
 
 3. **`docs/session_6_expressions/scripts/VRMBlendshapeController.cs`**
-   - Script de référence complet
+   - Script de référence complet VERSION 1.6 (finale)
    - Code commenté en français
+
+4. **`docs/session_6_expressions/scripts/VRMBlendshapeController_V1.6_BACKUP.cs`**
+   - Backup de la VERSION 1.6 (avant Session 7)
+   - Sauvegarde avant implémentation transitions smooth
 
 ### Fichiers modifiés
 

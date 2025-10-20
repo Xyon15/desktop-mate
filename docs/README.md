@@ -134,6 +134,55 @@ Python (Client) ←→ Socket TCP (127.0.0.1:5555) ←→ Unity (Server)
 
 ---
 
+### 📂 session_6_expressions/
+**Contrôle des expressions faciales via blendshapes VRM**
+- `BLENDSHAPES_GUIDE.md` - Guide technique complet des blendshapes
+- `UNITY_SETUP_GUIDE.md` - Configuration Unity pas-à-pas
+- `SESSION_SUCCESS.md` - Récapitulatif complet de la session 6
+- `scripts/VRMBlendshapeController.cs` - Script de référence v1.6
+
+**Réalisations :**
+- ✅ Création de VRMBlendshapeController.cs pour gérer les expressions
+- ✅ Support de 5 expressions : Joy, Angry, Sorrow, Fun, Surprised
+- ✅ Interface Python avec sliders pour contrôler chaque expression
+- ✅ Commandes IPC : `set_expression`, `reset_expressions`
+- ✅ Thread-safety avec Queue pattern
+- ✅ Tests complets : 8/8 tests Python passés
+
+**Architecture expressions :**
+```
+Python Slider → IPC JSON → PythonBridge → VRMBlendshapeController
+                                                    ↓
+                                          BlendShapeProxy (UniVRM)
+                                                    ↓
+                                             VRM 3D Model (expressions)
+```
+
+---
+
+### 📂 session_7_animations/
+**Système d'animations fluides et transitions** 🎬
+- `README.md` - Vue d'ensemble complète de la session 7
+- `TRANSITIONS_GUIDE.md` - Guide technique Lerp et interpolation
+- `SESSION_SUCCESS.md` - Récapitulatif de succès complet
+
+**Réalisations :**
+- ✅ **Transitions fluides** : Interpolation Lerp pour expressions naturelles
+- ✅ **Contrôle de vitesse** : Slider 1.0-10.0 (défaut 3.0)
+- ✅ **Chargement/Déchargement** : Toggle VRM avec thread-safety
+- ✅ **Modèle par défaut** : Sauvegarde config, chargement instantané
+- ✅ **VRMBlendshapeController v2.0** : Dictionnaires currentValues/targetValues
+- ✅ **PythonBridge amélioré** : Queue mainThreadActions pour thread-safety
+- ✅ **UX professionnelle** : Icône app, interface française, messages d'aide
+
+**Innovations techniques :**
+- Lerp dans `Update()` pour transitions smooth chaque frame
+- Système de modèle par défaut (Menu Fichier → Définir/Utiliser autre)
+- Thread-safety complet (Destroy, GetComponent depuis thread principal)
+- Slider calibré avec label "3.0 (Normal)" positionné précisément
+
+---
+
 ### 📂 Unity_docs/ (legacy)
 Ancienne documentation Unity - À réorganiser ou supprimer
 
@@ -153,12 +202,21 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
 - Thread-safety résolu (Queue + Update pattern)
 - Documentation complète (30+ fichiers)
 
-### 🚧 Phase 2 - En cours / À venir (Chat 2+)
-- **Session 6** : Contrôle des expressions faciales (blendshapes)
-- **Session 7** : Animation de l'avatar
-- **Session 8** : Lip-sync avec microphone
-- **Session 9** : Face tracking (optionnel)
-- **Sessions 10-12** : Intégration IA conversationnelle
+### ✅ Phase 2 - Expressions & Animations Complètes
+- **Session 6 terminée** : Contrôle des expressions faciales (5 expressions)
+- **Session 7 terminée** : Animations fluides (Lerp, transitions, vitesse ajustable)
+- **Fonctionnalités** :
+  - Transitions smooth entre expressions (Lerp interpolation)
+  - Contrôle de vitesse en temps réel (1.0-10.0)
+  - Système de modèle VRM par défaut
+  - Chargement/Déchargement dynamique
+  - Interface française complète avec icône
+  
+### 🚧 Phase 3 - À venir (Chat 3+)
+- **Session 8** : Lip-sync avec microphone (analyse audio, phonèmes)
+- **Session 9** : Clignement automatique (timer, animations yeux)
+- **Session 10** : Face tracking (MediaPipe, expression mirroring)
+- **Sessions 11-12** : Intégration IA conversationnelle (chatbot)
 
 ---
 

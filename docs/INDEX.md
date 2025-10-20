@@ -61,7 +61,16 @@ docs/
 │   ├── UNITY_SETUP_GUIDE.md                        Configuration Unity pas-à-pas
 │   ├── SESSION_SUCCESS.md                          Récapitulatif succès
 │   └── scripts/
-│       └── VRMBlendshapeController.cs              Script de référence
+│       ├── VRMBlendshapeController.cs              Script de référence
+│       └── VRMBlendshapeController_V1.6_BACKUP.cs  Backup version 1.6
+│
+├── 📁 session_7_animations/                       ← Session 7 : Animations & Transitions 🎬 ✅
+│   ├── README.md                                   Vue d'ensemble session 7
+│   ├── TRANSITIONS_GUIDE.md                        Guide technique Lerp & transitions
+│   ├── SESSION_SUCCESS.md                          Récapitulatif succès complet
+│   └── scripts/
+│       ├── VRMBlendshapeController.cs              Script de référence (avec Lerp)
+│       └── app.py                                  GUI Python avec slider vitesse
 │
 └── 📁 1st/                                        ← Archives premières notes
     ├── START_HERE.md
@@ -117,12 +126,12 @@ docs/
 
 **Résumé Chat 1 :** `chat_transistions/chat_1.../CHAT_SUMMARY.md`
 
-### 🚀 Chat 2 - En cours (Sessions 6+)
+### 🚀 Chat 2 - En cours (Sessions 6-7)
 
 | Session | Objectif | Statut | Fichiers clés |
 |---------|----------|--------|---------------|
 | **6** | Expressions faciales (blendshapes) | ✅ Complet | `session_6_expressions/README.md`, `BLENDSHAPES_GUIDE.md` |
-| **7** | Animations | 🚧 À venir | - |
+| **7** | Animations & Transitions fluides | ✅ Complet | `session_7_animations/README.md`, `TRANSITIONS_GUIDE.md` |
 | **8** | Audio & Lip-sync | 🚧 À venir | - |
 | **9** | Face Tracking | 🚧 À venir | - |
 | **10-12** | Intégration IA | 🚧 À venir | - |
@@ -141,6 +150,9 @@ docs/
 - **Threading Unity** → `session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md` (section "Leçons apprises")
 - **Expressions faciales (blendshapes)** → `session_6_expressions/BLENDSHAPES_GUIDE.md`
 - **Contrôle blendshapes VRM** → `session_6_expressions/README.md`
+- **Transitions fluides (Lerp)** → `session_7_animations/TRANSITIONS_GUIDE.md`
+- **Modèle VRM par défaut** → `session_7_animations/README.md`
+- **Chargement/Déchargement VRM** → `session_7_animations/README.md`
 
 ### Par problème
 - **Library/ et Temp/ versionnés par erreur** → `session_0_git_configuration/GIT_UNITY_FIX.md`
@@ -150,8 +162,9 @@ docs/
 
 ### Scripts de référence
 - **VRMLoader.cs** → `session_5_vrm_loading/scripts/VRMLoader.cs`
-- **VRMBlendshapeController.cs** → `session_6_expressions/scripts/VRMBlendshapeController.cs`
-- **PythonBridge.cs** → Voir dans `unity/DesktopMateUnity/Assets/Scripts/IPC/`
+- **VRMBlendshapeController.cs v1.6** → `session_6_expressions/scripts/VRMBlendshapeController_V1.6_BACKUP.cs`
+- **VRMBlendshapeController.cs v2.0** → `unity/DesktopMateUnity/Assets/Scripts/VRMBlendshapeController.cs` (avec Lerp)
+- **PythonBridge.cs** → `unity/DesktopMateUnity/Assets/Scripts/IPC/PythonBridge.cs` (avec Queue thread-safe)
 
 ---
 
@@ -172,5 +185,6 @@ docs/
 
 ---
 
-**Dernière mise à jour :** 18 octobre 2025  
-**Organisation par :** Sessions chronologiques + catégories fonctionnelles
+**Dernière mise à jour :** 20 octobre 2025  
+**Organisation par :** Sessions chronologiques + catégories fonctionnelles  
+**Sessions complètes :** 0-7 ✅
