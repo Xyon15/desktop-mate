@@ -17,7 +17,7 @@ Desktop-Mate est une application qui permet d'afficher un avatar VRM interactif 
 
 **Objectif final :** 🤖 Connecter l'avatar à une **IA conversationnelle (chatbot)** pour créer un assistant virtuel qui peut **parler, réagir émotionnellement et se déplacer librement** sur le bureau. L'avatar deviendra un véritable compagnon interactif intelligent !
 
-**Status actuel :** ✅ Phase 1 (MVP) terminée ! ✅ Phase 2 (Expressions & Animations) terminée ! ✅ Clignement automatique fonctionnel ! L'avatar s'affiche, exprime des émotions avec **transitions fluides** et **cligne des yeux naturellement** ! ✨
+**Status actuel :** ✅ Phase 1 (MVP) terminée ! ✅ Phase 2 (Expressions & Animations & Clignement) terminée ! L'avatar s'affiche, exprime des émotions avec **transitions fluides** et **cligne des yeux naturellement avec animation SmoothStep** ! ✨👁️
 
 ## ⚡ Quick Start
 
@@ -207,7 +207,7 @@ python main.py
   - Contrôle précis 0-100% pour chaque expression
   - Bouton "Reset All Expressions"
   - Documentation complète
-- [x] **Session 7** : Animations fluides ✅ **TERMINÉ !**
+- [x] **Session 7** : Animations fluides ✅
   - VRMBlendshapeController.cs v2.0 avec Lerp interpolation
   - Transitions smooth entre expressions
   - Slider de vitesse ajustable (1.0-10.0)
@@ -215,9 +215,23 @@ python main.py
   - Système de modèle VRM par défaut
   - Chargement/déchargement dynamique
   - Documentation complète (900+ lignes de guides techniques)
+- [x] **Session 8** : Clignement automatique ✅ **TERMINÉ !**
+  - VRMAutoBlinkController.cs avec coroutines Unity
+  - Animation SmoothStep (courbes de Hermite)
+  - Timing naturel (2-5s entre clignements, 160ms par cycle)
+  - Checkbox "Auto Blink" dans l'interface
+  - Sauvegarde configuration
+  - Documentation technique massive (TECHNICAL_GUIDE.md 900+ lignes)
+  - Guide résolution problèmes (TROUBLESHOOTING.md avec 5 bugs résolus)
 
 ### Phase 3 : Audio & Lip-Sync 🎤
-- [ ] **Session 8** : Capture audio et lip-sync
+- [ ] **Session 9** : Mouvements de Tête Subtils 🎭 **EN PLANIFICATION**
+  - Head bobbing (mouvement gauche/droite)
+  - Head tilt (inclinaison subtile)
+  - Animation SmoothStep pour fluidité
+  - Paramètres configurables (amplitude, fréquence)
+  - Checkbox "Auto Head Movement" dans l'interface
+- [ ] **Session 10** : Capture audio et lip-sync
   - Capture audio microphone
   - Détection d'amplitude vocale
   - Lip-sync basique avec phonèmes (A, I, U, E, O)
@@ -286,6 +300,7 @@ python main.py
 - **Transitions smooth** : Interpolation Lerp pour animations fluides ✨ **SESSION 7**
 - **Vitesse ajustable** : Slider 1.0-10.0 pour contrôler la rapidité des transitions ✨ **SESSION 7**
 - **Clignement automatique** : Yeux qui clignent naturellement (2-5s) avec animation SmoothStep (160ms) ✨ **SESSION 8**
+- **Checkbox Auto Blink** : Activation/désactivation du clignement dans l'interface ✨ **SESSION 8**
 - **Interface sliders** : Contrôle précis 0-100% pour chaque expression
 - **Logs détaillés** : Console + fichiers pour debugging
 - **Tests unitaires** : 8 tests Python qui passent (100%)
@@ -412,7 +427,7 @@ Documentation complète et organisée par sessions de développement :
    - Contrôle émotions en temps réel
    - **L'avatar exprime des émotions !** 😊😠😢😲😄
 
-7. **[Session 7 - Animations Fluides](docs/sessions/session_7_animations/)** ✅ **NOUVEAU !**
+7. **[Session 7 - Animations Fluides](docs/sessions/session_7_animations/)** ✅
    - VRMBlendshapeController.cs v2.0 avec Lerp interpolation
    - Transitions smooth entre expressions
    - Slider de vitesse (1.0-10.0)
@@ -420,6 +435,16 @@ Documentation complète et organisée par sessions de développement :
    - Système modèle VRM par défaut
    - Thread-safety complet (Queue<Action> pattern)
    - **L'avatar anime ses expressions de façon fluide !** ✨🎭
+
+8. **[Session 8 - Clignement Automatique](docs/sessions/session_8_auto_blink/)** ✅ **NOUVEAU !**
+   - VRMAutoBlinkController.cs avec coroutines Unity
+   - Animation SmoothStep (courbes de Hermite) pour réalisme
+   - Timing paramétrable (2-5s entre clignements, 160ms par cycle)
+   - Checkbox "Auto Blink" dans l'interface Python
+   - Sauvegarde de configuration
+   - Documentation technique complète (TECHNICAL_GUIDE.md 900+ lignes)
+   - Résolution de 5 problèmes majeurs documentés (TROUBLESHOOTING.md)
+   - **L'avatar cligne naturellement des yeux !** 👁️✨
 
 ### Guides spécifiques
 
@@ -430,6 +455,8 @@ Documentation complète et organisée par sessions de développement :
 - [Récapitulatif Session 5](docs/sessions/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md)
 - [Guide expressions Session 6](docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md)
 - [Guide transitions Session 7](docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md) ✨ **900+ lignes !**
+- [Guide technique Session 8](docs/sessions/session_8_auto_blink/TECHNICAL_GUIDE.md) ✨ **Architecture SmoothStep détaillée !**
+- [Résolution problèmes Session 8](docs/sessions/session_8_auto_blink/TROUBLESHOOTING.md) ✨ **5 problèmes résolus !**
 
 ## 🤝 Contribution
 
@@ -517,7 +544,26 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ## 📝 Changelog
 
-### Version 0.3.0-alpha (20 octobre 2025) ✨ **NOUVEAU - SESSION 7**
+### Version 0.4.0-alpha (21 octobre 2025) ✨ **NOUVEAU - SESSION 8**
+- ✅ **Session 8 - Clignement automatique terminée !**
+- ✅ VRMAutoBlinkController.cs avec système de coroutines Unity
+- ✅ Animation SmoothStep (courbes de Hermite cubiques) pour réalisme maximal
+- ✅ Timing naturel paramétrable (2-5s entre clignements, 160ms par cycle)
+- ✅ Checkbox "Auto Blink" dans l'onglet Options de l'interface Python
+- ✅ Sauvegarde automatique de configuration (config.json)
+- ✅ Commande IPC `set_auto_blink` (true/false)
+- ✅ **5 problèmes majeurs résolus** :
+  - Blendshapes non appliqués (mapping Blink)
+  - Animation trop lente (bypass Lerp)
+  - Animation robotique (SmoothStep vs Lerp)
+  - Configuration non sauvegardée
+  - Unity ne reçoit pas commandes (délai 2.5s)
+- ✅ Documentation technique massive (TECHNICAL_GUIDE.md 900+ lignes)
+- ✅ Guide résolution problèmes (TROUBLESHOOTING.md complet)
+- ✅ Transition Chat 4 documentée avec CONTEXT_FOR_NEXT_CHAT
+- 👁️ **L'avatar cligne maintenant naturellement des yeux !** ✨
+
+### Version 0.3.0-alpha (20 octobre 2025) ✨ **SESSION 7**
 - ✅ **Session 7 - Animations fluides terminée !**
 - ✅ VRMBlendshapeController.cs v2.0 avec Lerp interpolation
 - ✅ Transitions smooth entre expressions (dictionnaires currentValues/targetValues)
@@ -560,8 +606,8 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ---
 
-**🎊 Status actuel : MVP + Expressions + Animations fluides ! L'avatar s'affiche et anime 5 émotions avec transitions smooth ! ✨🎊**
+**🎊 Status actuel : MVP + Expressions + Animations fluides + Clignement automatique ! L'avatar s'affiche, anime 5 émotions avec transitions smooth ET cligne naturellement des yeux ! ✨👁️🎊**
 
-**🚀 Prochaine étape (Chat 4) : Clignement automatique pour encore plus de réalisme ! 👀**
+**🚀 Prochaine étape (Chat 5 - Session 9) : Mouvements de tête subtils ! 🎭**
 
 ⭐ **N'oubliez pas de mettre une étoile si ce projet vous plaît !** ⭐

@@ -66,18 +66,21 @@ docs/
 │   │       ├── VRMBlendshapeController.cs          Script de référence (avec Lerp)
 │   │       └── app.py                              GUI Python avec slider vitesse
 │   │
-│   └── session_8_auto_blink/                       ← Session 8 : Clignement Automatique 👁️ ✅
-│       ├── README.md                               Vue d'ensemble session 8
-│       ├── BLINK_GUIDE.md                          Guide rapide d'implémentation
-│       ├── TECHNICAL_GUIDE.md                      Architecture détaillée SmoothStep
-│       ├── TROUBLESHOOTING.md                      Résolution de problèmes
-│       └── scripts/
-│           ├── VRMAutoBlinkController.cs           Contrôleur clignement (SmoothStep)
-│           ├── VRMBlendshapeController.cs          Script avec mapping Blink
-│           ├── PythonBridge.cs                     Serveur IPC (commande set_auto_blink)
-│           ├── unity_bridge.py                     Client IPC Python
-│           ├── config.py                           Config auto_blink
-│           └── app.py                              GUI avec checkbox clignement
+│   ├── session_8_auto_blink/                       ← Session 8 : Clignement Automatique 👁️ ✅
+│   │   ├── README.md                               Vue d'ensemble session 8
+│   │   ├── BLINK_GUIDE.md                          Guide rapide d'implémentation
+│   │   ├── TECHNICAL_GUIDE.md                      Architecture détaillée SmoothStep
+│   │   ├── TROUBLESHOOTING.md                      Résolution de problèmes
+│   │   └── scripts/
+│   │       ├── VRMAutoBlinkController.cs           Contrôleur clignement (SmoothStep)
+│   │       ├── VRMBlendshapeController.cs          Script avec mapping Blink
+│   │       ├── PythonBridge.cs                     Serveur IPC (commande set_auto_blink)
+│   │       ├── unity_bridge.py                     Client IPC Python
+│   │       ├── config.py                           Config auto_blink
+│   │       └── app.py                              GUI avec checkbox clignement
+│   │
+│   └── session_9_head_movements/                   ← Session 9 : Mouvements de Tête 🎭 🚧 EN PLANIFICATION
+│       └── README.md                               Plan de session détaillé
 │
 ├── 📁 chat_transitions/                           ← Transitions entre chats 🔄
 │   ├── README.md                                   Historique des chats
@@ -171,9 +174,10 @@ docs/
 
 | Session | Objectif | Statut | Fichiers clés |
 |---------|----------|--------|---------------|
-| **9** | Audio & Lip-sync | 🚧 À venir | - |
-| **10** | Mouvements de tête / Eye Tracking | 🚧 À venir | - |
-| **11-13** | Intégration IA conversationnelle | 🚧 À venir | - |
+| **9** | Mouvements de Tête Subtils | 🚧 **EN PLANIFICATION** | `sessions/session_9_head_movements/README.md` |
+| **10** | Audio & Lip-sync | 🚧 À venir | - |
+| **11** | Mouvements libres / Eye Tracking | 🚧 À venir | - |
+| **12-14** | Intégration IA conversationnelle | 🚧 À venir | - |
 
 ---
 

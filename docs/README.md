@@ -245,8 +245,13 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
   - **Clignement automatique naturel** (intervalles 2-5s, animation fluide)
   
 ### 🚧 Phase 3 - À venir (Chat 5+)
-- **Session 9** : Lip-sync avec microphone (analyse audio FFT, phonèmes)
-- **Session 10** : Mouvements de tête subtils (head bobbing, respiration)
+- **Session 9** : Mouvements de Tête Subtils 🎭 **EN PLANIFICATION**
+  - Head bobbing (mouvement gauche/droite)
+  - Head tilt (inclinaison subtile)
+  - Animation SmoothStep procédurale
+  - Paramètres configurables (amplitude, fréquence)
+  - Difficulté : 🔴 Faible | Impact : 🎯🎯 Moyen
+- **Session 10** : Lip-sync avec microphone (analyse audio FFT, phonèmes)
 - **Session 11** : Face tracking (MediaPipe, expression mirroring)
 - **Sessions 12-14** : Intégration IA conversationnelle (chatbot, TTS, STT)
 
