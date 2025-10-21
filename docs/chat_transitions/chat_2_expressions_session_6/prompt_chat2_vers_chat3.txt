@@ -285,7 +285,7 @@ desktop-mate/
 │   └── Mura Mura - Model.vrm        # Modèle de test
 │
 └── docs/
-    ├── session_6_expressions/       # ⭐ Documentation Session 6
+    ├── docs/sessions/session_6_expressions/       # ⭐ Documentation Session 6
     │   ├── README.md
     │   ├── BLENDSHAPES_GUIDE.md
     │   ├── UNITY_SETUP_GUIDE.md
@@ -294,7 +294,7 @@ desktop-mate/
     │   ├── COMPLETE_SUCCESS.md
     │   └── scripts/
     │       └── VRMBlendshapeController.cs (copie référence)
-    └── chat_transistions/
+    └── chat_transitions/
         ├── chat_1_python_unity_start_session_0_to_5/
         └── chat_2_expressions_session_6/  # ⭐ Chat précédent
             ├── CURRENT_STATE.md
@@ -552,7 +552,7 @@ private void StartAutoBlinkInternal(bool enabled)
 - ✅ Mettre à jour `docs/README.md` (aperçu général)
 - ✅ Mettre à jour `docs/CURRENT_STATE.md` (état technique)
 - ✅ Mettre à jour `README.md` racine (features)
-- ✅ Créer/mettre à jour `docs/session_7_animations/`
+- ✅ Créer/mettre à jour `docs/sessions/session_7_animations/`
 
 **Rappel utilisateur :**
 > "la documentation c'est très important"
@@ -566,20 +566,20 @@ Ne JAMAIS dire "Terminé" sans avoir mis à jour la documentation.
 ### Documentation Session 6 (référence)
 
 **Pour comprendre le code actuel :**
-- `docs/session_6_expressions/BLENDSHAPES_GUIDE.md` → API UniVRM détaillée
-- `docs/session_6_expressions/SESSION_SUCCESS.md` → Problèmes résolus
-- `docs/session_6_expressions/COMPLETE_SUCCESS.md` → Timeline complète + troubleshooting
+- `docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md` → API UniVRM détaillée
+- `docs/sessions/session_6_expressions/SESSION_SUCCESS.md` → Problèmes résolus
+- `docs/sessions/session_6_expressions/COMPLETE_SUCCESS.md` → Timeline complète + troubleshooting
 
 **Code de référence :**
-- `docs/session_6_expressions/scripts/VRMBlendshapeController.cs` → VERSION 1.6 complète
+- `docs/sessions/session_6_expressions/scripts/VRMBlendshapeController.cs` → VERSION 1.6 complète
 
 ---
 
 ### Documentation transition Chat 2
 
 **État du projet en fin de Chat 2 :**
-- `docs/chat_transistions/chat_2_expressions_session_6/CURRENT_STATE.md` → État technique
-- `docs/chat_transistions/chat_2_expressions_session_6/CHAT_SUMMARY.md` → Résumé session
+- `docs/chat_transitions/chat_2_expressions_session_6/CURRENT_STATE.md` → État technique
+- `docs/chat_transitions/chat_2_expressions_session_6/CHAT_SUMMARY.md` → Résumé session
 
 ---
 
@@ -659,8 +659,8 @@ Ne JAMAIS dire "Terminé" sans avoir mis à jour la documentation.
    - Ou presets d'émotions ?
 
 2. **Créer dossier documentation**
-   - `docs/session_7_animations/`
-   - `docs/session_7_animations/README.md` (objectifs)
+   - `docs/sessions/session_7_animations/`
+   - `docs/sessions/session_7_animations/README.md` (objectifs)
 
 ---
 
@@ -712,7 +712,7 @@ Ne JAMAIS dire "Terminé" sans avoir mis à jour la documentation.
 - ✅ docs/README.md → [ce qui a changé]
 - ✅ docs/CURRENT_STATE.md → [ce qui a changé]
 - ✅ README.md → [ce qui a changé]
-- ✅ docs/session_7_animations/[fichier].md → [ce qui a changé]
+- ✅ docs/sessions/session_7_animations/[fichier].md → [ce qui a changé]
 
 🎯 **Prochaines étapes :**
 [...]
@@ -768,8 +768,8 @@ La documentation doit être **automatiquement synchronisée** avec chaque change
 - `src/ipc/unity_bridge.py` (set_expression, reset_expressions)
 
 **Documentation :**
-- `docs/session_6_expressions/COMPLETE_SUCCESS.md` (guide troubleshooting)
-- `docs/chat_transistions/chat_2_expressions_session_6/CURRENT_STATE.md`
+- `docs/sessions/session_6_expressions/COMPLETE_SUCCESS.md` (guide troubleshooting)
+- `docs/chat_transitions/chat_2_expressions_session_6/CURRENT_STATE.md`
 - `.github/instructions/copilot-instructions.instructions.md` (règles projet)
 
 ---

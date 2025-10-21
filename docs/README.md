@@ -28,7 +28,7 @@ Ce projet utilise un **système à 3 niveaux** pour garantir que la documentatio
 
 ## 📁 Structure des dossiers
 
-### 📂 chat_transistions/
+### 📂 chat_transitions/
 **Historique des transitions entre chats**
 - Archive de chaque session de chat avec documentation complète
 - Prompts de transition pour continuité entre chats
@@ -39,7 +39,7 @@ Ce projet utilise un **système à 3 niveaux** pour garantir que la documentatio
 
 ---
 
-### 📂 session_0_git_configuration/
+### 📂 docs/sessions/session_0_git_configuration/
 **Configuration Git pour Unity**
 - `GIT_UNITY_FIX.md` - Résolution problème .gitignore Unity
 - `README.md` - Vue d'ensemble de la session
@@ -51,7 +51,7 @@ Ce projet utilise un **système à 3 niveaux** pour garantir que la documentatio
 
 ---
 
-### 📂 session_1_setup/
+### 📂 docs/sessions/session_1_setup/
 **Mise en place initiale du projet Python**
 - `SUCCESS_SESSION_1.md` - Récapitulatif de la session 1
 - `architecture.md` - Architecture globale du projet
@@ -65,7 +65,7 @@ Ce projet utilise un **système à 3 niveaux** pour garantir que la documentatio
 
 ---
 
-### 📂 session_2_unity_installation/
+### 📂 docs/sessions/session_2_unity_installation/
 **Installation et configuration de Unity**
 - Documentation de l'installation Unity 2022.3 LTS
 - Configuration du projet Unity avec URP (Universal Render Pipeline)
@@ -78,7 +78,7 @@ Ce projet utilise un **système à 3 niveaux** pour garantir que la documentatio
 
 ---
 
-### 📂 session_3_univrm_installation/
+### 📂 docs/sessions/session_3_univrm_installation/
 **Installation du package UniVRM**
 - Guide d'installation UniVRM pour le support VRM
 - Configuration du package dans Unity
@@ -90,7 +90,7 @@ Ce projet utilise un **système à 3 niveaux** pour garantir que la documentatio
 
 ---
 
-### 📂 session_4_python_unity_connection/
+### 📂 docs/sessions/session_4_python_unity_connection/
 **Communication IPC Python ↔ Unity**
 - `TEST_CONNECTION.md` - Guide de test de connexion
 - `DEBUG_CONNECTION.md` - Résolution des problèmes de connexion
@@ -114,7 +114,7 @@ Python (Client) ←→ Socket TCP (127.0.0.1:5555) ←→ Unity (Server)
 
 ---
 
-### 📂 session_5_vrm_loading/
+### 📂 docs/sessions/session_5_vrm_loading/
 **Chargement et affichage des modèles VRM**
 - `LOAD_VRM_MODEL.md` - Guide de chargement VRM
 - `SESSION_VRM_LOADING_SUCCESS.md` - Récapitulatif complet de la session 5
@@ -134,7 +134,7 @@ Python (Client) ←→ Socket TCP (127.0.0.1:5555) ←→ Unity (Server)
 
 ---
 
-### 📂 session_6_expressions/
+### 📂 docs/sessions/session_6_expressions/
 **Contrôle des expressions faciales via blendshapes VRM**
 - `BLENDSHAPES_GUIDE.md` - Guide technique complet des blendshapes
 - `UNITY_SETUP_GUIDE.md` - Configuration Unity pas-à-pas
@@ -160,7 +160,7 @@ Python Slider → IPC JSON → PythonBridge → VRMBlendshapeController
 
 ---
 
-### 📂 session_7_animations/
+### 📂 docs/sessions/session_7_animations/
 **Système d'animations fluides et transitions** 🎬
 - `README.md` - Vue d'ensemble complète de la session 7
 - `TRANSITIONS_GUIDE.md` - Guide technique Lerp et interpolation
@@ -180,6 +180,36 @@ Python Slider → IPC JSON → PythonBridge → VRMBlendshapeController
 - Système de modèle par défaut (Menu Fichier → Définir/Utiliser autre)
 - Thread-safety complet (Destroy, GetComponent depuis thread principal)
 - Slider calibré avec label "3.0 (Normal)" positionné précisément
+
+---
+
+### 📂 docs/sessions/session_8_auto_blink/
+**Clignement automatique des yeux** 👁️
+- `README.md` - Vue d'ensemble complète de la session 8
+- `BLINK_GUIDE.md` - Guide rapide d'implémentation
+- `TECHNICAL_GUIDE.md` - Architecture détaillée avec SmoothStep
+- `TROUBLESHOOTING.md` - Résolution complète de tous les problèmes
+
+**Réalisations :**
+- ✅ **Animation réaliste** : SmoothStep (courbes Hermite) en 160ms
+- ✅ **Timings optimisés** : 50ms fermeture + 30ms pause + 80ms ouverture
+- ✅ **Intervalles aléatoires** : 2-5 secondes entre clignements
+- ✅ **Toggle on/off** : Checkbox dans interface Python
+- ✅ **Sauvegarde config** : État persisté dans config.json
+- ✅ **Manipulation directe** : Bypass Lerp pour contrôle précis du timing
+- ✅ **Coroutines Unity** : BlinkLoop + PerformBlink pour animations non-bloquantes
+
+**Innovations techniques :**
+- Courbe SmoothStep (3t² - 2t³) pour mouvement naturel
+- Manipulation directe VRMBlendShapeProxy (ImmediatelySetValue + Apply)
+- Cohabitation pacifique avec système Lerp (expressions ≠ clignement)
+- Mapping BlendShape critique : Blink/Blink_L/Blink_R dans switch statement
+- Délai d'initialisation 2.5s pour attendre chargement Unity
+
+**Problèmes résolus :**
+1. Blendshapes non appliqués → Fix mapping GetBlendShapeKey()
+2. Animation trop lente (2s) → Bypass Lerp + manipulation directe
+3. Animation robotique → SmoothStep au lieu de linéaire
 
 ---
 
@@ -205,18 +235,20 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
 ### ✅ Phase 2 - Expressions & Animations Complètes
 - **Session 6 terminée** : Contrôle des expressions faciales (5 expressions)
 - **Session 7 terminée** : Animations fluides (Lerp, transitions, vitesse ajustable)
+- **Session 8 terminée** : Clignement automatique des yeux (SmoothStep, 160ms)
 - **Fonctionnalités** :
   - Transitions smooth entre expressions (Lerp interpolation)
   - Contrôle de vitesse en temps réel (1.0-10.0)
   - Système de modèle VRM par défaut
   - Chargement/Déchargement dynamique
   - Interface française complète avec icône
+  - **Clignement automatique naturel** (intervalles 2-5s, animation fluide)
   
-### 🚧 Phase 3 - À venir (Chat 3+)
-- **Session 8** : Lip-sync avec microphone (analyse audio, phonèmes)
-- **Session 9** : Clignement automatique (timer, animations yeux)
-- **Session 10** : Face tracking (MediaPipe, expression mirroring)
-- **Sessions 11-12** : Intégration IA conversationnelle (chatbot)
+### 🚧 Phase 3 - À venir (Chat 5+)
+- **Session 9** : Lip-sync avec microphone (analyse audio FFT, phonèmes)
+- **Session 10** : Mouvements de tête subtils (head bobbing, respiration)
+- **Session 11** : Face tracking (MediaPipe, expression mirroring)
+- **Sessions 12-14** : Intégration IA conversationnelle (chatbot, TTS, STT)
 
 ---
 
@@ -224,7 +256,7 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
 
 1. **Nouveau sur le projet :** 
    - Commence par `START_HERE.md`
-   - Lis `chat_transistions/chat_1.../CHAT_SUMMARY.md`
+   - Lis `chat_transitions/chat_1.../CHAT_SUMMARY.md`
    
 2. **Reprendre le développement :**
    - Lis `CURRENT_STATE.md` pour l'état actuel

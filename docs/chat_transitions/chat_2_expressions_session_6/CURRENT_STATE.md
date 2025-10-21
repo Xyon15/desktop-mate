@@ -10,13 +10,13 @@
 
 | Session | Objectif | Status | Documentation |
 |---------|----------|--------|---------------|
-| Session 0 | Configuration Git Unity | ✅ Terminée | `docs/session_0_git_configuration/` |
-| Session 1 | Setup projet Python/Unity | ✅ Terminée | `docs/session_1_setup/` |
-| Session 2 | Installation Unity | ✅ Terminée | `docs/session_2_unity_installation/` |
-| Session 3 | Installation UniVRM | ✅ Terminée | `docs/session_3_univrm_installation/` |
-| Session 4 | Connexion Python ↔ Unity | ✅ Terminée | `docs/session_4_python_unity_connection/` |
-| Session 5 | Chargement modèle VRM | ✅ Terminée | `docs/session_5_vrm_loading/` |
-| **Session 6** | **Expressions faciales** | ✅ **Terminée** | `docs/session_6_expressions/` |
+| Session 0 | Configuration Git Unity | ✅ Terminée | `docs/sessions/session_0_git_configuration/` |
+| Session 1 | Setup projet Python/Unity | ✅ Terminée | `docs/sessions/session_1_setup/` |
+| Session 2 | Installation Unity | ✅ Terminée | `docs/sessions/session_2_unity_installation/` |
+| Session 3 | Installation UniVRM | ✅ Terminée | `docs/sessions/session_3_univrm_installation/` |
+| Session 4 | Connexion Python ↔ Unity | ✅ Terminée | `docs/sessions/session_4_python_unity_connection/` |
+| Session 5 | Chargement modèle VRM | ✅ Terminée | `docs/sessions/session_5_vrm_loading/` |
+| **Session 6** | **Expressions faciales** | ✅ **Terminée** | `docs/sessions/session_6_expressions/` |
 
 ---
 
@@ -174,13 +174,13 @@ desktop-mate/
 │   └── Mura Mura - Model.vrm        # Modèle VRM de test
 │
 └── docs/
-    ├── session_0_git_configuration/
-    ├── session_1_setup/
-    ├── session_2_unity_installation/
-    ├── session_3_univrm_installation/
-    ├── session_4_python_unity_connection/
-    ├── session_5_vrm_loading/
-    ├── session_6_expressions/ ⭐     # Documentation Session 6
+    ├── docs/sessions/session_0_git_configuration/
+    ├── docs/sessions/session_1_setup/
+    ├── docs/sessions/session_2_unity_installation/
+    ├── docs/sessions/session_3_univrm_installation/
+    ├── docs/sessions/session_4_python_unity_connection/
+    ├── docs/sessions/session_5_vrm_loading/
+    ├── docs/sessions/session_6_expressions/ ⭐     # Documentation Session 6
     │   ├── README.md
     │   ├── BLENDSHAPES_GUIDE.md
     │   ├── UNITY_SETUP_GUIDE.md
@@ -189,7 +189,7 @@ desktop-mate/
     │   ├── COMPLETE_SUCCESS.md
     │   └── scripts/
     │       └── VRMBlendshapeController.cs
-    └── chat_transistions/
+    └── chat_transitions/
         ├── chat_1_python_unity_start_session_0_to_5/
         └── chat_2_expressions_session_6/ ⭐ # Ce chat
 ```

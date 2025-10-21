@@ -68,7 +68,7 @@ Implémenter un **système d'animations fluides** pour les expressions faciales 
 **Validation utilisateur** : "On y va!" ✅
 
 #### Backup v1.6
-- **Fichier** : `docs/session_6_expressions/scripts/VRMBlendshapeController_V1.6_BACKUP.cs`
+- **Fichier** : `docs/sessions/session_6_expressions/scripts/VRMBlendshapeController_V1.6_BACKUP.cs`
 - **Raison** : Sauvegarder version fonctionnelle avant refactoring majeur
 
 #### Implémentation VRMBlendshapeController v2.0
@@ -300,7 +300,7 @@ def toggle_vrm_model(self):
 
 #### Fichiers créés
 
-**1. docs/session_7_animations/README.md** (450+ lignes)
+**1. docs/sessions/session_7_animations/README.md** (450+ lignes)
 - Vue d'ensemble de Session 7
 - Objectifs et résultats
 - Architecture (diagrammes ASCII)
@@ -311,7 +311,7 @@ def toggle_vrm_model(self):
 - Concepts clés appris
 - Options futures
 
-**2. docs/session_7_animations/TRANSITIONS_GUIDE.md** (900+ lignes)
+**2. docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md** (900+ lignes)
 - Deep-dive technique complet
 - Structure VRMBlendshapeController v2.0
 - Mathématiques du Lerp
@@ -323,7 +323,7 @@ def toggle_vrm_model(self):
 - Debugging tips
 - Ressources
 
-**3. docs/session_7_animations/SESSION_SUCCESS.md** (500+ lignes)
+**3. docs/sessions/session_7_animations/SESSION_SUCCESS.md** (500+ lignes)
 - Récapitulatif de succès
 - Tableau objectifs (13/13 ✅)
 - Bugs résolus (7/7 ✅)
@@ -347,7 +347,7 @@ def toggle_vrm_model(self):
 - Phase 3 ajoutée (à venir)
 - Liste fonctionnalités Session 7
 
-**6. Copie scripts dans docs/session_7_animations/scripts/**
+**6. Copie scripts dans docs/sessions/session_7_animations/scripts/**
 - ✅ VRMBlendshapeController.cs (v2.0)
 - ✅ PythonBridge.cs
 - ✅ app.py
@@ -517,10 +517,10 @@ def toggle_vrm_model(self):
 - [x] config.py avec avatar.default_model
 
 ### Documentation
-- [x] docs/session_7_animations/README.md
-- [x] docs/session_7_animations/TRANSITIONS_GUIDE.md
-- [x] docs/session_7_animations/SESSION_SUCCESS.md
-- [x] docs/session_7_animations/scripts/ (5 fichiers)
+- [x] docs/sessions/session_7_animations/README.md
+- [x] docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md
+- [x] docs/sessions/session_7_animations/SESSION_SUCCESS.md
+- [x] docs/sessions/session_7_animations/scripts/ (5 fichiers)
 - [x] docs/INDEX.md (mis à jour)
 - [x] docs/README.md (mis à jour)
 

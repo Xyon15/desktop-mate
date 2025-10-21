@@ -99,25 +99,37 @@ Toute documentation doit être placée dans `docs/` et organisée par **sessions
 
 ```
 docs/
-├── session_0_git_configuration/
-├── session_1_setup/
-├── session_2_unity_installation/
-├── session_3_univrm_installation/
-├── session_4_python_unity_connection/
-├── session_5_vrm_loading/
-└── session_N_nouvelle_feature/
-    ├── README.md           ← Vue d'ensemble
-    ├── GUIDE_TECHNIQUE.md  ← Documentation technique
-    ├── DEBUG_ISSUES.md     ← Résolution de problèmes
-    └── scripts/            ← **OBLIGATOIRE : Copies des scripts créés/modifiés**
-        ├── script1.cs
-        ├── script2.py
-        └── ...
+├── sessions/                       ← **Toutes les sessions de développement**
+│   ├── session_0_git_configuration/
+│   ├── session_1_setup/
+│   ├── session_2_unity_installation/
+│   ├── session_3_univrm_installation/
+│   ├── session_4_python_unity_connection/
+│   ├── session_5_vrm_loading/
+│   ├── session_6_expressions/
+│   ├── session_7_animations/
+│   ├── session_8_auto_blink/
+│   └── session_N_nouvelle_feature/
+│       ├── README.md           ← Vue d'ensemble
+│       ├── GUIDE_TECHNIQUE.md  ← Documentation technique
+│       ├── DEBUG_ISSUES.md     ← Résolution de problèmes
+│       └── scripts/            ← **OBLIGATOIRE : Copies des scripts créés/modifiés**
+│           ├── script1.cs
+│           ├── script2.py
+│           └── ...
+│
+└── chat_transitions/              ← **Dossier spécial pour transitions entre chats**
+    └── chat_N_session_X/
+        ├── README.md
+        ├── CONTEXT_FOR_NEXT_CHAT.md
+        ├── CURRENT_STATE.md      ← **CURRENT_STATE.md va ICI, pas à la racine de docs/**
+        └── prompt_transition.txt
 ```
 
 **🚫 INTERDICTIONS**
 - ❌ **JAMAIS** créer de fichiers .md en dehors de `docs/` (sauf si demandé explicitement)
 - ❌ **JAMAIS** créer de documentation à la racine du projet
+- ❌ **JAMAIS** créer `CURRENT_STATE.md` à la racine de `docs/` (doit être dans `chat_transitions/`)
 - ❌ **JAMAIS** oublier de créer le dossier `scripts/` dans une session
 
 **✅ OBLIGATIONS**
@@ -132,9 +144,10 @@ docs/
 Format : `session_N_nom_descriptif/`
 
 Exemples :
-- `session_6_blendshapes_expressions/`
-- `session_7_audio_lipsync/`
-- `session_8_face_tracking/`
+- `docs/sessions/session_6_expressions/`
+- `docs/sessions/session_7_animations/`
+- `docs/sessions/session_8_auto_blink/`
+- `docs/sessions/session_9_audio_lipsync/` (exemple futur)
 
 ---
 
@@ -152,13 +165,15 @@ Exemples :
 
 Après **CHAQUE** modification (code, bug fix, nouvelle feature, refactoring...), tu dois **SYSTÉMATIQUEMENT** mettre à jour :
 
-| Fichier | Contenu à actualiser |
-|---------|---------------------|
-| `docs/INDEX.md` | Arborescence complète du projet |
-| `docs/README.md` | Documentation principale du dossier docs |
-| `docs/CURRENT_STATE.md` | État technique actuel (sessions complétées, problèmes résolus) |
-| `README.md` (racine) | README principal du projet |
-| `docs/session_X/[fichier].md` | Documentation de la session en cours |
+| Fichier | Contenu à actualiser | Emplacement |
+|---------|---------------------|-------------|
+| `docs/INDEX.md` | Arborescence complète du projet | Racine de docs/ |
+| `docs/README.md` | Documentation principale du dossier docs | Racine de docs/ |
+| `CURRENT_STATE.md` | État technique actuel (sessions complétées, problèmes résolus) | **docs/chat_transitions/chat_N/** (PAS à la racine de docs/) |
+| `README.md` (racine) | README principal du projet | Racine du projet |
+| `docs/session_X/[fichier].md` | Documentation de la session en cours | Dans le dossier de session |
+
+**⚠️ ATTENTION CRITIQUE** : `CURRENT_STATE.md` doit **TOUJOURS** être dans `docs/chat_transitions/chat_N_session_X/`, **JAMAIS** à la racine de `docs/` !
 
 ### 🔴 DRAPEAUX ROUGES (= TU AS ÉCHOUÉ)
 
@@ -178,7 +193,7 @@ Si l'utilisateur demande :
 3. ✅ **Scripts créés/modifiés ?** → **COPIER dans `docs/session_N/scripts/`**
 4. ✅ **Dossier `scripts/` existe ?** → **VÉRIFIER et CRÉER si nécessaire**
 5. ✅ **Tous les scripts sont dans `scripts/` ?** → **VÉRIFIER chaque fichier modifié**
-6. ✅ **Fin de session ?** → MAJ `INDEX.md` + `README.md` 
+6. ✅ **Fin de session ?** → MAJ `INDEX.md` + `README.md` + **CURRENT_STATE.md dans chat_transitions/**
 7. ✅ **Récapitulatif affiché ?** → **OUI, TOUJOURS**
 
 ### 📝 TEMPLATE DE RÉPONSE OBLIGATOIRE
@@ -313,7 +328,7 @@ feat: implement facial expression system
 - Add expression buttons in Python GUI
 - Update IPC protocol for blendshape commands
 - Update docs: INDEX.md, README.md, CURRENT_STATE.md
-- Create docs/session_6_expressions/ with guides
+- Create docs/sessions/session_6_expressions/ with guides
 ```
 
 ---
@@ -430,7 +445,7 @@ Chaque fois que tu **crées ou modifies** un fichier de code (`.cs`, `.py`, `.js
 
 **Exemple :**
 ```
-docs/session_7_animations/
+docs/sessions/session_7_animations/
 ├── README.md
 ├── TRANSITIONS_GUIDE.md
 └── scripts/              ← OBLIGATOIRE !

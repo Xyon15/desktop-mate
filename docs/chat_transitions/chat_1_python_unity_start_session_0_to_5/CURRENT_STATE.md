@@ -12,37 +12,37 @@
 1. **Session 0 - Configuration Git** ⚙️
    - `.gitignore` configuré pour Unity
    - `Library/`, `Temp/`, `PackageCache/` exclus
-   - Documentation : `docs/session_0_git_configuration/`
+   - Documentation : `docs/sessions/session_0_git_configuration/`
 
 2. **Session 1 - Setup Python** ✅
    - Python 3.10.9 + venv
    - PySide6 6.10.0 (Interface Qt)
    - Structure projet complète
    - 8 tests unitaires passants
-   - Documentation : `docs/session_1_setup/`
+   - Documentation : `docs/sessions/session_1_setup/`
 
 3. **Session 2 - Installation Unity** ✅
    - Unity 2022.3 LTS installé
    - Projet URP créé : `unity/DesktopMateUnity/`
-   - Documentation : `docs/session_2_unity_installation/`
+   - Documentation : `docs/sessions/session_2_unity_installation/`
 
 4. **Session 3 - Installation UniVRM** ✅
    - UniVRM package installé (méthode manuelle .unitypackage)
    - Support modèles VRM opérationnel
-   - Documentation : `docs/session_3_univrm_installation/`
+   - Documentation : `docs/sessions/session_3_univrm_installation/`
 
 5. **Session 4 - Communication Python ↔ Unity** ✅
    - IPC via TCP Socket (port 5555)
    - `PythonBridge.cs` (serveur Unity)
    - `src/ipc/unity_bridge.py` (client Python)
    - Communication bidirectionnelle fonctionnelle
-   - Documentation : `docs/session_4_python_unity_connection/`
+   - Documentation : `docs/sessions/session_4_python_unity_connection/`
 
 6. **Session 5 - Chargement VRM** ✅
    - `VRMLoader.cs` avec thread-safety (Queue + Update pattern)
    - Chargement dynamique des modèles VRM
    - **Avatar "Mura Mura" s'affiche dans Unity !** 🎭
-   - Documentation : `docs/session_5_vrm_loading/`
+   - Documentation : `docs/sessions/session_5_vrm_loading/`
 
 ### Phase 2 - Expressions Faciales ✅
 
@@ -53,7 +53,7 @@
    - 5 sliders pour contrôle précis (0-100%)
    - Bouton "Reset All Expressions"
    - Commandes IPC : `set_expression`, `reset_expressions`
-   - Documentation : `docs/session_6_expressions/`
+   - Documentation : `docs/sessions/session_6_expressions/`
 
 ---
 
@@ -168,22 +168,22 @@ public void LoadVRMFromPath(string filePath) {
 ### 1. Threading Unity
 **Problème :** `EnsureRunningOnMainThread` error  
 **Solution :** Pattern Queue<Action> + Update()  
-**Doc :** `docs/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md`
+**Doc :** `docs/sessions/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md`
 
 ### 2. Script Unity ne démarre pas
 **Problème :** Checkbox script désactivée dans Inspector  
 **Solution :** Cocher la checkbox PythonBridge dans Inspector  
-**Doc :** `docs/session_4_python_unity_connection/FIX_SCRIPT_NOT_RUNNING.md`
+**Doc :** `docs/sessions/session_4_python_unity_connection/FIX_SCRIPT_NOT_RUNNING.md`
 
 ### 3. UniVRM installation échouée
 **Problème :** Git URL Package Manager ne fonctionne pas  
 **Solution :** Installation manuelle .unitypackage  
-**Doc :** `docs/session_3_univrm_installation/UNIVRM_INSTALL_MANUAL.md`
+**Doc :** `docs/sessions/session_3_univrm_installation/UNIVRM_INSTALL_MANUAL.md`
 
 ### 4. Git versionne Library/
 **Problème :** Fichiers Unity générés trackés (plusieurs GB)  
 **Solution :** `.gitignore` avec règles Unity  
-**Doc :** `docs/session_0_git_configuration/GIT_UNITY_FIX.md`
+**Doc :** `docs/sessions/session_0_git_configuration/GIT_UNITY_FIX.md`
 
 ---
 
@@ -239,7 +239,7 @@ pytest tests/ -v
 
 - **Point d'entrée :** `docs/START_HERE.md`
 - **Navigation :** `docs/INDEX.md`
-- **Architecture :** `docs/session_1_setup/architecture.md`
+- **Architecture :** `docs/sessions/session_1_setup/architecture.md`
 
 ### Organisation :
 - Chaque session a son dossier `docs/session_X_nom/`
@@ -308,4 +308,4 @@ python main.py
 **Lire en priorité :**
 1. `docs/CURRENT_STATE.md` (ce fichier)
 2. `README.md` (vue d'ensemble)
-3. `docs/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md` (dernier succès)
+3. `docs/sessions/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md` (dernier succès)

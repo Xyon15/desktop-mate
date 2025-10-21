@@ -15,30 +15,30 @@ docs/
 ├── 📄 ORGANISATION.md        ← Règles et conventions
 ├── 📄 STRUCTURE.txt          ← Arborescence complète
 │
-├── 📁 session_1_setup/
+├── 📁 docs/sessions/session_1_setup/
 │   ├── README.md
 │   ├── SUCCESS_SESSION_1.md
 │   └── architecture.md
 │
-├── 📁 session_2_unity_installation/
+├── 📁 docs/sessions/session_2_unity_installation/
 │   ├── README.md
 │   ├── UNITY_INSTALL_GUIDE.md
 │   ├── UNITY_CREATE_PROJECT.md
 │   └── UNITY_PROJECT_SETUP.md
 │
-├── 📁 session_3_univrm_installation/
+├── 📁 docs/sessions/session_3_univrm_installation/
 │   ├── README.md
 │   ├── UNIVRM_INSTALL.md
 │   └── UNIVRM_INSTALL_MANUAL.md
 │
-├── 📁 session_4_python_unity_connection/
+├── 📁 docs/sessions/session_4_python_unity_connection/
 │   ├── README.md
 │   ├── UNITY_PYTHONBRIDGE_SETUP.md
 │   ├── TEST_CONNECTION.md
 │   ├── DEBUG_CONNECTION.md
 │   └── FIX_SCRIPT_NOT_RUNNING.md
 │
-├── 📁 session_5_vrm_loading/
+├── 📁 docs/sessions/session_5_vrm_loading/
 │   ├── README.md
 │   ├── SESSION_VRM_LOADING_SUCCESS.md
 │   ├── LOAD_VRM_MODEL.md
@@ -99,7 +99,7 @@ Chaque session représente une étape majeure du développement :
 ### Nommage des fichiers
 | Type | Convention | Exemple |
 |------|-----------|---------|
-| Vue d'ensemble | `README.md` | `session_1_setup/README.md` |
+| Vue d'ensemble | `README.md` | `docs/sessions/session_1_setup/README.md` |
 | Guide | `NOM_CLAIR.md` | `UNITY_INSTALL_GUIDE.md` |
 | Succès | `SUCCESS_*.md` | `SUCCESS_SESSION_1.md` |
 | Debug | `DEBUG_*.md` | `DEBUG_CONNECTION.md` |
@@ -109,8 +109,8 @@ Chaque session représente une étape majeure du développement :
 ### Nommage des dossiers
 | Type | Convention | Exemple |
 |------|-----------|---------|
-| Session | `session_X_nom/` | `session_5_vrm_loading/` |
-| Scripts | `scripts/` | `session_5_vrm_loading/scripts/` |
+| Session | `session_X_nom/` | `docs/sessions/session_5_vrm_loading/` |
+| Scripts | `scripts/` | `docs/sessions/session_5_vrm_loading/scripts/` |
 | Archive | `1st/` | `docs/1st/` |
 
 ---
@@ -119,24 +119,24 @@ Chaque session représente une étape majeure du développement :
 
 ### Depuis la racine docs/
 ```
-✓ architecture.md → session_1_setup/
-✓ SUCCESS_SESSION_1.md → session_1_setup/
-✓ DEBUG_CONNECTION.md → session_4_python_unity_connection/
-✓ FIX_SCRIPT_NOT_RUNNING.md → session_4_python_unity_connection/
-✓ TEST_CONNECTION.md → session_4_python_unity_connection/
-✓ LOAD_VRM_MODEL.md → session_5_vrm_loading/
-✓ SESSION_VRM_LOADING_SUCCESS.md → session_5_vrm_loading/
-✓ VRMLoader_CLEAN.cs → session_5_vrm_loading/scripts/
+✓ architecture.md → docs/sessions/session_1_setup/
+✓ SUCCESS_SESSION_1.md → docs/sessions/session_1_setup/
+✓ DEBUG_CONNECTION.md → docs/sessions/session_4_python_unity_connection/
+✓ FIX_SCRIPT_NOT_RUNNING.md → docs/sessions/session_4_python_unity_connection/
+✓ TEST_CONNECTION.md → docs/sessions/session_4_python_unity_connection/
+✓ LOAD_VRM_MODEL.md → docs/sessions/session_5_vrm_loading/
+✓ SESSION_VRM_LOADING_SUCCESS.md → docs/sessions/session_5_vrm_loading/
+✓ VRMLoader_CLEAN.cs → docs/sessions/session_5_vrm_loading/scripts/
 ```
 
 ### Depuis Unity_docs/
 ```
-✓ UNITY_INSTALL_GUIDE.md → session_2_unity_installation/
-✓ UNITY_CREATE_PROJECT.md → session_2_unity_installation/
-✓ UNITY_PROJECT_SETUP.md → session_2_unity_installation/
-✓ UNIVRM_INSTALL.md → session_3_univrm_installation/
-✓ UNIVRM_INSTALL_MANUAL.md → session_3_univrm_installation/
-✓ UNITY_PYTHONBRIDGE_SETUP.md → session_4_python_unity_connection/
+✓ UNITY_INSTALL_GUIDE.md → docs/sessions/session_2_unity_installation/
+✓ UNITY_CREATE_PROJECT.md → docs/sessions/session_2_unity_installation/
+✓ UNITY_PROJECT_SETUP.md → docs/sessions/session_2_unity_installation/
+✓ UNIVRM_INSTALL.md → docs/sessions/session_3_univrm_installation/
+✓ UNIVRM_INSTALL_MANUAL.md → docs/sessions/session_3_univrm_installation/
+✓ UNITY_PYTHONBRIDGE_SETUP.md → docs/sessions/session_4_python_unity_connection/
 ```
 
 ---
@@ -150,11 +150,11 @@ Chaque session représente une étape majeure du développement :
 - ✅ `STRUCTURE.txt` - Arborescence
 
 ### README par session
-- ✅ `session_1_setup/README.md`
-- ✅ `session_2_unity_installation/README.md`
-- ✅ `session_3_univrm_installation/README.md`
-- ✅ `session_4_python_unity_connection/README.md`
-- ✅ `session_5_vrm_loading/README.md`
+- ✅ `docs/sessions/session_1_setup/README.md`
+- ✅ `docs/sessions/session_2_unity_installation/README.md`
+- ✅ `docs/sessions/session_3_univrm_installation/README.md`
+- ✅ `docs/sessions/session_4_python_unity_connection/README.md`
+- ✅ `docs/sessions/session_5_vrm_loading/README.md`
 
 ---
 

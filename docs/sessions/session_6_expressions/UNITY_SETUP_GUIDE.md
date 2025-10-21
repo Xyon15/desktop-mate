@@ -34,7 +34,7 @@ Tu vas devoir :
 
 ### 1.3 - Copier le code
 
-1. Ouvrir le fichier de référence : `docs/session_6_expressions/scripts/VRMBlendshapeController.cs`
+1. Ouvrir le fichier de référence : `docs/sessions/session_6_expressions/scripts/VRMBlendshapeController.cs`
 2. **Copier tout le contenu** (Ctrl+A, Ctrl+C)
 3. **Coller dans Unity** (remplacer tout le contenu existant)
 4. **Sauvegarder** (Ctrl+S)
@@ -386,4 +386,4 @@ Si tout fonctionne, tu as maintenant :
 
 ---
 
-**Besoin d'aide ?** Consulte `docs/session_6_expressions/BLENDSHAPES_GUIDE.md` pour plus de détails techniques.
+**Besoin d'aide ?** Consulte `docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md` pour plus de détails techniques.

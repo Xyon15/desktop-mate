@@ -98,7 +98,7 @@ Si l'utilisateur dit :
 ✓ Copier CURRENT_STATE.md
 ✓ Créer prompt_chatX_vers_chatY.txt
 ✓ Créer CHAT_SUMMARY.md
-✓ MAJ docs/chat_transistions/README.md
+✓ MAJ docs/chat_transitions/README.md
 ✓ MAJ docs/README.md (section transitions)
 ✓ MAJ docs/INDEX.md (arborescence + progression)
 ✓ Vérifier tous les liens

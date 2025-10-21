@@ -85,10 +85,10 @@ def reset_expressions() -> bool
 ### ✅ 5. Documentation complète
 
 **Fichiers créés :**
-- `docs/session_6_expressions/README.md` - Vue d'ensemble
-- `docs/session_6_expressions/BLENDSHAPES_GUIDE.md` - Guide technique détaillé
-- `docs/session_6_expressions/UNITY_SETUP_GUIDE.md` - Configuration pas-à-pas Unity
-- `docs/session_6_expressions/scripts/VRMBlendshapeController.cs` - Code de référence
+- `docs/sessions/session_6_expressions/README.md` - Vue d'ensemble
+- `docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md` - Guide technique détaillé
+- `docs/sessions/session_6_expressions/UNITY_SETUP_GUIDE.md` - Configuration pas-à-pas Unity
+- `docs/sessions/session_6_expressions/scripts/VRMBlendshapeController.cs` - Code de référence
 
 **Documentation mise à jour :**
 - `docs/INDEX.md` - Ajout session 6
@@ -232,10 +232,10 @@ blendShapeProxy.ImmediatelySetValue(key, value);
 
 ### Documentation
 
-5. **`docs/session_6_expressions/README.md`** ✨ NOUVEAU
-6. **`docs/session_6_expressions/BLENDSHAPES_GUIDE.md`** ✨ NOUVEAU
-7. **`docs/session_6_expressions/UNITY_SETUP_GUIDE.md`** ✨ NOUVEAU
-8. **`docs/session_6_expressions/scripts/VRMBlendshapeController.cs`** ✨ NOUVEAU
+5. **`docs/sessions/session_6_expressions/README.md`** ✨ NOUVEAU
+6. **`docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md`** ✨ NOUVEAU
+7. **`docs/sessions/session_6_expressions/UNITY_SETUP_GUIDE.md`** ✨ NOUVEAU
+8. **`docs/sessions/session_6_expressions/scripts/VRMBlendshapeController.cs`** ✨ NOUVEAU
 9. **`docs/INDEX.md`** (mis à jour)
 10. **`docs/CURRENT_STATE.md`** (mis à jour)
 11. **`README.md`** (mis à jour - changelog, roadmap, features)

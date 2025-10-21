@@ -94,7 +94,7 @@ src/
 
 ### Documentation
 ```
-docs/session_7_animations/
+docs/sessions/session_7_animations/
 ├── README.md (ce fichier)
 ├── TRANSITIONS_GUIDE.md (guide technique détaillé)
 └── SESSION_SUCCESS.md (récapitulatif de succès)

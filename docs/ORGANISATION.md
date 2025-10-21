@@ -26,37 +26,37 @@ docs/
 
 ## 📚 Sessions disponibles
 
-### 📂 session_1_setup/
+### 📂 docs/sessions/session_1_setup/
 **Setup Python + GUI**
 ```
-session_1_setup/
+docs/sessions/session_1_setup/
 ├── SUCCESS_SESSION_1.md      ← Récapitulatif succès
 └── architecture.md           ← Architecture globale
 ```
 
-### 📂 session_2_unity_installation/
+### 📂 docs/sessions/session_2_unity_installation/
 **Installation Unity 2022.3 LTS**
 ```
-session_2_unity_installation/
+docs/sessions/session_2_unity_installation/
 ├── README.md                 ← Vue d'ensemble session 2
 ├── UNITY_INSTALL_GUIDE.md    ← Installation Unity Hub + Unity
 ├── UNITY_CREATE_PROJECT.md   ← Création du projet
 └── UNITY_PROJECT_SETUP.md    ← Configuration initiale
 ```
 
-### 📂 session_3_univrm_installation/
+### 📂 docs/sessions/session_3_univrm_installation/
 **Installation UniVRM**
 ```
-session_3_univrm_installation/
+docs/sessions/session_3_univrm_installation/
 ├── README.md                 ← Vue d'ensemble session 3
 ├── UNIVRM_INSTALL.md         ← Méthode Git URL
 └── UNIVRM_INSTALL_MANUAL.md  ← Méthode manuelle ✅ (recommandée)
 ```
 
-### 📂 session_4_python_unity_connection/
+### 📂 docs/sessions/session_4_python_unity_connection/
 **Communication IPC Python ↔ Unity**
 ```
-session_4_python_unity_connection/
+docs/sessions/session_4_python_unity_connection/
 ├── README.md                        ← Vue d'ensemble session 4
 ├── UNITY_PYTHONBRIDGE_SETUP.md      ← Setup PythonBridge
 ├── TEST_CONNECTION.md               ← Tester la connexion
@@ -64,10 +64,10 @@ session_4_python_unity_connection/
 └── FIX_SCRIPT_NOT_RUNNING.md        ← Fix checkbox Unity ⚠️
 ```
 
-### 📂 session_5_vrm_loading/ ✅
+### 📂 docs/sessions/session_5_vrm_loading/ ✅
 **Chargement des modèles VRM**
 ```
-session_5_vrm_loading/
+docs/sessions/session_5_vrm_loading/
 ├── README.md                        ← Vue d'ensemble session 5
 ├── SESSION_VRM_LOADING_SUCCESS.md   ← Récapitulatif complet ⭐
 ├── LOAD_VRM_MODEL.md                ← Guide pas à pas

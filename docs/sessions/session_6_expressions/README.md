@@ -72,20 +72,20 @@
    - Thread-safe avec Queue<Action>
    - Gestion des erreurs
 
-2. **`docs/session_6_expressions/README.md`** (ce fichier)
+2. **`docs/sessions/session_6_expressions/README.md`** (ce fichier)
    - Vue d'ensemble de la session
    - Liste des expressions implémentées
 
-3. **`docs/session_6_expressions/BLENDSHAPES_GUIDE.md`**
+3. **`docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md`**
    - Guide technique détaillé
    - Explications sur les blendshapes VRM
    - Instructions Unity pas-à-pas
 
-3. **`docs/session_6_expressions/scripts/VRMBlendshapeController.cs`**
+3. **`docs/sessions/session_6_expressions/scripts/VRMBlendshapeController.cs`**
    - Script de référence complet VERSION 1.6 (finale)
    - Code commenté en français
 
-4. **`docs/session_6_expressions/scripts/VRMBlendshapeController_V1.6_BACKUP.cs`**
+4. **`docs/sessions/session_6_expressions/scripts/VRMBlendshapeController_V1.6_BACKUP.cs`**
    - Backup de la VERSION 1.6 (avant Session 7)
    - Sauvegarde avant implémentation transitions smooth
 

@@ -32,11 +32,11 @@ docs/
 ├── 📄 ORGANISATION.md               ← Règles et conventions
 ├── 📄 STRUCTURE.txt                 ← Arborescence complète
 │
-├── 📁 session_1_setup/              ← Setup Python + GUI
-├── 📁 session_2_unity_installation/ ← Unity 2022.3 LTS
-├── 📁 session_3_univrm_installation/← UniVRM pour VRM
-├── 📁 session_4_python_unity_connection/ ← IPC Python ↔ Unity
-└── 📁 session_5_vrm_loading/        ← Chargement VRM ✅
+├── 📁 docs/sessions/session_1_setup/              ← Setup Python + GUI
+├── 📁 docs/sessions/session_2_unity_installation/ ← Unity 2022.3 LTS
+├── 📁 docs/sessions/session_3_univrm_installation/← UniVRM pour VRM
+├── 📁 docs/sessions/session_4_python_unity_connection/ ← IPC Python ↔ Unity
+└── 📁 docs/sessions/session_5_vrm_loading/        ← Chargement VRM ✅
 ```
 
 ---
@@ -47,9 +47,9 @@ docs/
 |--------|---------|-------------|
 | **Vue d'ensemble** | [README.md](README.md) | Tout comprendre du projet |
 | **Navigation** | [INDEX.md](INDEX.md) | Trouver rapidement un fichier |
-| **Installation Unity** | [session_2/](session_2_unity_installation/) | Installer Unity |
-| **Problème connexion** | [session_4/DEBUG_CONNECTION.md](session_4_python_unity_connection/DEBUG_CONNECTION.md) | Résoudre les bugs IPC |
-| **Chargement VRM** | [session_5/SESSION_VRM_LOADING_SUCCESS.md](session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md) | Charger les avatars |
+| **Installation Unity** | [session_2/](docs/sessions/session_2_unity_installation/) | Installer Unity |
+| **Problème connexion** | [session_4/DEBUG_CONNECTION.md](docs/sessions/session_4_python_unity_connection/DEBUG_CONNECTION.md) | Résoudre les bugs IPC |
+| **Chargement VRM** | [session_5/SESSION_VRM_LOADING_SUCCESS.md](docs/sessions/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md) | Charger les avatars |
 
 ---
 

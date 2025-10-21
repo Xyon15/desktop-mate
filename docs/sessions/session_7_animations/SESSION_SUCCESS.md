@@ -172,9 +172,9 @@ UX : PROFESSIONNELLE, française, guidée 🎨
 
 ## 📝 Documentation créée
 
-- ✅ `docs/session_7_animations/README.md` - Vue d'ensemble complète
-- ✅ `docs/session_7_animations/TRANSITIONS_GUIDE.md` - Guide technique détaillé
-- ✅ `docs/session_7_animations/SESSION_SUCCESS.md` - Ce fichier !
+- ✅ `docs/sessions/session_7_animations/README.md` - Vue d'ensemble complète
+- ✅ `docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md` - Guide technique détaillé
+- ✅ `docs/sessions/session_7_animations/SESSION_SUCCESS.md` - Ce fichier !
 - ✅ `docs/INDEX.md` - Mis à jour avec Session 7
 - ✅ `docs/README.md` - Référence Session 7
 - ✅ `README.md` (racine) - État projet à jour

@@ -799,7 +799,7 @@ def reset_expressions(self) -> bool:
 
 ### Fichiers de documentation
 
-#### docs/session_6_expressions/ (6 fichiers créés)
+#### docs/sessions/session_6_expressions/ (6 fichiers créés)
 
 **1. README.md**
 - Vue d'ensemble Session 6
@@ -843,7 +843,7 @@ def reset_expressions(self) -> bool:
 
 ---
 
-#### docs/session_6_expressions/scripts/VRMBlendshapeController.cs
+#### docs/sessions/session_6_expressions/scripts/VRMBlendshapeController.cs
 - Copie de référence du code final VERSION 1.6
 - Pour consultation sans ouvrir Unity
 - Lignes : 330+
@@ -1129,7 +1129,7 @@ IEnumerator BlinkCoroutine()
 - [ ] Combinaison de plusieurs expressions fonctionne
 
 **Documentation :**
-- [ ] `docs/session_6_expressions/` contient 6 fichiers .md
+- [ ] `docs/sessions/session_6_expressions/` contient 6 fichiers .md
 - [ ] `docs/INDEX.md` référence Session 6
 - [ ] `docs/CURRENT_STATE.md` mis à jour
 - [ ] `README.md` racine mentionne expressions
@@ -1149,19 +1149,19 @@ IEnumerator BlinkCoroutine()
 
 ### Documentation
 
-- `docs/session_6_expressions/README.md`
-- `docs/session_6_expressions/BLENDSHAPES_GUIDE.md`
-- `docs/session_6_expressions/UNITY_SETUP_GUIDE.md`
-- `docs/session_6_expressions/SESSION_SUCCESS.md`
-- `docs/session_6_expressions/FINAL_SUCCESS.md`
-- `docs/session_6_expressions/COMPLETE_SUCCESS.md`
-- `docs/session_6_expressions/scripts/VRMBlendshapeController.cs` (copie référence)
+- `docs/sessions/session_6_expressions/README.md`
+- `docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md`
+- `docs/sessions/session_6_expressions/UNITY_SETUP_GUIDE.md`
+- `docs/sessions/session_6_expressions/SESSION_SUCCESS.md`
+- `docs/sessions/session_6_expressions/FINAL_SUCCESS.md`
+- `docs/sessions/session_6_expressions/COMPLETE_SUCCESS.md`
+- `docs/sessions/session_6_expressions/scripts/VRMBlendshapeController.cs` (copie référence)
 
 ### Transition (ce dossier)
 
-- `docs/chat_transistions/chat_2_expressions_session_6/CURRENT_STATE.md`
-- `docs/chat_transistions/chat_2_expressions_session_6/CHAT_SUMMARY.md` ← Vous êtes ici
-- `docs/chat_transistions/chat_2_expressions_session_6/prompt_chat2_vers_chat3.txt` (à créer)
+- `docs/chat_transitions/chat_2_expressions_session_6/CURRENT_STATE.md`
+- `docs/chat_transitions/chat_2_expressions_session_6/CHAT_SUMMARY.md` ← Vous êtes ici
+- `docs/chat_transitions/chat_2_expressions_session_6/prompt_chat2_vers_chat3.txt` (à créer)
 
 ---
 

@@ -45,16 +45,16 @@ Bonjour ! Je continue le développement de **Desktop-Mate**, une application hyb
 **IMPORTANT** : Avant de commencer, **LIS CES FICHIERS** :
 
 1. **État du projet** :
-   - `docs/chat_transistions/chat_3_animations_session_7/CURRENT_STATE.md` ← État technique complet
-   - `docs/chat_transistions/chat_3_animations_session_7/CHAT_SUMMARY.md` ← Résumé du Chat 3
+   - `docs/chat_transitions/chat_3_animations_session_7/CURRENT_STATE.md` ← État technique complet
+   - `docs/chat_transitions/chat_3_animations_session_7/CHAT_SUMMARY.md` ← Résumé du Chat 3
 
 2. **Session 7 (contexte immédiat)** :
-   - `docs/session_7_animations/README.md` ← Vue d'ensemble
-   - `docs/session_7_animations/TRANSITIONS_GUIDE.md` ← Guide technique Lerp (900+ lignes)
-   - `docs/session_7_animations/SESSION_SUCCESS.md` ← Récapitulatif succès
+   - `docs/sessions/session_7_animations/README.md` ← Vue d'ensemble
+   - `docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md` ← Guide technique Lerp (900+ lignes)
+   - `docs/sessions/session_7_animations/SESSION_SUCCESS.md` ← Récapitulatif succès
 
 3. **Session 6 (expressions de base)** :
-   - `docs/session_6_expressions/BLENDSHAPES_GUIDE.md` ← Système expressions v1.6
+   - `docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md` ← Système expressions v1.6
 
 4. **Architecture générale** :
    - `docs/INDEX.md` ← Arborescence complète du projet
@@ -222,8 +222,8 @@ python main.py
 - Tester load/unload
 
 **5. Lire documentation Session 7** :
-- `docs/session_7_animations/README.md` pour contexte
-- `docs/session_7_animations/TRANSITIONS_GUIDE.md` pour détails techniques
+- `docs/sessions/session_7_animations/README.md` pour contexte
+- `docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md` pour détails techniques
 
 ### 🎯 Objectif suggéré pour Chat 4
 
@@ -265,9 +265,9 @@ python main.py
    - Vérifier sauvegarde config
 
 6. Documentation Session 8
-   - `docs/session_8_auto_blink/README.md`
-   - `docs/session_8_auto_blink/BLINK_GUIDE.md`
-   - `docs/session_8_auto_blink/scripts/` (copier scripts)
+   - `docs/sessions/session_8_auto_blink/README.md`
+   - `docs/sessions/session_8_auto_blink/BLINK_GUIDE.md`
+   - `docs/sessions/session_8_auto_blink/scripts/` (copier scripts)
    - Mettre à jour `docs/INDEX.md` et `docs/README.md`
 
 ### 🎓 Conseils pour Unity/C#
@@ -321,8 +321,8 @@ python -m pytest
 **Documentation** :
 - `docs/INDEX.md` - Arborescence complète
 - `docs/README.md` - Doc principale
-- `docs/session_7_animations/` - Contexte Session 7
-- `docs/chat_transistions/chat_3_animations_session_7/` - Transition actuelle
+- `docs/sessions/session_7_animations/` - Contexte Session 7
+- `docs/chat_transitions/chat_3_animations_session_7/` - Transition actuelle
 
 ### ✅ Checklist avant de commencer
 

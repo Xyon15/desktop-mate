@@ -150,13 +150,13 @@ desktop-mate/
 │   ├── README.md                         ← Documentation principale
 │   ├── AI_DOCUMENTATION_PROMPT.md        ← Prompt système IA
 │   ├── DOCUMENTATION_CHECKLIST.md        ← Checklists par tâche
-│   ├── session_0_git_configuration/      ← Session 0
-│   ├── session_1_setup/                  ← Session 1
-│   ├── session_2_unity_installation/     ← Session 2
-│   ├── session_3_univrm_installation/    ← Session 3
-│   ├── session_4_python_unity_connection/ ← Session 4
-│   ├── session_5_vrm_loading/            ← Session 5
-│   ├── session_6_expressions/            ← Session 6
+│   ├── docs/sessions/session_0_git_configuration/      ← Session 0
+│   ├── docs/sessions/session_1_setup/                  ← Session 1
+│   ├── docs/sessions/session_2_unity_installation/     ← Session 2
+│   ├── docs/sessions/session_3_univrm_installation/    ← Session 3
+│   ├── docs/sessions/session_4_python_unity_connection/ ← Session 4
+│   ├── docs/sessions/session_5_vrm_loading/            ← Session 5
+│   ├── docs/sessions/session_6_expressions/            ← Session 6
 │   │   ├── README.md
 │   │   ├── BLENDSHAPES_GUIDE.md
 │   │   ├── SESSION_SUCCESS.md
@@ -164,7 +164,7 @@ desktop-mate/
 │   │       ├── VRMBlendshapeController_V1.6_BACKUP.cs
 │   │       ├── PythonBridge.cs
 │   │       └── app.py
-│   ├── session_7_animations/             ← Session 7 (Chat 3) ✨
+│   ├── docs/sessions/session_7_animations/             ← Session 7 (Chat 3) ✨
 │   │   ├── README.md
 │   │   ├── TRANSITIONS_GUIDE.md
 │   │   ├── SESSION_SUCCESS.md
@@ -174,7 +174,7 @@ desktop-mate/
 │   │       ├── app.py
 │   │       ├── unity_bridge.py
 │   │       └── config.py
-│   └── chat_transistions/
+│   └── chat_transitions/
 │       ├── chat_1_python_unity_start_session_0_to_5/
 │       ├── chat_2_expressions_session_6/
 │       └── chat_3_animations_session_7/  ← Transition actuelle ✨
@@ -472,17 +472,17 @@ BlendShapeKey GetBlendShapeKey(string expressionName)
 ## 📚 Documentation disponible
 
 ### Guides Session 7 (Chat 3)
-- `docs/session_7_animations/README.md` - Vue d'ensemble Session 7
-- `docs/session_7_animations/TRANSITIONS_GUIDE.md` - Guide technique Lerp (900+ lignes)
-- `docs/session_7_animations/SESSION_SUCCESS.md` - Récapitulatif succès
+- `docs/sessions/session_7_animations/README.md` - Vue d'ensemble Session 7
+- `docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md` - Guide technique Lerp (900+ lignes)
+- `docs/sessions/session_7_animations/SESSION_SUCCESS.md` - Récapitulatif succès
 
 ### Guides Session 6 (Chat 2)
-- `docs/session_6_expressions/BLENDSHAPES_GUIDE.md` - Système expressions v1.6
-- `docs/session_6_expressions/SESSION_SUCCESS.md` - Récapitulatif Session 6
+- `docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md` - Système expressions v1.6
+- `docs/sessions/session_6_expressions/SESSION_SUCCESS.md` - Récapitulatif Session 6
 
 ### Guides Sessions 0-5 (Chat 1)
-- `docs/session_4_python_unity_connection/UNITY_PYTHONBRIDGE_SETUP.md` - Setup IPC
-- `docs/session_5_vrm_loading/LOAD_VRM_MODEL.md` - Chargement VRM
+- `docs/sessions/session_4_python_unity_connection/UNITY_PYTHONBRIDGE_SETUP.md` - Setup IPC
+- `docs/sessions/session_5_vrm_loading/LOAD_VRM_MODEL.md` - Chargement VRM
 
 ### Index et organisation
 - `docs/INDEX.md` - Arborescence complète du projet
@@ -582,8 +582,8 @@ python main.py
 - Tester déchargement/rechargement
 
 ### 5. Consulter la documentation
-- Lire `docs/session_7_animations/README.md` pour contexte
-- Lire `docs/session_7_animations/TRANSITIONS_GUIDE.md` pour détails techniques
+- Lire `docs/sessions/session_7_animations/README.md` pour contexte
+- Lire `docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md` pour détails techniques
 
 ---
 
@@ -610,7 +610,7 @@ Avant de commencer Chat 4, vérifier :
 - [x] Load/Unload toggle fonctionne
 - [x] Modèle par défaut fonctionne
 - [x] Documentation Session 7 complète
-- [x] Scripts Session 7 copiés dans docs/session_7_animations/scripts/
+- [x] Scripts Session 7 copiés dans docs/sessions/session_7_animations/scripts/
 - [x] Fichier CURRENT_STATE.md créé
 - [ ] Fichier CHAT_SUMMARY.md à créer
 - [ ] Prompt de transition à créer

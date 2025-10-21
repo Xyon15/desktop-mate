@@ -31,6 +31,10 @@ public class PythonBridge : MonoBehaviour
     [Tooltip("Référence au VRMBlendshapeController pour les expressions")]
     public VRMBlendshapeController blendshapeController;
 
+    [Header("VRM Auto Blink")]
+    [Tooltip("Référence au VRMAutoBlinkController pour le clignement automatique")]
+    public VRMAutoBlinkController autoBlinkController;
+
     // Composants réseau
     private TcpListener server;
     private TcpClient client;
@@ -377,6 +381,44 @@ public class PythonBridge : MonoBehaviour
                         });
                     }
                 }
+                else if (jsonMessage.Contains("\"set_auto_blink\""))
+                {
+                    Debug.Log("[PythonBridge] 👁️ Commande : Changer état clignement automatique");
+
+                    // Extraire l'état enabled
+                    bool enabled = ExtractBoolValue(jsonMessage, "enabled");
+
+                    // Enqueue l'action sur le thread principal
+                    lock (mainThreadActions)
+                    {
+                        mainThreadActions.Enqueue(() => {
+                            if (autoBlinkController != null)
+                            {
+                                autoBlinkController.SetAutoBlinkEnabled(enabled);
+                                Debug.Log($"[PythonBridge] 👁️ Clignement automatique : {(enabled ? "ACTIVÉ" : "DÉSACTIVÉ")}");
+                                
+                                SendMessage(new
+                                {
+                                    type = "response",
+                                    command = "set_auto_blink",
+                                    status = "success",
+                                    message = $"Clignement automatique {(enabled ? "activé" : "désactivé")}"
+                                });
+                            }
+                            else
+                            {
+                                Debug.LogError("[PythonBridge] ❌ VRMAutoBlinkController non assigné !");
+                                SendMessage(new
+                                {
+                                    type = "response",
+                                    command = "set_auto_blink",
+                                    status = "error",
+                                    message = "VRMAutoBlinkController non configuré"
+                                });
+                            }
+                        });
+                    }
+                }
                 else if (jsonMessage.Contains("\"set_blendshape\""))
                 {
                     Debug.Log("[PythonBridge] 👄 Commande : Modifier un blendshape");
@@ -556,6 +598,53 @@ public class PythonBridge : MonoBehaviour
         {
             Debug.LogError($"[PythonBridge] ❌ Erreur extraction float '{key}' : {e.Message}");
             return 0.0f;
+        }
+    }
+
+    /// <summary>
+    /// Extrait une valeur booléenne depuis un JSON simple
+    /// </summary>
+    private bool ExtractBoolValue(string json, string key)
+    {
+        try
+        {
+            string searchKey = $"\"{key}\"";
+            int keyStart = json.IndexOf(searchKey);
+            if (keyStart == -1) return false;
+
+            // Chercher le ':' après la clé
+            int colonIndex = json.IndexOf(":", keyStart);
+            if (colonIndex == -1) return false;
+
+            // Trouver le début de la valeur (après ':' et espaces)
+            int valueStart = colonIndex + 1;
+            while (valueStart < json.Length && (json[valueStart] == ' ' || json[valueStart] == '\t'))
+                valueStart++;
+
+            // Trouver la fin de la valeur (avant ',' ou '}')
+            int valueEnd = valueStart;
+            while (valueEnd < json.Length && json[valueEnd] != ',' && json[valueEnd] != '}' && json[valueEnd] != '\n')
+                valueEnd++;
+
+            string valueStr = json.Substring(valueStart, valueEnd - valueStart).Trim().ToLower();
+
+            // Parser le booléen
+            if (valueStr == "true")
+            {
+                return true;
+            }
+            else if (valueStr == "false")
+            {
+                return false;
+            }
+
+            Debug.LogWarning($"[PythonBridge] ⚠️ Impossible de parser bool '{key}' : '{valueStr}'");
+            return false;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[PythonBridge] ❌ Erreur extraction bool '{key}' : {e.Message}");
+            return false;
         }
     }
 

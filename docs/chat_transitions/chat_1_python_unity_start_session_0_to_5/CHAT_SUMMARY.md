@@ -41,7 +41,7 @@ Démarrer le projet Desktop-Mate : créer une application hybride Python + Unity
 - `src/gui/app.py` - Interface Qt
 - `src/ipc/unity_bridge.py` - Client socket
 
-**Documentation :** `docs/session_1_setup/`
+**Documentation :** `docs/sessions/session_1_setup/`
 
 ---
 
@@ -53,7 +53,7 @@ Démarrer le projet Desktop-Mate : créer une application hybride Python + Unity
 
 **Leçon :** Utiliser Unity Hub pour gestion versions
 
-**Documentation :** `docs/session_2_unity_installation/`
+**Documentation :** `docs/sessions/session_2_unity_installation/`
 
 ---
 
@@ -69,7 +69,7 @@ Démarrer le projet Desktop-Mate : créer une application hybride Python + Unity
 
 **Leçon :** Méthode manuelle plus fiable pour UniVRM
 
-**Documentation :** `docs/session_3_univrm_installation/UNIVRM_INSTALL_MANUAL.md`
+**Documentation :** `docs/sessions/session_3_univrm_installation/UNIVRM_INSTALL_MANUAL.md`
 
 ---
 
@@ -90,7 +90,7 @@ Démarrer le projet Desktop-Mate : créer une application hybride Python + Unity
 
 **Leçon :** Toujours vérifier l'Inspector Unity pour scripts
 
-**Documentation :** `docs/session_4_python_unity_connection/`
+**Documentation :** `docs/sessions/session_4_python_unity_connection/`
 
 ---
 
@@ -127,7 +127,7 @@ public void LoadVRMFromPath(string filePath) {
 
 **Leçon CRUCIALE :** Toujours utiliser main thread pour GameObject dans Unity
 
-**Documentation :** `docs/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md`
+**Documentation :** `docs/sessions/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md`
 
 ---
 
@@ -198,12 +198,12 @@ public void LoadVRMFromPath(string filePath) {
 - `docs/CURRENT_STATE.md` - État actuel complet
 
 ### Par Session
-- `session_0_git_configuration/` - Configuration Git Unity
-- `session_1_setup/` - Setup Python + architecture
-- `session_2_unity_installation/` - Installation Unity
-- `session_3_univrm_installation/` - Installation UniVRM
-- `session_4_python_unity_connection/` - IPC Python ↔ Unity
-- `session_5_vrm_loading/` - Chargement VRM
+- `docs/sessions/session_0_git_configuration/` - Configuration Git Unity
+- `docs/sessions/session_1_setup/` - Setup Python + architecture
+- `docs/sessions/session_2_unity_installation/` - Installation Unity
+- `docs/sessions/session_3_univrm_installation/` - Installation UniVRM
+- `docs/sessions/session_4_python_unity_connection/` - IPC Python ↔ Unity
+- `docs/sessions/session_5_vrm_loading/` - Chargement VRM
 
 ### Guides Spécifiques
 - `GIT_UNITY_FIX.md` - Résolution problème Git
@@ -259,7 +259,7 @@ public void LoadVRMFromPath(string filePath) {
    - Créer `VRMBlendshapeController.cs`
    - Implémenter commande `set_blendshape`
    - Ajouter boutons émotions GUI Python
-   - Documenter dans `docs/session_6_expressions/`
+   - Documenter dans `docs/sessions/session_6_expressions/`
 
 3. **Organisation continue :**
    - Documenter chaque session
@@ -293,7 +293,7 @@ public void LoadVRMFromPath(string filePath) {
 - Repository : `Xyon15/desktop-mate`
 - Documentation : `docs/START_HERE.md`
 - État actuel : `docs/CURRENT_STATE.md`
-- Prompt Chat 2 : `docs/chat_transistions/chat_1.../prompt_chat1_vers_chat_2.txt`
+- Prompt Chat 2 : `docs/chat_transitions/chat_1.../prompt_chat1_vers_chat_2.txt`
 
 ---
 

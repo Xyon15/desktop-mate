@@ -41,8 +41,8 @@
 - [ ] Copier/Créer `CURRENT_STATE.md` dans le dossier
 - [ ] Créer `prompt_chatX_vers_chatY.txt`
 - [ ] Créer `CHAT_SUMMARY.md` avec résumé complet
-- [ ] Mettre à jour `docs/chat_transistions/README.md`
-- [ ] Mettre à jour `docs/README.md` (section chat_transistions)
+- [ ] Mettre à jour `docs/chat_transitions/README.md`
+- [ ] Mettre à jour `docs/README.md` (section chat_transitions)
 - [ ] Mettre à jour `docs/INDEX.md` (arborescence + progression)
 - [ ] Vérifier que tous les liens fonctionnent
 
@@ -83,7 +83,7 @@
 6. **`docs/session_X/README.md`** 📁
    - Vue d'ensemble de la session
 
-7. **`docs/chat_transistions/README.md`** 🔄
+7. **`docs/chat_transitions/README.md`** 🔄
    - Historique des chats
 
 ---
@@ -163,14 +163,14 @@ git commit -m "feat: Add blendshapes controller + Update docs (INDEX, README, CU
 
 **Étape 1 - Code :** Créer le fichier C#
 
-**Étape 2 - Session :** Créer `docs/session_6_expressions/`
+**Étape 2 - Session :** Créer `docs/sessions/session_6_expressions/`
 - `README.md`
 - `BLENDSHAPES_GUIDE.md`
 - `scripts/VRMBlendshapeController_CLEAN.cs`
 
 **Étape 3 - Mise à jour INDEX.md :**
 ```markdown
-├── 📁 session_6_expressions/  ← Session 6 : Expressions ✅
+├── 📁 docs/sessions/session_6_expressions/  ← Session 6 : Expressions ✅
 │   ├── README.md
 │   ├── BLENDSHAPES_GUIDE.md
 │   └── scripts/VRMBlendshapeController_CLEAN.cs
@@ -178,7 +178,7 @@ git commit -m "feat: Add blendshapes controller + Update docs (INDEX, README, CU
 
 **Étape 4 - Mise à jour README.md (docs) :**
 ```markdown
-### 📂 session_6_expressions/
+### 📂 docs/sessions/session_6_expressions/
 **Contrôle des expressions faciales VRM**
 - Réalisations :
   - ✅ VRMBlendshapeController.cs créé
@@ -190,7 +190,7 @@ git commit -m "feat: Add blendshapes controller + Update docs (INDEX, README, CU
 ```markdown
 6. **Session 6 - Expressions Faciales** ✅
    - `VRMBlendshapeController.cs` avec contrôle blendshapes
-   - Documentation : `docs/session_6_expressions/`
+   - Documentation : `docs/sessions/session_6_expressions/`
 ```
 
 **Étape 6 - Mise à jour README.md principal :**

@@ -28,6 +28,6 @@ Implémenter contrôle blendshapes VRM pour expressions faciales (happy, sad, an
 FICHIERS À LIRE :
 1. docs/chat_1_python_unity_start_session_0_to_5/CURRENT_STATE.md (état complet)
 2. README.md (vue d'ensemble)
-3. docs/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md
+3. docs/sessions/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md
 
 Peux-tu m'aider à démarrer la Session 6 ?

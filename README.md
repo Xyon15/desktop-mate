@@ -17,7 +17,7 @@ Desktop-Mate est une application qui permet d'afficher un avatar VRM interactif 
 
 **Objectif final :** 🤖 Connecter l'avatar à une **IA conversationnelle (chatbot)** pour créer un assistant virtuel qui peut **parler, réagir émotionnellement et se déplacer librement** sur le bureau. L'avatar deviendra un véritable compagnon interactif intelligent !
 
-**Status actuel :** ✅ Phase 1 (MVP) terminée ! ✅ Phase 2 (Expressions & Animations) terminée ! L'avatar s'affiche, exprime des émotions avec **transitions fluides** ! ✨
+**Status actuel :** ✅ Phase 1 (MVP) terminée ! ✅ Phase 2 (Expressions & Animations) terminée ! ✅ Clignement automatique fonctionnel ! L'avatar s'affiche, exprime des émotions avec **transitions fluides** et **cligne des yeux naturellement** ! ✨
 
 ## ⚡ Quick Start
 
@@ -105,12 +105,12 @@ desktop-mate/
 │   ├── START_HERE.md    # 👈 Commence ici !
 │   ├── INDEX.md         # Navigation rapide
 │   ├── README.md        # Vue d'ensemble
-│   ├── session_0_git_configuration/ # ⚙️ Configuration Git Unity
-│   ├── session_1_setup/ # Setup Python + GUI
-│   ├── session_2_unity_installation/
-│   ├── session_3_univrm_installation/
-│   ├── session_4_python_unity_connection/
-│   └── session_5_vrm_loading/  # ✅ Dernière session complète
+│   ├── docs/sessions/session_0_git_configuration/ # ⚙️ Configuration Git Unity
+│   ├── docs/sessions/session_1_setup/ # Setup Python + GUI
+│   ├── docs/sessions/session_2_unity_installation/
+│   ├── docs/sessions/session_3_univrm_installation/
+│   ├── docs/sessions/session_4_python_unity_connection/
+│   └── docs/sessions/session_5_vrm_loading/  # ✅ Dernière session complète
 │
 └── .github/              # CI/CD et workflows
     ├── workflows/
@@ -285,13 +285,15 @@ python main.py
 - **Expressions faciales** : Contrôle blendshapes VRM (joy, angry, sorrow, surprised, fun)
 - **Transitions smooth** : Interpolation Lerp pour animations fluides ✨ **SESSION 7**
 - **Vitesse ajustable** : Slider 1.0-10.0 pour contrôler la rapidité des transitions ✨ **SESSION 7**
+- **Clignement automatique** : Yeux qui clignent naturellement (2-5s) avec animation SmoothStep (160ms) ✨ **SESSION 8**
 - **Interface sliders** : Contrôle précis 0-100% pour chaque expression
 - **Logs détaillés** : Console + fichiers pour debugging
 - **Tests unitaires** : 8 tests Python qui passent (100%)
 
 ### 🚧 En développement
-- Animations automatiques et mouvements
-- Capture audio et lip-sync avancé
+- Lip-sync audio (analyse FFT + phonèmes)
+- Mouvements de tête subtils (head bobbing)
+- Eye tracking (suivi curseur)
 
 ## 🔧 Architecture Technique
 
@@ -372,45 +374,45 @@ Documentation complète et organisée par sessions de développement :
 
 ### Sessions documentées
 
-0. **[Session 0 - Configuration Git Unity](docs/session_0_git_configuration/)** ⚙️
+0. **[Session 0 - Configuration Git Unity](docs/sessions/session_0_git_configuration/)** ⚙️
    - Configuration `.gitignore` pour Unity
    - Exclusion des fichiers générés (Library/, Temp/)
    - Bonnes pratiques Git pour projets Unity
 
-1. **[Session 1 - Setup Python + GUI](docs/session_1_setup/)** ✅
+1. **[Session 1 - Setup Python + GUI](docs/sessions/session_1_setup/)** ✅
    - Configuration environnement Python
    - Interface Qt avec PySide6
    - Système de configuration et logs
 
-2. **[Session 2 - Installation Unity](docs/session_2_unity_installation/)** ✅
+2. **[Session 2 - Installation Unity](docs/sessions/session_2_unity_installation/)** ✅
    - Installation Unity 2022.3 LTS
    - Création projet URP
    - Configuration de base
 
-3. **[Session 3 - Installation UniVRM](docs/session_3_univrm_installation/)** ✅
+3. **[Session 3 - Installation UniVRM](docs/sessions/session_3_univrm_installation/)** ✅
    - Installation du package UniVRM
    - Support des modèles VRM
    - Configuration des shaders
 
-4. **[Session 4 - Connexion Python ↔ Unity](docs/session_4_python_unity_connection/)** ✅
+4. **[Session 4 - Connexion Python ↔ Unity](docs/sessions/session_4_python_unity_connection/)** ✅
    - Communication IPC via socket TCP
    - PythonBridge.cs (serveur Unity)
    - unity_bridge.py (client Python)
    - Résolution des problèmes de connexion
 
-5. **[Session 5 - Chargement VRM](docs/session_5_vrm_loading/)** ✅
+5. **[Session 5 - Chargement VRM](docs/sessions/session_5_vrm_loading/)** ✅
    - VRMLoader.cs avec thread-safety
    - Chargement dynamique des modèles VRM
    - Affichage de l'avatar 3D
    - **Application fonctionnelle !** 🎉
 
-6. **[Session 6 - Expressions Faciales](docs/session_6_expressions/)** ✅
+6. **[Session 6 - Expressions Faciales](docs/sessions/session_6_expressions/)** ✅
    - VRMBlendshapeController.cs v1.6 pour expressions
    - Interface GUI avec sliders
    - Contrôle émotions en temps réel
    - **L'avatar exprime des émotions !** 😊😠😢😲😄
 
-7. **[Session 7 - Animations Fluides](docs/session_7_animations/)** ✅ **NOUVEAU !**
+7. **[Session 7 - Animations Fluides](docs/sessions/session_7_animations/)** ✅ **NOUVEAU !**
    - VRMBlendshapeController.cs v2.0 avec Lerp interpolation
    - Transitions smooth entre expressions
    - Slider de vitesse (1.0-10.0)
@@ -421,13 +423,13 @@ Documentation complète et organisée par sessions de développement :
 
 ### Guides spécifiques
 
-- [Configuration Git Unity](docs/session_0_git_configuration/GIT_UNITY_FIX.md)
-- [Architecture technique](docs/session_1_setup/architecture.md)
-- [Debug connexion Unity](docs/session_4_python_unity_connection/DEBUG_CONNECTION.md)
-- [Fix script Unity](docs/session_4_python_unity_connection/FIX_SCRIPT_NOT_RUNNING.md)
-- [Récapitulatif Session 5](docs/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md)
-- [Guide expressions Session 6](docs/session_6_expressions/BLENDSHAPES_GUIDE.md)
-- [Guide transitions Session 7](docs/session_7_animations/TRANSITIONS_GUIDE.md) ✨ **900+ lignes !**
+- [Configuration Git Unity](docs/sessions/session_0_git_configuration/GIT_UNITY_FIX.md)
+- [Architecture technique](docs/sessions/session_1_setup/architecture.md)
+- [Debug connexion Unity](docs/sessions/session_4_python_unity_connection/DEBUG_CONNECTION.md)
+- [Fix script Unity](docs/sessions/session_4_python_unity_connection/FIX_SCRIPT_NOT_RUNNING.md)
+- [Récapitulatif Session 5](docs/sessions/session_5_vrm_loading/SESSION_VRM_LOADING_SUCCESS.md)
+- [Guide expressions Session 6](docs/sessions/session_6_expressions/BLENDSHAPES_GUIDE.md)
+- [Guide transitions Session 7](docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md) ✨ **900+ lignes !**
 
 ## 🤝 Contribution
 
