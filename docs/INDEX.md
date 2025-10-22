@@ -79,17 +79,22 @@ docs/
 │   │       ├── config.py                           Config auto_blink
 │   │       └── app.py                              GUI avec checkbox clignement
 │   │
-│   └── session_9_head_movements/                   ← Session 9 : Mouvements Tête + Réorg UI 🎭 ✅
-│       ├── README.md                               Vue d'ensemble session 9
-│       ├── INTERFACE_REORGANIZATION.md             Guide réorganisation 3 onglets
-│       ├── HEAD_MOVEMENT_GUIDE.md                  Guide technique (SmoothStep, Coroutine)
-│       ├── DEBUG_ISSUES.md                         Problèmes résolus (VRMAutoBlinkController, déconnexion)
-│       └── scripts/
-│           ├── VRMHeadMovementController.cs        Contrôleur mouvements de tête
-│           ├── PythonBridge.cs                     IPC (commande set_auto_head_movement)
-│           ├── app.py                              Interface 3 onglets (Expressions, Animations, Options)
-│           ├── unity_bridge.py                     Client IPC Python
-│           └── config.py                           Config head_movement
+│   ├── session_9_head_movements/                   ← Session 9 : Mouvements Tête + Réorg UI 🎭 ✅
+│   │   ├── README.md                               Vue d'ensemble session 9
+│   │   ├── INTERFACE_REORGANIZATION.md             Guide réorganisation 3 onglets
+│   │   ├── HEAD_MOVEMENT_GUIDE.md                  Guide technique (SmoothStep, Coroutine)
+│   │   ├── DEBUG_ISSUES.md                         Problèmes résolus (VRMAutoBlinkController, déconnexion)
+│   │   └── scripts/
+│   │       ├── VRMHeadMovementController.cs        Contrôleur mouvements de tête
+│   │       ├── PythonBridge.cs                     IPC (commande set_auto_head_movement)
+│   │       ├── app.py                              Interface 3 onglets (Expressions, Animations, Options)
+│   │       ├── unity_bridge.py                     Client IPC Python
+│   │       └── config.py                           Config head_movement
+│   │
+│   └── session_10_ai_chat/                         ← Session 10 : IA Conversationnelle (Kira) 🤖 🔄 EN COURS
+│       ├── README.md                               Vue d'ensemble session 10
+│       ├── PLAN_SESSION_10.md                      Plan complet détaillé (14 phases)
+│       └── scripts/                                Scripts de référence (à créer au fur et à mesure)
 │
 ├── 📁 chat_transitions/                           ← Transitions entre chats 🔄
 │   ├── README.md                                   Historique des chats
@@ -106,11 +111,17 @@ docs/
 │   │   ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 5
 │   │   ├── CURRENT_STATE.md                        État technique actuel
 │   │   └── prompt_transition.txt                   Prompt Chat 5
-│   └── chat_5_session_9/                           ← TRANSITION ACTUELLE
+│   ├── chat_5_session_9/
+│   │   ├── README.md                               Vue d'ensemble transition
+│   │   ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 6
+│   │   ├── CURRENT_STATE.md                        État technique actuel
+│   │   └── prompt_transition.txt                   Prompt Chat 6
+│   └── chat_6_session_10_phases_1_2/               ← TRANSITION ACTUELLE (Chat 6 → Chat 7)
 │       ├── README.md                               Vue d'ensemble transition
-│       ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 6
-│       ├── CURRENT_STATE.md                        État technique actuel
-│       └── prompt_transition.txt                   Prompt Chat 6
+│       ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 7
+│       ├── CURRENT_STATE.md                        État technique après Phases 1-2
+│       ├── CHAT_SUMMARY.md                         Résumé Chat 6 (Phases 1-2)
+│       └── prompt_transition.txt                   Prompt Chat 7
 │
 └── 📁 1st/                                        ← Archives premières notes
     ├── START_HERE.md
@@ -184,14 +195,32 @@ docs/
 |---------|----------|--------|---------------|
 | **8** | Clignement automatique des yeux | ✅ Complet | `sessions/session_8_auto_blink/TECHNICAL_GUIDE.md`, `TROUBLESHOOTING.md` |
 
-### 🚀 Chat 5 - À venir (Session 9+)
+### 🎊 Chat 5 - Terminé (Session 9)
 
 | Session | Objectif | Statut | Fichiers clés |
 |---------|----------|--------|---------------|
-| **9** | Mouvements de Tête Subtils | 🚧 **EN PLANIFICATION** | `sessions/session_9_head_movements/README.md` |
-| **10** | Audio & Lip-sync | 🚧 À venir | - |
-| **11** | Mouvements libres / Eye Tracking | 🚧 À venir | - |
-| **12-14** | Intégration IA conversationnelle | 🚧 À venir | - |
+| **9** | Mouvements Tête + Réorganisation Interface | ✅ Complet | `sessions/session_9_head_movements/README.md`, `HEAD_MOVEMENT_GUIDE.md` |
+
+### 🚀 Chat 6 - EN COURS (Session 10)
+
+| Session | Objectif | Statut | Fichiers clés |
+|---------|----------|--------|---------------|
+| **10** | IA Conversationnelle (Kira) - Phases 1-3 | � **EN COURS** - Phase 1 ✅ | `sessions/session_10_ai_chat/PLAN_SESSION_10.md` |
+
+**Plan détaillé :** `sessions/session_10_ai_chat/PLAN_SESSION_10.md`
+
+**Phases Session 10** :
+- Phase 1 : Architecture de base ✅ TERMINÉE
+- Phase 2 : Base de données & Mémoire ⏳ À FAIRE
+- Phase 3 : Configuration IA ⏳ À FAIRE
+- Phases 4-14 : Voir PLAN_SESSION_10.md
+
+### 🔮 Chats Futurs (Sessions 11+)
+
+| Session | Objectif | Statut | Fichiers clés |
+|---------|----------|--------|---------------|
+| **11-12** | Vocal Discord + TTS | 🚧 Planifié | - |
+| **13-14** | Interactions souris + Idle animations | 🚧 Planifié | - |
 
 ---
 

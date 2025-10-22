@@ -449,7 +449,7 @@ Documentation complète et organisée par sessions de développement :
    - Résolution de 5 problèmes majeurs documentés (TROUBLESHOOTING.md)
    - **L'avatar cligne naturellement des yeux !** 👁️✨
 
-9. **[Session 9 - Mouvements de Tête + Réorganisation Interface](docs/sessions/session_9_head_movements/)** ✅ **NOUVEAU !**
+9. **[Session 9 - Mouvements de Tête + Réorganisation Interface](docs/sessions/session_9_head_movements/)** ✅
    - VRMHeadMovementController.cs avec Coroutines + SmoothStep
    - Mouvements naturels aléatoires (yaw/pitch)
    - Contrôle fréquence (3-10s) et amplitude (2-10°)
@@ -459,6 +459,19 @@ Documentation complète et organisée par sessions de développement :
    - Gestion propre de la déconnexion Unity (reset état VRM)
    - Documentation complète (4 guides techniques + scripts archivés)
    - **L'avatar bouge naturellement la tête + interface moderne !** 🎭✨
+
+10. **[Session 10 - IA Conversationnelle (Kira)](docs/sessions/session_10_ai_chat/)** ✅ **EN COURS - Chat 6 (Phases 1-2)**
+   - **Phase 1** : Architecture de Base (30 min) ✅
+     - Dossiers : src/ai/, src/discord_bot/, src/auth/, models/
+     - Modèle LLM copié (Zephyr-7B, 6.8 GB)
+     - Configuration : .env, requirements.txt, .gitignore
+   - **Phase 2** : Base de Données & Mémoire (1h) ✅
+     - src/ai/memory.py (430 lignes)
+     - SQLite chat_history avec 4 indexes
+     - Tests : 11/11 passés
+     - Singleton pattern + Context manager thread-safe
+   - **Prochaine (Chat 7)** : Phases 3-5 (Config + LLM + Chat Engine)
+   - **L'avatar aura bientôt une IA conversationnelle intelligente !** 🤖✨
 
 ### Guides spécifiques
 
@@ -474,6 +487,8 @@ Documentation complète et organisée par sessions de développement :
 - [Réorganisation interface Session 9](docs/sessions/session_9_head_movements/INTERFACE_REORGANIZATION.md) ✨ **Nouvelle architecture 3 onglets !**
 - [Guide mouvements tête Session 9](docs/sessions/session_9_head_movements/HEAD_MOVEMENT_GUIDE.md) ✨ **Animations naturelles !**
 - [Résolution problèmes Session 9](docs/sessions/session_9_head_movements/DEBUG_ISSUES.md) ✨ **3 bugs critiques résolus !**
+- [Plan Session 10](docs/sessions/session_10_ai_chat/PLAN_SESSION_10.md) ✨ **14 phases IA conversationnelle détaillées !**
+- [Contexte Chat 7](docs/chat_transitions/chat_6_session_10_phases_1_2/CONTEXT_FOR_NEXT_CHAT.md) ✨ **Instructions complètes Phase 3-5 !**
 
 ## 🤝 Contribution
 
@@ -561,7 +576,35 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ## 📝 Changelog
 
-### Version 0.5.0-alpha (22 octobre 2025) ✨ **NOUVEAU - SESSION 9**
+### Version 0.6.0-alpha (22 octobre 2025) ✨ **NOUVEAU - SESSION 10 (Phases 1-2)**
+- ✅ **Session 10 - IA Conversationnelle (Chat 6 - Phases 1-2) démarrée !**
+- ✅ **Phase 1 : Architecture de Base (30 min)**
+  - Création dossiers : src/ai/, src/discord_bot/, src/auth/, models/
+  - Fichiers __init__.py pour tous les modules
+  - Modèle LLM copié : models/zephyr-7b-beta.Q5_K_M.gguf (6.8 GB, Mistral 7B)
+  - Configuration : .env, .env.example, .gitignore étendu
+  - requirements.txt avec 8 nouvelles dépendances (llama-cpp-python, discord.py, pyotp, etc.)
+  - Documentation : PLAN_SESSION_10.md (14 phases détaillées), README.md Session 10
+- ✅ **Phase 2 : Base de Données & Mémoire (1h)**
+  - src/ai/memory.py (430 lignes) - Système conversationnel complet
+  - Classe ConversationMemory avec 10 méthodes CRUD
+  - Base SQLite : data/chat_history.db (7 colonnes, 4 indexes optimisés)
+  - Singleton pattern avec get_memory()
+  - Context manager thread-safe
+  - Support multi-source (desktop + discord)
+  - Support émotions pour chaque interaction
+  - tests/test_memory.py - 11 tests unitaires
+  - ✅ **Tous les tests passent (11/11 en 0.71s) !**
+- ✅ **Documentation complète Chat 6**
+  - Transition Chat 6 → Chat 7 complète (5 fichiers)
+  - CONTEXT_FOR_NEXT_CHAT.md avec instructions détaillées Phase 3-5
+  - CURRENT_STATE.md avec état technique complet
+  - prompt_transition.txt prêt à copier
+  - docs/INDEX.md, README.md mis à jour
+- ✅ **Dépendances installées** : llama-cpp-python, pynvml, discord.py, pyotp, python-dotenv, qrcode, pillow, psutil
+- 🤖 **Bases solides pour IA conversationnelle ! Prochaine étape : Config + LLM + Chat Engine !** ✨
+
+### Version 0.5.0-alpha (22 octobre 2025) ✨ **SESSION 9**
 - ✅ **Session 9 - Mouvements de tête + Réorganisation interface terminée !**
 - ✅ VRMHeadMovementController.cs avec système de Coroutines Unity
 - ✅ Animation SmoothStep pour mouvements naturels (yaw/pitch)
@@ -642,8 +685,8 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ---
 
-**🎊 Status actuel : Phases 1-2 COMPLÈTES ! L'avatar s'affiche, exprime 5 émotions avec transitions fluides, cligne naturellement des yeux ET bouge la tête de manière vivante ! Interface moderne en 3 onglets ! ✨👁️��🎊**
+**🎊 Status actuel : [Phase 4] COMPLÈTE ! L'avatar s'affiche, exprime 5 émotions avec transitions fluides, cligne naturellement des yeux, bouge la tête de manière vivante ET possède maintenant un système de mémoire conversationnelle SQLite complet ! Interface moderne en 3 onglets ! Architecture IA prête pour LLM ! ✨👁️�🤖�🎊**
 
-**🚀 Prochaine étape (Chat 6 - Phase 3) : Audio & Lip-sync OU IA Conversationnelle ! �🤖**
+**🚀 Prochaine étape (Chat 7 - Phase 3) : Configuration IA + Model Manager + Chat Engine (donner vie à l'IA de Kira) ! 🧠💬🤖**
 
 ⭐ **N'oubliez pas de mettre une étoile si ce projet vous plaît !** ⭐

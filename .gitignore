@@ -10,6 +10,31 @@
 /venv/
 
 # ============================================
+# DESKTOP-MATE SPECIFIC - SESSION 10 IA CHAT
+# ============================================
+
+# Variables d'environnement sensibles (tokens, secrets)
+.env
+
+# Modèles LLM (trop volumineux pour Git - 6+ GB)
+models/*.gguf
+models/*.bin
+models/*.safetensors
+
+# Base de données (données utilisateurs)
+data/chat_history.db
+data/chat_history.db-journal
+
+# Logs générés
+logs/*.log
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ============================================
 # UNITY GENERATED FILES - NE PAS VERSIONNER
 # ============================================
 

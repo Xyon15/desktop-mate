@@ -14,6 +14,26 @@ numpy>=1.24.0
 # Configuration
 # (using standard library json)
 
+# ============================================
+# SESSION 10: IA CONVERSATIONNELLE (KIRA)
+# ============================================
+
+# LLM Local & GPU Optimization
+llama-cpp-python>=0.2.0  # LLM local avec support GPU CUDA
+pynvml>=11.5.0           # Monitoring GPU NVIDIA
+
+# Discord Bot
+discord.py>=2.3.0        # Bot Discord intégration
+
+# Authentification 2FA
+pyotp>=2.8.0             # TOTP (Google Authenticator)
+python-dotenv>=1.0.0     # Variables d'environnement (.env)
+qrcode>=7.4.2            # Génération QR codes 2FA
+pillow>=10.0.0           # Support images pour QR codes
+
+# Monitoring système (étendu)
+psutil>=5.9.0            # Monitoring CPU, RAM, processus
+
 # Optional: Computer Vision (for face tracking - Phase 4)
 # Uncomment when needed:
 # opencv-python>=4.8.0

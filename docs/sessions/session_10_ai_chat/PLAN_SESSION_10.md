@@ -1130,10 +1130,6 @@ pip install -r requirements.txt
 - ✅ **Quantification** : Q5_K_M (bon équilibre qualité/taille)
 - ✅ **Performance** : ~20-30 tokens/sec sur RTX 4050
 
-**Alternatives possibles** (si besoin) :
-- `phi-2.Q5_K_M.gguf` (2.7B) → Plus rapide, moins intelligent
-- `mistral-7b-instruct-v0.2.Q5_K_M.gguf` → Similaire à Zephyr
-
 **Recommandation** : Garde Zephyr-7B, excellent choix !
 
 ### GPU NVIDIA
