@@ -175,6 +175,97 @@ Après **CHAQUE** modification (code, bug fix, nouvelle feature, refactoring...)
 
 **⚠️ ATTENTION CRITIQUE** : `CURRENT_STATE.md` doit **TOUJOURS** être dans `docs/chat_transitions/chat_N_session_X/`, **JAMAIS** à la racine de `docs/` !
 
+### 🚨 RÈGLE SPÉCIALE : README.md RACINE (⚠️ SOUVENT OUBLIÉ !)
+
+Le **README.md à la racine** du projet est **CRITIQUE** car c'est la **première chose** que les gens voient sur GitHub.
+
+**🎯 SECTIONS À METTRE À JOUR OBLIGATOIREMENT :**
+
+#### 1️⃣ Section "Sessions documentées" (ligne ~393)
+**Quand :** À la fin de **CHAQUE SESSION**
+
+**Quoi ajouter :**
+```markdown
+N. **[Session N - Nom de la Session](docs/sessions/session_N_nom/)** ✅
+   - Liste des fonctionnalités implémentées
+   - Technologies utilisées
+   - Problèmes résolus
+   - **Message de succès !** 🎭✨
+```
+
+**⚠️ VÉRIFIER :**
+- ✅ Numéro de session correct
+- ✅ Lien vers `docs/sessions/session_N_nom/`
+- ✅ Liste complète des fonctionnalités
+- ✅ Emoji de célébration à la fin
+
+#### 2️⃣ Section "Guides spécifiques" (ligne ~475)
+**Quand :** Si tu crées de **nouveaux guides** techniques
+
+**Quoi ajouter :**
+```markdown
+- [Nom du guide Session N](docs/sessions/session_N/NOM_GUIDE.md) ✨ **Description !**
+```
+
+#### 3️⃣ Section "Changelog" (ligne ~548)
+**Quand :** À la fin de **CHAQUE SESSION**
+
+**Quoi ajouter :**
+```markdown
+### Version 0.X.0-alpha (DATE) ✨ **NOUVEAU - SESSION N**
+- ✅ **Session N - Nom de la session terminée !**
+- ✅ Liste détaillée de TOUTES les fonctionnalités
+- ✅ Scripts Unity/Python créés
+- ✅ Bugs résolus (avec liste)
+- ✅ Documentation complète
+- 🎭 **Message de succès avec description !** ✨
+```
+
+**⚠️ VÉRIFIER :**
+- ✅ Numéro de version incrémenté (0.4.0 → 0.5.0)
+- ✅ Date correcte
+- ✅ TOUTES les fonctionnalités listées
+- ✅ Bugs mentionnés avec détails
+- ✅ Message de succès enthousiaste
+
+#### 4️⃣ Section Status final (dernière ligne avant étoile)
+**Quand :** À la fin de **CHAQUE SESSION**
+
+**Quoi modifier :**
+```markdown
+**🎊 Status actuel : [Phase X] COMPLÈTE ! [Description des capacités actuelles] ! ✨👁️🎭🎊**
+
+**🚀 Prochaine étape (Chat N - Phase Y) : [Prochaine session] ! 🎤🤖**
+```
+
+**⚠️ VÉRIFIER :**
+- ✅ Phase correcte mise à jour
+- ✅ Toutes les capacités actuelles listées
+- ✅ Prochaine étape claire
+- ✅ Emojis appropriés
+
+### 🔴 DRAPEAUX ROUGES SPÉCIFIQUES README.md
+
+Si l'utilisateur dit :
+- ❌ "Tu as oublié la aussi" (en pointant sur README.md)
+- ❌ "Et le README racine ?"
+- ❌ "N'oublie pas de mettre à jour le README principal"
+
+→ **TU AS ÉCHOUÉ** ! Le README.md racine doit **TOUJOURS** être mis à jour avec les 4 sections ci-dessus.
+
+### ✅ CHECKLIST README.md RACINE
+
+**AVANT** de dire "Session terminée", vérifie **SYSTÉMATIQUEMENT** :
+
+```
+□ Section "Sessions documentées" → Session N ajoutée avec détails
+□ Section "Guides spécifiques" → Nouveaux guides ajoutés (si applicable)
+□ Section "Changelog" → Version 0.X.0-alpha avec TOUTES les features
+□ Section Status final → Phases et prochaines étapes mises à jour
+```
+
+**🎯 SI UNE SEULE case n'est pas cochée → NE DIS PAS "Terminé" !**
+
 ### 🔴 DRAPEAUX ROUGES (= TU AS ÉCHOUÉ)
 
 Si l'utilisateur demande :
@@ -194,7 +285,18 @@ Si l'utilisateur demande :
 4. ✅ **Dossier `scripts/` existe ?** → **VÉRIFIER et CRÉER si nécessaire**
 5. ✅ **Tous les scripts sont dans `scripts/` ?** → **VÉRIFIER chaque fichier modifié**
 6. ✅ **Fin de session ?** → MAJ `INDEX.md` + `README.md` + **CURRENT_STATE.md dans chat_transitions/**
-7. ✅ **Récapitulatif affiché ?** → **OUI, TOUJOURS**
+7. ✅ **README.md racine mis à jour ?** → **VÉRIFIER les 4 sections (Sessions, Guides, Changelog, Status)**
+8. ✅ **Récapitulatif affiché ?** → **OUI, TOUJOURS**
+
+**🚨 RÈGLE SPÉCIALE : FIN DE SESSION**
+
+Si tu termines une session, tu DOIS mettre à jour **4 sections** dans `README.md` racine :
+1. Section "Sessions documentées" (ajouter Session N)
+2. Section "Guides spécifiques" (ajouter nouveaux guides)
+3. Section "Changelog" (ajouter Version 0.X.0-alpha)
+4. Section "Status final" (mettre à jour phases et prochaines étapes)
+
+**⚠️ SI UNE SEULE section manque → NE DIS PAS "Terminé" !**
 
 ### 📝 TEMPLATE DE RÉPONSE OBLIGATOIRE
 
@@ -391,10 +493,18 @@ feat: implement facial expression system
 □ Ai-je créé des fichiers ? → MAJ INDEX.md
 □ Ai-je résolu un problème ? → MAJ session 
 □ Ai-je modifié l'archi ? → MAJ README.md racine + docs/README.md
+□ Ai-je terminé une session ? → MAJ README.md racine (4 sections !)
 □ Tests passent ? → pytest OK
 □ Erreurs vérifiées ? → Python + Unity OK
 □ Récapitulatif affiché ? → Template de réponse complet
 ```
+
+**🚨 ATTENTION SPÉCIALE :**
+Si tu as **terminé une session**, tu DOIS mettre à jour **4 sections** dans README.md racine :
+1. ✅ "Sessions documentées" (ligne ~393)
+2. ✅ "Guides spécifiques" (ligne ~475)
+3. ✅ "Changelog" (ligne ~548)
+4. ✅ "Status final" (dernière ligne)
 
 ### 🎯 Objectifs du projet (rappel)
 

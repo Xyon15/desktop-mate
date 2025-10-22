@@ -213,6 +213,42 @@ Python Slider → IPC JSON → PythonBridge → VRMBlendshapeController
 
 ---
 
+### 📂 docs/sessions/session_9_head_movements/
+**Mouvements de Tête Automatiques + Réorganisation Interface** 🎭
+- `README.md` - Vue d'ensemble complète de la session 9
+- `INTERFACE_REORGANIZATION.md` - Guide réorganisation 3 onglets
+- `HEAD_MOVEMENT_GUIDE.md` - Guide technique (SmoothStep, Coroutine, IPC)
+- `DEBUG_ISSUES.md` - Problèmes résolus (VRMAutoBlinkController, déconnexion)
+- `scripts/` - Tous les scripts finaux (Unity C# + Python)
+
+**Réalisations :**
+- ✅ **Mouvements naturels** : VRMHeadMovementController.cs avec Coroutines + SmoothStep
+- ✅ **Paramètres configurables** : Fréquence (3-10s) et Amplitude (2-10°)
+- ✅ **Animations fluides** : Yaw (-5° à +5°) et Pitch (-2.5° à +2.5°)
+- ✅ **IPC fonctionnel** : Commande `set_auto_head_movement` avec 4 paramètres
+- ✅ **Interface réorganisée** : 3 onglets logiques (Expressions, Animations, Options)
+- ✅ **Boutons reset** : 3 boutons contextuels (reset_expressions, reset_animations, reset_options)
+- ✅ **Code propre** : ~137 lignes dupliquées supprimées
+
+**Nouvelle structure interface :**
+- **Onglet "Expressions"** : 5 sliders expressions + reset
+- **Onglet "Animations"** : Auto-blink (checkbox) + Head movements (checkbox + 2 sliders) + reset
+- **Onglet "Options"** : Vitesse transition (slider) + reset
+
+**Problèmes résolus :**
+1. Conflit VRMAutoBlinkController → Désactiver dans Unity Inspector
+2. État VRM après déconnexion → Reset vrm_loaded + texte bouton
+3. Code dupliqué interface → Suppression ~137 lignes
+
+**Innovations techniques :**
+- Coroutine RandomHeadMovement() avec cycle complet (mouvement → hold → retour)
+- Interpolation SmoothStep pour accélération/décélération naturelle
+- Recherche head bone via Animator.GetBoneTransform(HumanBodyBones.Head)
+- Durées aléatoires pour éviter prévisibilité (0.3-0.8s movement, 0.2-0.5s hold)
+- Architecture 3 onglets modulaire et extensible
+
+---
+
 ### 📂 Unity_docs/ (legacy)
 Ancienne documentation Unity - À réorganiser ou supprimer
 
@@ -236,6 +272,7 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
 - **Session 6 terminée** : Contrôle des expressions faciales (5 expressions)
 - **Session 7 terminée** : Animations fluides (Lerp, transitions, vitesse ajustable)
 - **Session 8 terminée** : Clignement automatique des yeux (SmoothStep, 160ms)
+- **Session 9 terminée** : Mouvements de tête + Réorganisation interface (3 onglets)
 - **Fonctionnalités** :
   - Transitions smooth entre expressions (Lerp interpolation)
   - Contrôle de vitesse en temps réel (1.0-10.0)
@@ -243,17 +280,23 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
   - Chargement/Déchargement dynamique
   - Interface française complète avec icône
   - **Clignement automatique naturel** (intervalles 2-5s, animation fluide)
+  - **Mouvements de tête naturels** (fréquence 3-10s, amplitude 2-10°, SmoothStep)
+  - **Interface 3 onglets** (Expressions, Animations, Options)
+  - **3 boutons reset contextuels**
   
-### 🚧 Phase 3 - À venir (Chat 5+)
-- **Session 9** : Mouvements de Tête Subtils 🎭 **EN PLANIFICATION**
-  - Head bobbing (mouvement gauche/droite)
-  - Head tilt (inclinaison subtile)
-  - Animation SmoothStep procédurale
-  - Paramètres configurables (amplitude, fréquence)
-  - Difficulté : 🔴 Faible | Impact : 🎯🎯 Moyen
-- **Session 10** : Lip-sync avec microphone (analyse audio FFT, phonèmes)
-- **Session 11** : Face tracking (MediaPipe, expression mirroring)
-- **Sessions 12-14** : Intégration IA conversationnelle (chatbot, TTS, STT)
+### � Phase 3 - À venir (Chat 6+)
+- **Session 10** : Audio & Lip-sync 🎤
+  - Capture audio microphone
+  - Analyse amplitude/fréquence
+  - Lip-sync VRM (blendshapes bouche : A, I, U, E, O)
+- **Session 11** : IA Conversationnelle 🤖
+  - Intégration ChatGPT/Claude API
+  - Chatbot avec mémoire de contexte
+  - Réactions émotionnelles basées sur dialogue
+- **Session 12** : Interactions Souris 🖱️
+  - Avatar suit le curseur
+  - Réaction aux clics
+  - Drag & drop sur desktop
 
 ---
 

@@ -17,7 +17,7 @@ Desktop-Mate est une application qui permet d'afficher un avatar VRM interactif 
 
 **Objectif final :** 🤖 Connecter l'avatar à une **IA conversationnelle (chatbot)** pour créer un assistant virtuel qui peut **parler, réagir émotionnellement et se déplacer librement** sur le bureau. L'avatar deviendra un véritable compagnon interactif intelligent !
 
-**Status actuel :** ✅ Phase 1 (MVP) terminée ! ✅ Phase 2 (Expressions & Animations & Clignement) terminée ! L'avatar s'affiche, exprime des émotions avec **transitions fluides** et **cligne des yeux naturellement avec animation SmoothStep** ! ✨👁️
+**Status actuel :** ✅ Phases 1-2-3 terminées ! L'avatar s'affiche, exprime des émotions avec **transitions fluides**, **cligne des yeux naturellement** avec animation SmoothStep et **bouge la tête de manière vivante** ! Interface réorganisée en 3 onglets logiques. ✨👁️🎭
 
 ## ⚡ Quick Start
 
@@ -215,7 +215,7 @@ python main.py
   - Système de modèle VRM par défaut
   - Chargement/déchargement dynamique
   - Documentation complète (900+ lignes de guides techniques)
-- [x] **Session 8** : Clignement automatique ✅ **TERMINÉ !**
+- [x] **Session 8** : Clignement automatique ✅
   - VRMAutoBlinkController.cs avec coroutines Unity
   - Animation SmoothStep (courbes de Hermite)
   - Timing naturel (2-5s entre clignements, 160ms par cycle)
@@ -223,14 +223,17 @@ python main.py
   - Sauvegarde configuration
   - Documentation technique massive (TECHNICAL_GUIDE.md 900+ lignes)
   - Guide résolution problèmes (TROUBLESHOOTING.md avec 5 bugs résolus)
+- [x] **Session 9** : Mouvements de Tête + Réorganisation Interface ✅ **TERMINÉE !**
+  - VRMHeadMovementController.cs avec Coroutines + SmoothStep
+  - Mouvements naturels aléatoires (yaw/pitch)
+  - Contrôle fréquence (3-10s) et amplitude (2-10°)
+  - Interface réorganisée en 3 onglets (Expressions, Animations, Options)
+  - 3 boutons reset contextuels
+  - Résolution conflit VRMAutoBlinkController
+  - Gestion déconnexion Unity (reset état VRM)
+  - Documentation complète (4 guides techniques + scripts)
 
 ### Phase 3 : Audio & Lip-Sync 🎤
-- [ ] **Session 9** : Mouvements de Tête Subtils 🎭 **EN PLANIFICATION**
-  - Head bobbing (mouvement gauche/droite)
-  - Head tilt (inclinaison subtile)
-  - Animation SmoothStep pour fluidité
-  - Paramètres configurables (amplitude, fréquence)
-  - Checkbox "Auto Head Movement" dans l'interface
 - [ ] **Session 10** : Capture audio et lip-sync
   - Capture audio microphone
   - Détection d'amplitude vocale
@@ -436,7 +439,7 @@ Documentation complète et organisée par sessions de développement :
    - Thread-safety complet (Queue<Action> pattern)
    - **L'avatar anime ses expressions de façon fluide !** ✨🎭
 
-8. **[Session 8 - Clignement Automatique](docs/sessions/session_8_auto_blink/)** ✅ **NOUVEAU !**
+8. **[Session 8 - Clignement Automatique](docs/sessions/session_8_auto_blink/)** ✅
    - VRMAutoBlinkController.cs avec coroutines Unity
    - Animation SmoothStep (courbes de Hermite) pour réalisme
    - Timing paramétrable (2-5s entre clignements, 160ms par cycle)
@@ -445,6 +448,17 @@ Documentation complète et organisée par sessions de développement :
    - Documentation technique complète (TECHNICAL_GUIDE.md 900+ lignes)
    - Résolution de 5 problèmes majeurs documentés (TROUBLESHOOTING.md)
    - **L'avatar cligne naturellement des yeux !** 👁️✨
+
+9. **[Session 9 - Mouvements de Tête + Réorganisation Interface](docs/sessions/session_9_head_movements/)** ✅ **NOUVEAU !**
+   - VRMHeadMovementController.cs avec Coroutines + SmoothStep
+   - Mouvements naturels aléatoires (yaw/pitch)
+   - Contrôle fréquence (3-10s) et amplitude (2-10°)
+   - Interface réorganisée en 3 onglets (Expressions, Animations, Options)
+   - 3 boutons reset contextuels pour chaque onglet
+   - Résolution conflit VRMAutoBlinkController
+   - Gestion propre de la déconnexion Unity (reset état VRM)
+   - Documentation complète (4 guides techniques + scripts archivés)
+   - **L'avatar bouge naturellement la tête + interface moderne !** 🎭✨
 
 ### Guides spécifiques
 
@@ -457,6 +471,9 @@ Documentation complète et organisée par sessions de développement :
 - [Guide transitions Session 7](docs/sessions/session_7_animations/TRANSITIONS_GUIDE.md) ✨ **900+ lignes !**
 - [Guide technique Session 8](docs/sessions/session_8_auto_blink/TECHNICAL_GUIDE.md) ✨ **Architecture SmoothStep détaillée !**
 - [Résolution problèmes Session 8](docs/sessions/session_8_auto_blink/TROUBLESHOOTING.md) ✨ **5 problèmes résolus !**
+- [Réorganisation interface Session 9](docs/sessions/session_9_head_movements/INTERFACE_REORGANIZATION.md) ✨ **Nouvelle architecture 3 onglets !**
+- [Guide mouvements tête Session 9](docs/sessions/session_9_head_movements/HEAD_MOVEMENT_GUIDE.md) ✨ **Animations naturelles !**
+- [Résolution problèmes Session 9](docs/sessions/session_9_head_movements/DEBUG_ISSUES.md) ✨ **3 bugs critiques résolus !**
 
 ## 🤝 Contribution
 
@@ -544,7 +561,26 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ## 📝 Changelog
 
-### Version 0.4.0-alpha (21 octobre 2025) ✨ **NOUVEAU - SESSION 8**
+### Version 0.5.0-alpha (22 octobre 2025) ✨ **NOUVEAU - SESSION 9**
+- ✅ **Session 9 - Mouvements de tête + Réorganisation interface terminée !**
+- ✅ VRMHeadMovementController.cs avec système de Coroutines Unity
+- ✅ Animation SmoothStep pour mouvements naturels (yaw/pitch)
+- ✅ Mouvements aléatoires : yaw (-5° à +5°), pitch (-2.5° à +2.5°)
+- ✅ Contrôle fréquence (3-10s) et amplitude (2-10°) dans l'interface
+- ✅ **Interface réorganisée en 3 onglets** : Expressions, Animations, Options
+- ✅ **3 boutons reset contextuels** (un par onglet avec valeurs par défaut)
+- ✅ Checkbox "Auto Head Movement" dans l'onglet Animations
+- ✅ 2 sliders pour paramétrer fréquence et amplitude
+- ✅ Commande IPC `set_auto_head_movement` (enabled, min_interval, max_interval, max_angle)
+- ✅ **3 bugs critiques résolus** :
+  - Conflit VRMAutoBlinkController (double clignement)
+  - État bouton VRM après déconnexion Unity
+  - Code dupliqué lors du refactoring (~137 lignes nettoyées)
+- ✅ Documentation complète (4 guides techniques + scripts archivés)
+- ✅ Transition Chat 6 préparée avec CONTEXT_FOR_NEXT_CHAT
+- 🎭 **L'avatar bouge maintenant naturellement la tête + interface moderne et organisée !** ✨
+
+### Version 0.4.0-alpha (21 octobre 2025) ✨ **SESSION 8**
 - ✅ **Session 8 - Clignement automatique terminée !**
 - ✅ VRMAutoBlinkController.cs avec système de coroutines Unity
 - ✅ Animation SmoothStep (courbes de Hermite cubiques) pour réalisme maximal
@@ -606,8 +642,8 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ---
 
-**🎊 Status actuel : MVP + Expressions + Animations fluides + Clignement automatique ! L'avatar s'affiche, anime 5 émotions avec transitions smooth ET cligne naturellement des yeux ! ✨👁️🎊**
+**🎊 Status actuel : Phases 1-2 COMPLÈTES ! L'avatar s'affiche, exprime 5 émotions avec transitions fluides, cligne naturellement des yeux ET bouge la tête de manière vivante ! Interface moderne en 3 onglets ! ✨👁️��🎊**
 
-**🚀 Prochaine étape (Chat 5 - Session 9) : Mouvements de tête subtils ! 🎭**
+**🚀 Prochaine étape (Chat 6 - Phase 3) : Audio & Lip-sync OU IA Conversationnelle ! �🤖**
 
 ⭐ **N'oubliez pas de mettre une étoile si ce projet vous plaît !** ⭐

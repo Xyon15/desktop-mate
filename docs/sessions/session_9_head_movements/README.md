@@ -1,186 +1,369 @@
-# Session 9 : Mouvements de Tête Subtils 🎭
+# 🎭 Session 9 : Mouvements de Tête Automatiques + Réorganisation Interface# Session 9 : Mouvements de Tête Subtils 🎭
 
-**Date :** 21 octobre 2025  
+
+
+## 📋 Vue d'ensemble**Date :** 21 octobre 2025  
+
 **Status :** 🚧 **EN COURS DE PLANIFICATION**  
-**Difficulté :** 🔴 Faible  
-**Impact :** 🎯🎯 Moyen  
-**Durée estimée :** 1/2 session  
 
----
+**Date :** Octobre 2025  **Difficulté :** 🔴 Faible  
 
-## 📋 Vue d'ensemble
+**Chat :** Chat 5  **Impact :** 🎯🎯 Moyen  
 
-Ajouter des **mouvements de tête subtils** à l'avatar pour le rendre plus vivant et réaliste, même au repos. Cette session se concentre sur des animations procédurales simples mais efficaces qui donneront l'impression que l'avatar "respire" et "pense".
+**Statut :** ✅ **TERMINÉE****Durée estimée :** 1/2 session  
 
-### 🎯 Objectifs
+
+
+### 🎯 Objectifs de la session---
+
+
+
+Cette session avait **deux objectifs majeurs** :## 📋 Vue d'ensemble
+
+
+
+1. **🎭 Implémenter les mouvements de tête automatiques**Ajouter des **mouvements de tête subtils** à l'avatar pour le rendre plus vivant et réaliste, même au repos. Cette session se concentre sur des animations procédurales simples mais efficaces qui donneront l'impression que l'avatar "respire" et "pense".
+
+   - Ajouter des mouvements de tête aléatoires et naturels
+
+   - Rendre l'avatar plus vivant et expressif### 🎯 Objectifs
+
+   - Contrôle complet depuis l'interface Python
 
 1. **Head Bobbing** : Mouvement léger gauche/droite
-2. **Head Tilt** : Inclinaison subtile
-3. **Respiration** : Mouvement du torse (bonus si facile)
-4. **Paramètres configurables** : Amplitude, fréquence, activation
+
+2. **🖥️ Réorganiser l'interface utilisateur**2. **Head Tilt** : Inclinaison subtile
+
+   - Séparer les contrôles en onglets logiques3. **Respiration** : Mouvement du torse (bonus si facile)
+
+   - Améliorer l'ergonomie et la clarté4. **Paramètres configurables** : Amplitude, fréquence, activation
+
+   - Ajouter des boutons de réinitialisation par onglet
 
 ---
+
+### ✅ Résultats obtenus
 
 ## 🎭 Pourquoi cette session maintenant ?
 
-### ✅ Avantages
+**Fonctionnalités implémentées :**
 
-- **Facile à implémenter** : Similaire au système de clignement (Session 8)
-- **Gros impact visuel** : Ajoute beaucoup de réalisme avec peu d'effort
-- **Avatar vivant** : Rend l'avatar dynamique même au repos
+- ✅ Mouvements de tête automatiques avec contrôle de fréquence et amplitude### ✅ Avantages
+
+- ✅ Interface réorganisée en 3 onglets (Expressions, Animations, Options)
+
+- ✅ Boutons de réinitialisation pour chaque onglet- **Facile à implémenter** : Similaire au système de clignement (Session 8)
+
+- ✅ Gestion de la déconnexion Unity (reset état VRM)- **Gros impact visuel** : Ajoute beaucoup de réalisme avec peu d'effort
+
+- ✅ Résolution du conflit VRMAutoBlinkController- **Avatar vivant** : Rend l'avatar dynamique même au repos
+
 - **Réutilisation de code** : Pattern coroutines + SmoothStep déjà maîtrisé
-- **Complémentaire** : Fonctionne parfaitement avec le clignement automatique
 
-### 📊 Priorisation
+---- **Complémentaire** : Fonctionne parfaitement avec le clignement automatique
 
-**Option B choisie** plutôt que :
+
+
+## 🏗️ Architecture### 📊 Priorisation
+
+
+
+### 📂 Fichiers modifiés/créés**Option B choisie** plutôt que :
+
 - ❌ Option A (Audio & Lip-sync) : Complexe, nécessite analyse FFT
-- ❌ Option C (Eye Tracking) : Nécessite MediaPipe/webcam
 
-**Raisons :**
+**Unity (C#) :**- ❌ Option C (Eye Tracking) : Nécessite MediaPipe/webcam
+
+- ✅ `unity/VRMHeadMovementController.cs` (NOUVEAU)
+
+- ✅ `unity/PythonBridge.cs` (MODIFIÉ)**Raisons :**
+
 - Session courte (1/2 session) → progression rapide
-- Réutilisation architecture Session 8 → moins de risques
-- Impact visuel immédiat → satisfaction rapide
-- Préparation pour Session 10 (Audio) → avatar déjà "vivant"
+
+**Python :**- Réutilisation architecture Session 8 → moins de risques
+
+- ✅ `src/gui/app.py` (MODIFIÉ - réorganisation complète)- Impact visuel immédiat → satisfaction rapide
+
+- ✅ `src/ipc/unity_bridge.py` (MODIFIÉ)- Préparation pour Session 10 (Audio) → avatar déjà "vivant"
+
+- ✅ `src/utils/config.py` (MODIFIÉ)
 
 ---
+
+### 🔄 Flux de données
 
 ## 🏗️ Architecture Technique
 
-### Composants à créer
-
-#### 1. **VRMHeadMovementController.cs** (Unity)
-
-**Responsabilités :**
-- Gérer les mouvements de tête procéduraux
-- Rotation subtile du GameObject Head (pitch/yaw)
-- Animation via coroutines + SmoothStep
-- Paramètres configurables
-
-**Pattern réutilisé :**
-```csharp
-// Similaire à VRMAutoBlinkController.cs
-public class VRMHeadMovementController : MonoBehaviour
-{
-    // Paramètres
-    public bool autoHeadMovement = true;
-    public float minInterval = 3.0f;  // 3-7s entre mouvements
-    public float maxInterval = 7.0f;
-    public float movementDuration = 2.0f;  // 2s par mouvement
-    public float maxRotationAngle = 5.0f;  // ±5° max
-    
-    // Références
-    private GameObject headBone;
-    private Quaternion initialRotation;
-    
-    // Coroutine
-    private IEnumerator HeadMovementLoop()
-    {
-        while (autoHeadMovement)
-        {
-            yield return new WaitForSeconds(Random.Range(minInterval, maxInterval));
-            yield return StartCoroutine(PerformHeadMovement());
-        }
-    }
-    
-    private IEnumerator PerformHeadMovement()
-    {
-        // Choisir direction aléatoire (gauche/droite, haut/bas)
-        float targetYaw = Random.Range(-maxRotationAngle, maxRotationAngle);
-        float targetPitch = Random.Range(-maxRotationAngle/2, maxRotationAngle/2);
-        
-        // Animation SmoothStep (similaire au clignement)
-        // Phase 1 : Rotation (50% du temps)
-        // Phase 2 : Retour (50% du temps)
-    }
-}
 ```
+
+Interface Python (3 onglets)### Composants à créer
+
+  └─> unity_bridge.py
+
+      └─> Socket TCP (JSON)#### 1. **VRMHeadMovementController.cs** (Unity)
+
+          └─> PythonBridge.cs
+
+              └─> VRMHeadMovementController.cs**Responsabilités :**
+
+                  └─> VRM Head Bone- Gérer les mouvements de tête procéduraux
+
+```- Rotation subtile du GameObject Head (pitch/yaw)
+
+- Animation via coroutines + SmoothStep
+
+---- Paramètres configurables
+
+
+
+## 🎭 Fonctionnalité 1 : Mouvements de Tête**Pattern réutilisé :**
+
+```csharp
+
+### Caractéristiques// Similaire à VRMAutoBlinkController.cs
+
+public class VRMHeadMovementController : MonoBehaviour
+
+**Paramètres configurables :**{
+
+- ✅ **Activation/Désactivation** : Checkbox    // Paramètres
+
+- ✅ **Fréquence** : 3-10 secondes (intervalle maximum)    public bool autoHeadMovement = true;
+
+- ✅ **Amplitude** : 2-10 degrés (angle maximum)    public float minInterval = 3.0f;  // 3-7s entre mouvements
+
+    public float maxInterval = 7.0f;
+
+**Valeurs par défaut :**    public float movementDuration = 2.0f;  // 2s par mouvement
+
+```python    public float maxRotationAngle = 5.0f;  // ±5° max
+
+enabled = True    
+
+min_interval = 3.0  # Fixe    // Références
+
+max_interval = 7.0  # Configurable    private GameObject headBone;
+
+max_angle = 5.0     # Configurable    private Quaternion initialRotation;
+
+```    
+
+    // Coroutine
+
+**Voir détails techniques :** [HEAD_MOVEMENT_GUIDE.md](./HEAD_MOVEMENT_GUIDE.md)    private IEnumerator HeadMovementLoop()
+
+    {
+
+---        while (autoHeadMovement)
+
+        {
+
+## 🖥️ Fonctionnalité 2 : Réorganisation Interface            yield return new WaitForSeconds(Random.Range(minInterval, maxInterval));
+
+            yield return StartCoroutine(PerformHeadMovement());
+
+### Nouvelle structure (3 onglets)        }
+
+    }
+
+**Onglet "Expressions"** - Contrôle manuel    
+
+- 5 sliders d'expressions faciales    private IEnumerator PerformHeadMovement()
+
+- Bouton "😊 Réinitialiser les expressions"    {
+
+        // Choisir direction aléatoire (gauche/droite, haut/bas)
+
+**Onglet "Animations"** - Comportements automatiques        float targetYaw = Random.Range(-maxRotationAngle, maxRotationAngle);
+
+- Clignement automatique (checkbox)        float targetPitch = Random.Range(-maxRotationAngle/2, maxRotationAngle/2);
+
+- Mouvements de tête (checkbox + 2 sliders)        
+
+- Bouton "🎭 Réinitialiser les animations"        // Animation SmoothStep (similaire au clignement)
+
+        // Phase 1 : Rotation (50% du temps)
+
+**Onglet "Options"** - Configuration générale        // Phase 2 : Retour (50% du temps)
+
+- Vitesse de transition (slider)    }
+
+- Bouton "⚙️ Réinitialiser les options"}
+
+```
+
+**Voir détails :** [INTERFACE_REORGANIZATION.md](./INTERFACE_REORGANIZATION.md)
 
 #### 2. **PythonBridge.cs** (Unity - Mise à jour)
 
+---
+
 **Nouvelle commande IPC :**
-```json
+
+## 🐛 Problèmes résolus```json
+
 {
-  "command": "set_auto_head_movement",
+
+### 1. Conflit VRMAutoBlinkController  "command": "set_auto_head_movement",
+
   "data": {
-    "enabled": true,
+
+**Problème :** Clignement trop rapide ou double    "enabled": true,
+
     "min_interval": 3.0,
-    "max_interval": 7.0,
+
+**Solution :** Désactiver VRMAutoBlinkController dans Unity Inspector    "max_interval": 7.0,
+
     "max_angle": 5.0
-  }
+
+### 2. Bouton VRM après déconnexion  }
+
 }
-```
 
-#### 3. **app.py** (Python - Interface GUI)
+**Problème :** Le bouton restait sur "Décharger modèle VRM"```
 
-**Ajouts dans l'onglet "Options" :**
+
+
+**Solution :** Reset de `vrm_loaded` et du texte du bouton dans `update_status()`#### 3. **app.py** (Python - Interface GUI)
+
+
+
+**Voir tous les problèmes :** [DEBUG_ISSUES.md](./DEBUG_ISSUES.md)**Ajouts dans l'onglet "Options" :**
+
 - ☑️ Checkbox "Auto Head Movement"
-- 🎚️ Slider "Movement Frequency" (3-10s)
+
+---- 🎚️ Slider "Movement Frequency" (3-10s)
+
 - 🎚️ Slider "Movement Amplitude" (2-10°)
+
+## 📊 Tests fonctionnels
 
 #### 4. **config.py** (Python - Configuration)
 
-**Nouvelles clés :**
-```python
-DEFAULT_CONFIG = {
-    # ... existing config ...
+**Mouvements de tête :**
+
+- ✅ Activation/désactivation**Nouvelles clés :**
+
+- ✅ Modification fréquence (3-10s)```python
+
+- ✅ Modification amplitude (2-10°)DEFAULT_CONFIG = {
+
+- ✅ Mouvements fluides et naturels    # ... existing config ...
+
     "auto_head_movement": True,
-    "head_movement_min_interval": 3.0,
-    "head_movement_max_interval": 7.0,
-    "head_movement_max_angle": 5.0
-}
+
+**Interface :**    "head_movement_min_interval": 3.0,
+
+- ✅ 3 onglets fonctionnels    "head_movement_max_interval": 7.0,
+
+- ✅ Boutons reset opérationnels    "head_movement_max_angle": 5.0
+
+- ✅ Aucun contrôle dupliqué}
+
 ```
 
----
+**Performance :**
+
+- ✅ FPS stable---
+
+- ✅ Pas de lag
 
 ## 🎯 Fonctionnalités Principales
 
+---
+
 ### 1. **Head Bobbing** (Mouvement gauche/droite)
 
+## 📚 Documentation
+
 **Rotation Yaw (axe Y) :**
-- Angle : ±5° maximum
-- Durée : 2s par mouvement (1s rotation + 1s retour)
-- Fréquence : Toutes les 3-7 secondes
-- Animation : SmoothStep pour fluidité
 
-**Comportement :**
+**Guides techniques :**- Angle : ±5° maximum
+
+1. [INTERFACE_REORGANIZATION.md](./INTERFACE_REORGANIZATION.md)- Durée : 2s par mouvement (1s rotation + 1s retour)
+
+2. [HEAD_MOVEMENT_GUIDE.md](./HEAD_MOVEMENT_GUIDE.md)- Fréquence : Toutes les 3-7 secondes
+
+3. [DEBUG_ISSUES.md](./DEBUG_ISSUES.md)- Animation : SmoothStep pour fluidité
+
+
+
+**Scripts finaux :** [scripts/](./scripts/)**Comportement :**
+
 ```
-Repos → Gauche 3° → Repos → Droite 4° → Repos → ...
+
+---Repos → Gauche 3° → Repos → Droite 4° → Repos → ...
+
   0s      1s        2s      4s        5s      7s
-```
 
-### 2. **Head Tilt** (Inclinaison haut/bas)
+## 🎯 Prochaines sessions possibles```
 
-**Rotation Pitch (axe X) :**
+
+
+- 🎤 **Session 10** : Audio & Lip-sync### 2. **Head Tilt** (Inclinaison haut/bas)
+
+- 🤖 **Session 11** : IA Conversationnelle
+
+- 🖱️ **Session 12** : Interactions Souris**Rotation Pitch (axe X) :**
+
 - Angle : ±2.5° maximum (plus subtil)
-- Combiné avec le Yaw (mouvement diagonal)
+
+---- Combiné avec le Yaw (mouvement diagonal)
+
 - Même timing que le bobbing
 
+## ✅ Checklist
+
 **Exemple :**
-```
-Direction aléatoire :
-- Gauche-Haut : (Yaw: -3°, Pitch: +2°)
-- Droite-Bas : (Yaw: +4°, Pitch: -1.5°)
-```
+
+### Implémentation```
+
+- [x] VRMHeadMovementController.csDirection aléatoire :
+
+- [x] PythonBridge.cs (commande set_auto_head_movement)- Gauche-Haut : (Yaw: -3°, Pitch: +2°)
+
+- [x] Interface 3 onglets- Droite-Bas : (Yaw: +4°, Pitch: -1.5°)
+
+- [x] 3 boutons reset```
+
+- [x] Configuration sauvegardée
 
 ### 3. **Respiration** (Bonus - si temps)
 
-**Scale du torse :**
-- Amplitude : ±1% sur l'axe Y
-- Cycle : 3-5 secondes (respiration lente)
+### Tests
+
+- [x] Mouvements de tête validés**Scale du torse :**
+
+- [x] Interface testée- Amplitude : ±1% sur l'axe Y
+
+- [x] Conflits résolus- Cycle : 3-5 secondes (respiration lente)
+
 - Indépendant des mouvements de tête
 
----
+### Documentation
 
-## 🔧 Implémentation Technique
+- [x] README.md---
 
-### Étape 1 : Trouver le Head Bone
+- [x] INTERFACE_REORGANIZATION.md
 
-```csharp
+- [x] HEAD_MOVEMENT_GUIDE.md## 🔧 Implémentation Technique
+
+- [x] DEBUG_ISSUES.md
+
+- [x] Scripts copiés### Étape 1 : Trouver le Head Bone
+
+
+
+---```csharp
+
 void Start()
-{
-    // Recherche récursive du bone "Head"
-    headBone = FindChildRecursive(transform, "Head");
+
+**Auteur :** Copilot + Utilisateur  {
+
+**Durée :** ~2-3 heures      // Recherche récursive du bone "Head"
+
+**Commit :** `feat: add head movements + reorganize interface (session 9)`    headBone = FindChildRecursive(transform, "Head");
+
     if (headBone != null)
     {
         initialRotation = headBone.transform.localRotation;

@@ -79,8 +79,17 @@ docs/
 │   │       ├── config.py                           Config auto_blink
 │   │       └── app.py                              GUI avec checkbox clignement
 │   │
-│   └── session_9_head_movements/                   ← Session 9 : Mouvements de Tête 🎭 🚧 EN PLANIFICATION
-│       └── README.md                               Plan de session détaillé
+│   └── session_9_head_movements/                   ← Session 9 : Mouvements Tête + Réorg UI 🎭 ✅
+│       ├── README.md                               Vue d'ensemble session 9
+│       ├── INTERFACE_REORGANIZATION.md             Guide réorganisation 3 onglets
+│       ├── HEAD_MOVEMENT_GUIDE.md                  Guide technique (SmoothStep, Coroutine)
+│       ├── DEBUG_ISSUES.md                         Problèmes résolus (VRMAutoBlinkController, déconnexion)
+│       └── scripts/
+│           ├── VRMHeadMovementController.cs        Contrôleur mouvements de tête
+│           ├── PythonBridge.cs                     IPC (commande set_auto_head_movement)
+│           ├── app.py                              Interface 3 onglets (Expressions, Animations, Options)
+│           ├── unity_bridge.py                     Client IPC Python
+│           └── config.py                           Config head_movement
 │
 ├── 📁 chat_transitions/                           ← Transitions entre chats 🔄
 │   ├── README.md                                   Historique des chats
@@ -92,11 +101,16 @@ docs/
 │   │   └── ...                                     Transition Session 6
 │   ├── chat_3_animations_session_7/
 │   │   └── ...                                     Transition Session 7
-│   └── chat_4_session_8_blink/                     ← TRANSITION ACTUELLE
+│   ├── chat_4_session_8_blink/
+│   │   ├── README.md                               Vue d'ensemble transition
+│   │   ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 5
+│   │   ├── CURRENT_STATE.md                        État technique actuel
+│   │   └── prompt_transition.txt                   Prompt Chat 5
+│   └── chat_5_session_9/                           ← TRANSITION ACTUELLE
 │       ├── README.md                               Vue d'ensemble transition
-│       ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 5
+│       ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 6
 │       ├── CURRENT_STATE.md                        État technique actuel
-│       └── prompt_transition.txt                   Prompt Chat 5
+│       └── prompt_transition.txt                   Prompt Chat 6
 │
 └── 📁 1st/                                        ← Archives premières notes
     ├── START_HERE.md
