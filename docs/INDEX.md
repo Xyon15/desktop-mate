@@ -91,15 +91,28 @@ docs/
 │   │       ├── unity_bridge.py                     Client IPC Python
 │   │       └── config.py                           Config head_movement
 │   │
-│   └── session_10_ai_chat/                         ← Session 10 : IA Conversationnelle (Kira) 🤖 🔄 EN COURS
-│       ├── README.md                               Vue d'ensemble session 10
-│       ├── PLAN_SESSION_10.md                      Plan complet détaillé (14 phases)
-│       └── scripts/                                Scripts de référence (à créer au fur et à mesure)
-│           ├── config.py                           Configuration IA ✅ (Phase 3)
-│           ├── model_manager.py                    Gestionnaire LLM + GPU ✅ (Phase 4)
-│           ├── chat_engine.py                      Chat Engine + Émotions ✅ (Phase 5)
+   └── session_10_ai_chat/                         ← Session 10 : IA Conversationnelle (Kira) 🤖 🔄 EN COURS
+       ├── README.md                               Vue d'ensemble session 10
+       ├── PLAN_SESSION_10.md                      Plan complet détaillé (14 phases)
+       ├── CHAT_ENGINE_GUIDE.md                    Guide utilisation Chat Engine ✅ (Phase 5)
+       ├── phase_9_cuda_fix/                       ← Phase 9 : Fix chargement GPU (CUDA) 🎮 ✅
+       │   ├── README.md                           Résolution problème VRAM
+       │   └── CUDA_INSTALLATION_GUIDE.md          Guide installation CUDA complet
+       └── scripts/                                Scripts de référence (Phases 1-8)
+           ├── config.py                           Configuration IA ✅ (Phase 3)
+           ├── model_manager.py                    Gestionnaire LLM + GPU ✅ (Phase 4)
+           ├── chat_engine.py                      Chat Engine + Émotions ✅ (Phase 5)
+           ├── emotion_analyzer.py                 Analyseur émotionnel avancé ✅ (Phase 6)
+           ├── bot.py                              Bot Discord Kira ✅ (Phase 7)
+           ├── test_discord_bot.py                 Tests Discord bot ✅ (Phase 7)
+           └── app.py                              GUI avec Chat + chargement manuel IA ✅ (Phase 8)
 │           ├── test_chat_engine.py                 Tests Chat Engine ✅ (Phase 5)
-│           └── test_integration_phase5.py          Test intégration complète ✅ (Phase 5)
+│           ├── test_integration_phase5.py          Test intégration complète ✅ (Phase 5)
+│           ├── emotion_analyzer.py                 Emotion Analyzer avancé ✅ (Phase 6)
+│           ├── test_emotion_analyzer.py            Tests Emotion Analyzer ✅ (Phase 6)
+│           ├── bot.py                              Bot Discord Kira ✅ (Phase 7)
+│           ├── test_discord_bot.py                 Tests Bot Discord ✅ (Phase 7)
+│           └── app.py                              GUI Desktop-Mate + Chat ✅ (Phase 8)
 │
 ├── 📁 chat_transitions/                           ← Transitions entre chats 🔄
 │   ├── README.md                                   Historique des chats
@@ -214,11 +227,11 @@ docs/
 |---------|----------|--------|---------------|
 | **9** | Mouvements Tête + Réorganisation Interface | ✅ Complet | `sessions/session_9_head_movements/README.md`, `HEAD_MOVEMENT_GUIDE.md` |
 
-### 🚀 Chat 7 - EN COURS (Session 10)
+### 🚀 Chat 8 - EN COURS (Session 10)
 
 | Session | Objectif | Statut | Fichiers clés |
 |---------|----------|--------|---------------|
-| **10** | IA Conversationnelle (Kira) - Phases 3-5 | 🔄 **EN COURS** - Phase 3 ✅ | `sessions/session_10_ai_chat/PLAN_SESSION_10.md` |
+| **10** | IA Conversationnelle (Kira) - Phases 6-9 | 🔄 **EN COURS** - Phase 6 ✅ | `sessions/session_10_ai_chat/PLAN_SESSION_10.md` |
 
 **Plan détaillé :** `sessions/session_10_ai_chat/PLAN_SESSION_10.md`
 
@@ -227,8 +240,9 @@ docs/
 - Phase 2 : Base de données & Mémoire ✅ TERMINÉE (Chat 6)
 - Phase 3 : Configuration IA ✅ TERMINÉE (Chat 7)
 - Phase 4 : Model Manager ✅ TERMINÉE (Chat 7)
-- Phase 5 : Chat Engine ⏳ EN COURS
-- Phases 6-14 : Voir PLAN_SESSION_10.md
+- Phase 5 : Chat Engine ✅ TERMINÉE (Chat 7)
+- Phase 6 : Emotion Analyzer ✅ TERMINÉE (Chat 8)
+- Phases 7-14 : Voir PLAN_SESSION_10.md
 
 ### 🔮 Chats Futurs (Sessions 11+)
 

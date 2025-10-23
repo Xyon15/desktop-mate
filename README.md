@@ -460,7 +460,7 @@ Documentation complète et organisée par sessions de développement :
    - Documentation complète (4 guides techniques + scripts archivés)
    - **L'avatar bouge naturellement la tête + interface moderne !** 🎭✨
 
-10. **[Session 10 - IA Conversationnelle (Kira)](docs/sessions/session_10_ai_chat/)** ✅ **EN COURS - Chat 7 (Phases 3-5) TERMINÉ**
+10. **[Session 10 - IA Conversationnelle (Kira)](docs/sessions/session_10_ai_chat/)** ✅ **EN COURS - Chat 8 (Phase 6) TERMINÉ**
    - **Phase 1** : Architecture de Base (30 min) ✅
      - Dossiers : src/ai/, src/discord_bot/, src/auth/, models/
      - Modèle LLM copié (Zephyr-7B, 6.8 GB)
@@ -486,9 +486,32 @@ Documentation complète et organisée par sessions de développement :
      - Format prompt ChatML (Zephyr)
      - Support multi-utilisateurs et multi-sources
      - Tests : 23/23 passés
-   - **Tests globaux** : 97/97 passés (100%) ✅
-   - **Prochaine (Chat 8)** : Phases 6-9 (Émotions avancées + Discord + GUI)
-   - **L'avatar peut maintenant parler intelligemment avec une IA !** 🤖💬✨
+   - **Phase 6** : Emotion Analyzer (1h) ✅
+     - src/ai/emotion_analyzer.py (680 lignes)
+     - Analyse émotionnelle avancée avec intensité 0-100 et confiance
+     - Historique émotionnel par utilisateur avec lissage transitions
+     - Mapping complet vers Blendshapes VRM (6 émotions)
+     - Tests : 39/39 passés
+   - **Phase 7** : Discord Bot (1.5h) ✅
+     - src/discord_bot/bot.py (417 lignes) - Bot Discord Kira
+     - Auto-reply configurable + rate limiting
+     - Intégration ChatEngine + émotions Unity
+     - Tests : 21/21 passés
+   - **Phase 8** : GUI Chat Desktop (1.5h + chargement manuel) ✅
+     - Nouvel onglet "💬 Chat" avec interface complète
+     - Chargement manuel IA (bouton + économie VRAM)
+     - Indicateurs émotions + statistiques temps réel
+     - Tests : 158/158 passés (100%)
+   - **Phase 9** : Fix Chargement GPU (45 min) ✅
+     - **Problème résolu** : Modèle chargeait sur RAM CPU au lieu de VRAM GPU
+     - Recompilation llama-cpp-python avec CMAKE_ARGS="-DGGML_CUDA=on"
+     - Durée compilation : 18min 40s (CUDA Toolkit 12.9 + Visual Studio 2022)
+     - **Performance** : 6-7x plus rapide (33 tok/s vs 5 tok/s)
+     - GPU détecté : RTX 4050 Laptop (6GB), 35 layers, ~3-4 GB VRAM
+     - Documentation : README.md + CUDA_INSTALLATION_GUIDE.md complets
+   - **Tests globaux** : 158/158 passés (100%) ✅
+   - **Prochaine (Chat 9)** : Phase 10 (GUI Discord Control)
+   - **L'avatar peut maintenant parler intelligemment avec émotions avancées ET accélération GPU 6-7x !** 🤖💬🎭🎮✨
 
 ### Guides spécifiques
 
@@ -507,6 +530,7 @@ Documentation complète et organisée par sessions de développement :
 - [Résolution problèmes Session 9](docs/sessions/session_9_head_movements/DEBUG_ISSUES.md) ✨ **3 bugs critiques résolus !**
 - [Plan Session 10](docs/sessions/session_10_ai_chat/PLAN_SESSION_10.md) ✨ **14 phases IA conversationnelle détaillées !**
 - [Contexte Chat 7](docs/chat_transitions/chat_6_session_10_phases_1_2/CONTEXT_FOR_NEXT_CHAT.md) ✨ **Instructions complètes Phase 3-5 !**
+- [Guide installation CUDA Session 10 Phase 9](docs/sessions/session_10_ai_chat/phase_9_cuda_fix/CUDA_INSTALLATION_GUIDE.md) ✨ **Compilation CUDA Windows complète !**
 
 ## 🤝 Contribution
 
@@ -593,6 +617,155 @@ Si vous rencontrez des problèmes ou avez des questions :
 - 💬 Regardez les fichiers DEBUG_ et FIX_ dans docs/
 
 ## 📝 Changelog
+
+### Version 0.9.0-alpha (23 octobre 2025) ✨ **NOUVEAU - SESSION 10 (Chat 8 - Phases 6-9) TERMINÉE**
+- ✅ **Chat 8 - Session 10 (Phases 6-9) terminée !**
+- ✅ **Phase 6 : Emotion Analyzer (1h)**
+  - src/ai/emotion_analyzer.py (680 lignes) avec analyse émotionnelle avancée
+  - Analyse intensité (0-100) + confiance (0.0-1.0)
+  - Historique émotionnel par utilisateur avec lissage transitions
+  - Mapping complet vers Blendshapes VRM (6 émotions)
+  - Tests : 39/39 passés
+- ✅ **Phase 7 : Discord Bot (1.5h)**
+  - src/discord_bot/bot.py (417 lignes) - Bot Discord complet pour Kira
+  - Classe KiraDiscordBot avec intégration ChatEngine complète
+  - **Fonctionnalités Discord** :
+    * Auto-reply configurable par salon (whitelist)
+    * Réponse aux mentions utilisateur
+    * Rate limiting (délai minimum entre messages)
+    * Nettoyage prompts (suppression mentions/URLs)
+    * Détection émotions + envoi Unity VRM si connecté
+  - **Architecture asynchrone** :
+    * Support discord.py async/await
+    * Handlers on_ready() + on_message()
+    * Gestion erreurs robuste
+  - **Statistiques détaillées** :
+    * Messages reçus/traités/ignorés
+    * Réponses générées
+    * Émotions envoyées Unity
+    * Tracking salons + mentions
+  - Singleton pattern : get_discord_bot()
+  - tests/test_discord_bot.py - 21 tests unitaires (pytest-asyncio)
+  - ✅ **Tous les tests passent (21/21) !**
+- ✅ **Phase 8 : GUI Chat Desktop (1.5h + amélioration chargement manuel)**
+  - src/gui/app.py - Nouvel onglet "💬 Chat" intégré
+  - **Interface chat complète** :
+    * QTextEdit pour messages (HTML avec couleurs Material Design)
+    * QLineEdit pour saisie utilisateur
+    * Bouton envoi + support Enter
+    * Indicateur émotion en temps réel (emoji + nom + intensité)
+    * Statistiques messages/émotions en footer
+    * Historique effaçable avec confirmation
+  - **Thread-safety Qt** :
+    * Signaux personnalisés (message_received, emotion_updated, stats_updated)
+    * Threading pour traitement chat (évite freeze UI)
+    * QTimer.singleShot() pour ré-activation boutons
+  - **Thème dark harmonisé** :
+    * Fond #2b2b2b, texte #e0e0e0
+    * Messages : Vous=#64B5F6, Kira=#CE93D8, Système=#EF5350
+    * Timestamps gris #888
+    * Indicateur émotion : fond #3a3a3a, bordure #555
+  - **🚀 Chargement manuel IA (amélioration majeure)** :
+    * Suppression chargement automatique (économie 4-6 GB VRAM)
+    * Nouvel onglet "🤖 Modèle IA (LLM)" dans Connexion tab
+    * Bouton "📥 Charger IA (Zephyr-7B)" pour chargement manuel
+    * Bouton "🗑️ Décharger IA" pour libérer mémoire
+    * Labels statut dynamiques (Non chargé / ⏳ / ✅ / ❌)
+    * Info utilisateur : "Chargement : ~15-30 secondes | Mémoire : ~4-6 GB VRAM"
+    * Chat input désactivé par défaut avec placeholder explicite
+    * Gestion ImportError avec QMessageBox si llama-cpp-python manquant
+    * Messages système dans chat pour confirmer opérations
+  - **Méthodes nouvelles** :
+    * load_ai_model() - Chargement ChatEngine + EmotionAnalyzer on-demand
+    * unload_ai_model() - Libération mémoire complète
+    * Mise à jour UI automatique (statuts, boutons, inputs)
+  - **Intégration VRM Unity** :
+    * Vérification connexion + VRM chargé
+    * get_vrm_blendshape() pour mapping optimal
+    * set_expression() automatique lors des réponses
+  - ✅ **Gestion erreurs robuste** : ImportError, ConnectionError, génération échec
+  - ✅ **Bug fixes** : timing signal emotion_updated, ImportError handling, dark theme
+- ✅ **Tests globaux : 158/158 passés (100%) en 14.85s** 🎉
+  - +21 tests Discord bot
+  - Tests précédents intacts (config, model, chat, emotion, memory, etc.)
+- ✅ **Documentation complète Phases 7-8**
+  - README.md Session 10 mis à jour avec Phases 7-8 détaillées
+  - Section chargement manuel IA (80+ lignes)
+  - Tableau états système (4 états : Démarrage/Chargement/Chargé/Erreur)
+  - Scripts copiés : bot.py, test_discord_bot.py, app.py
+  - docs/INDEX.md mis à jour
+  - README.md racine mis à jour (4 sections : Sessions, Guides, Changelog, Status)
+- ✅ **Phase 9 : Fix Chargement GPU (CUDA) - 45 minutes**
+  - ❌ **Problème** : Modèle chargeait sur RAM CPU au lieu de VRAM GPU malgré config correcte
+  - 🔍 **Diagnostic** : llama-cpp-python v0.3.16 installé SANS support CUDA (wheel précompilé CPU-only)
+  - ✅ **Solution** : Recompilation depuis sources avec CMAKE_ARGS="-DGGML_CUDA=on"
+  - **Compilation réussie** :
+    * Durée : 18min 40s
+    * CUDA Toolkit v12.9.86
+    * Visual Studio 2022 (MSVC 19.44.35217.0)
+    * 1349 warnings (normaux), 0 erreurs
+    * DLL CUDA générées : ggml-cuda.lib/dll ✅
+  - **Tests de vérification** :
+    * llama_supports_gpu_offload() → True ✅
+    * GPU détecté : NVIDIA GeForce RTX 4050 Laptop GPU (6GB VRAM)
+    * Modèle charge 35 layers GPU (balanced profile)
+    * VRAM utilisée : ~3-4 GB pendant inférence
+  - **Performance** :
+    * Avant (CPU) : ~20s pour 100 tokens (~5 tok/s)
+    * Après (GPU) : ~3s pour 100 tokens (~33 tok/s)
+    * **Amélioration : 6-7x plus rapide !** ⚡
+  - **Documentation complète** :
+    * docs/sessions/session_10_ai_chat/phase_9_cuda_fix/README.md
+    * docs/sessions/session_10_ai_chat/phase_9_cuda_fix/CUDA_INSTALLATION_GUIDE.md
+    * Guide installation CUDA complet (Windows, prérequis, dépannage)
+    * Scripts diagnostics (test_cuda_support.py, monitor_vram.py)
+- 🎮 **Kira utilise maintenant la VRAM GPU (RTX 4050) pour générer les réponses 6-7x plus vite !** ✨🚀
+- 🎭 **Kira peut maintenant discuter sur Discord ET dans le Desktop-Mate GUI avec contrôle utilisateur complet et accélération GPU !** ✨👁️🤖🎮✨
+
+### Version 0.8.0-alpha (23 octobre 2025) ✨ **NOUVEAU - SESSION 10 (Phase 6) - CHAT 8**
+- ✅ **Session 10 - IA Conversationnelle (Chat 8 - Phase 6) terminée !**
+- ✅ **Phase 6 : Emotion Analyzer (1h)**
+  - src/ai/emotion_analyzer.py (680 lignes) - Analyseur émotionnel avancé
+  - Classe EmotionAnalyzer avec analyse contextuelle complète
+  - Dataclass EmotionResult (emotion, intensity 0-100, confidence 0-100, keywords_found, context_score, timestamp)
+  - **Analyse émotionnelle avancée** :
+    * Détection 6 émotions avec mots-clés pondérés (poids 1-3)
+    * Support emojis français (😊😠😢😲😂)
+    * Calcul intensité 0-100 basé sur densité mots-clés
+    * Bonus contexte renforcé (+10-20% si ≥2 mots-clés)
+  - **Calcul confiance multi-facteurs** :
+    * 40% intensité détectée
+    * 30% nombre mots-clés trouvés
+    * 30% score contextuel historique
+  - **Analyse contextuelle avec historique** :
+    * Historique émotionnel par utilisateur (deque max size 5)
+    * Score contextuel dynamique (50-80/100 selon cohérence)
+    * Détection transitions émotionnelles
+  - **Lissage des transitions (smoothing)** :
+    * Smoothing factor configurable 0-1 (défaut 0.3)
+    * Lissage intensité si émotion répétée
+    * Réduction 10% lors changement émotion
+    * Transitions douces pour expérience VRM fluide
+  - **Mapping VRM Blendshapes complet** :
+    * 6 Blendshapes Unity : Joy/Angry/Sorrow/Surprised/Fun/Neutral
+    * Multiplicateurs d'intensité personnalisés par émotion (0.5-1.2x)
+    * Seuils minimaux et ranges optimaux configurables
+    * Valeurs VRM 0.0-1.0 (conversion automatique)
+    * Flag 'recommended' si dans range optimal
+  - Singleton pattern : get_emotion_analyzer()
+  - tests/test_emotion_analyzer.py - 39 tests unitaires
+  - ✅ **Tous les tests passent (39/39 en 0.11s) !**
+- ✅ **Tests globaux : 137/137 passés (100%) en 15.43s** 🎉
+  - +39 tests emotion analyzer
+  - Tests précédents intacts (config, model, chat engine, memory, etc.)
+- ✅ **Documentation complète Phase 6**
+  - README.md Session 10 mis à jour avec détails Phase 6
+  - Section complète dans README.md (150+ lignes)
+  - Tableau comparatif EmotionDetector vs EmotionAnalyzer
+  - Scripts copiés : emotion_analyzer.py, test_emotion_analyzer.py
+  - docs/INDEX.md mis à jour (arborescence + scripts)
+  - README.md racine mis à jour (4 sections : Sessions, Guides, Changelog, Status)
+- 🎭 **Kira analyse maintenant les émotions avec précision ! Intensité, confiance, contexte et mapping VRM complet !** ✨
 
 ### Version 0.7.0-alpha (23 octobre 2025) ✨ **NOUVEAU - SESSION 10 (Phases 3-5) - CHAT 7**
 - ✅ **Session 10 - IA Conversationnelle (Chat 7 - Phases 3-5) terminée !**
@@ -762,8 +935,8 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ---
 
-**🎊 Status actuel : [Phase 5] COMPLÈTE ! L'avatar s'affiche, exprime des émotions avec transitions fluides, cligne naturellement des yeux, bouge la tête de manière vivante ET peut maintenant PARLER INTELLIGEMMENT grâce à un système d'IA conversationnelle complet (LLM Zephyr-7B) avec détection d'émotions ! Interface moderne en 3 onglets ! 97/97 tests passent ! ✨👁️🎭💬🤖✨🎊**
+**🎊 Status actuel : [Phase 9] COMPLÈTE ! L'avatar s'affiche, exprime des émotions avec transitions fluides, cligne naturellement des yeux, bouge la tête de manière vivante ET peut maintenant PARLER INTELLIGEMMENT grâce à un système d'IA conversationnelle complet (LLM Zephyr-7B optimisé GPU RTX 4050 avec 6-7x accélération !) avec analyse émotionnelle AVANCÉE (intensité, confiance, contexte, lissage, mapping VRM) + BOT DISCORD fonctionnel + INTERFACE CHAT GUI DESKTOP avec chargement manuel IA (contrôle utilisateur complet) ! Interface moderne en onglets ! 158/158 tests passent ! ✨👁️🎭💬🤖🎯🎮✨🎊**
 
-**🚀 Prochaine étape (Chat 8 - Phase 6-9) : Emotion Analyzer avancé + Bot Discord + GUI Chat Desktop + GUI Discord Control (interfaces et intégrations complètes) ! 🎭�💬🎮**
+**🚀 Prochaine étape (Chat 9 - Phase 10) : GUI Discord Control (panneau de contrôle du bot Discord dans l'interface Desktop-Mate) ! 🎮🤖**
 
 ⭐ **N'oubliez pas de mettre une étoile si ce projet vous plaît !** ⭐

@@ -340,20 +340,26 @@ Ancien dossier - À vérifier et réorganiser si nécessaire
   - ✅ **Chat Engine** (EmotionDetector, 23 tests)
   - ✅ **97/97 tests passent (100%)**
   - Kira peut parler avec LLM Zephyr-7B !
-- **Prochaine (Chat 8 - Phases 6-9)** :
-  - Emotion Analyzer avancé (intensité, mapping VRM)
-  - Bot Discord (!chat, !stats, !clear)
-  - GUI Chat Desktop (PySide6)
-  - GUI Discord Control
+- **Chat 8 (Phases 6-9)** : ✅ **TERMINÉ**
+  - ✅ **Phase 6** : Emotion Analyzer avancé (intensité, confiance, contexte, mapping VRM)
+  - ✅ **Phase 7** : Bot Discord (auto-reply, rate limiting, intégration Unity)
+  - ✅ **Phase 8** : GUI Chat Desktop (chargement manuel IA, émotions temps réel)
+  - ✅ **Phase 9** : Fix Chargement GPU (CUDA) - **6-7x plus rapide !**
+  - ✅ **158/158 tests passent (100%)**
+  - 🎮 **GPU CUDA actif** : RTX 4050, 35 layers, 33 tok/s
+  - Kira discute sur Discord ET Desktop avec accélération GPU !
+- **Prochaine (Chat 9 - Phase 10)** :
+  - GUI Discord Control (interface contrôle bot Discord)
+  - Tests intégration Phase 10
+  - Documentation Phase 10
 
 ### 🔜 Phase 4 - À venir (Chat 9-10)
-- **Session 10 (Phases 10-12)** : Sécurité & Unity
-  - Authentification 2FA (pyotp)
-  - Unity IPC Émotions (synchro VRM)
-  - Config GUI complète
-- **Session 10 (Phases 13-14)** : Finition
-  - Tests intégration complets
-  - Documentation finale
+- **Session 10 (Phases 10-14)** : Finition IA
+  - Phase 10 : GUI Discord Control
+  - Phase 11 : Tests Intégration
+  - Phase 12 : Optimisations
+  - Phase 13 : Documentation Finale
+  - Phase 14 : Polish & Release
 - **Session 11** : Audio & Lip-sync 🎤
   - Capture audio microphone
   - Analyse amplitude/fréquence
