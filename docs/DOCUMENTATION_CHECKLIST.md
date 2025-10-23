@@ -62,23 +62,30 @@
    - État actuel du projet
    - Guide d'utilisation
 
-3. **`docs/CURRENT_STATE.md`** 📍
+3. **`CURRENT_STATE.md`** 📍 ⚠️ **DANS `docs/chat_transitions/chat_X/` (PAS à la racine de docs/)**
    - Ce qui est terminé
    - État technique
    - Prochaines étapes
    - Problèmes résolus
 
-4. **`README.md` (racine)** 📄
+4. **`README.md` (racine)** 📄 ⚠️ **CRITIQUE - SOUVENT OUBLIÉ !**
    - Vue d'ensemble projet
    - Installation
    - Roadmap
    - Documentation (liens)
    - Changelog
+   - **4 SECTIONS À TOUJOURS METTRE À JOUR EN FIN DE SESSION :**
+     1. **"Sessions documentées"** (ligne ~393) → Ajouter Session X avec détails
+     2. **"Guides spécifiques"** (ligne ~475) → Ajouter nouveaux guides si créés
+     3. **"Changelog"** (ligne ~548) → Ajouter Version 0.X.0-alpha avec TOUTES les features
+     4. **"Status final"** (dernière ligne) → Mettre à jour phases et prochaines étapes
 
 ### Documentation Spécifique (Selon contexte)
 
 5. **`docs/START_HERE.md`** 🚪
    - Point d'entrée cohérent
+   - Tableau progression
+   - Prochaines étapes
 
 6. **`docs/session_X/README.md`** 📁
    - Vue d'ensemble de la session
@@ -101,16 +108,35 @@
 
 ✓ Ai-je complété une session ?
   → OUI : Mettre à jour tableau progression + CURRENT_STATE
+  → OUI : Mettre à jour README.md RACINE (4 sections obligatoires !)
 
 ✓ Sommes-nous en fin de chat ?
   → OUI : Créer dossier transition + mettre à jour 3 fichiers principaux
+  → OUI : CURRENT_STATE.md dans chat_transitions/chat_X/ (PAS à la racine de docs/)
 
 ✓ Ai-je modifié l'architecture ?
   → OUI : Mettre à jour README.md principal + architecture.md
 
 ✓ Ai-je ajouté une fonctionnalité ?
   → OUI : Mettre à jour roadmap + changelog
+
+✓ Ai-je créé/modifié des scripts ?
+  → OUI : COPIER dans docs/session_X/scripts/ (OBLIGATOIRE)
 ```
+
+**⚠️ CHECKLIST CRITIQUE AVANT "Terminé" :**
+
+```
+□ docs/INDEX.md mis à jour ?
+□ docs/README.md mis à jour ?
+□ README.md RACINE mis à jour (4 sections si fin de session) ?
+□ CURRENT_STATE.md dans chat_transitions/chat_X/ ?
+□ docs/session_X/ mis à jour ?
+□ docs/session_X/scripts/ créé et rempli avec scripts finaux ?
+□ docs/START_HERE.md mis à jour si progression changée ?
+```
+
+**🚨 SI UNE SEULE CASE N'EST PAS COCHÉE → NE PAS DIRE "Terminé" !**
 
 ---
 
@@ -134,10 +160,22 @@ git commit -m "feat: Add blendshapes controller + Update docs (INDEX, README, CU
 - "as tu mis a jour les readme ?" ❌
 - "n'oublie pas la documentation" ❌
 - "vérifie que tout est à jour" ❌
+- "tu as oublié le readme principal" ❌ **CRITIQUE !**
+- "et le readme racine ?" ❌ **CRITIQUE !**
+- "tu as oublié de mettre à jour le readme principal" ❌ **ÉCHEC TOTAL !**
 
 **→ C'est que l'IA a RATÉ sa mise à jour automatique !**
 
 **Objectif :** L'utilisateur ne devrait JAMAIS avoir à demander !
+
+**⚠️ CAS SPÉCIAL README.md RACINE :**
+Si l'utilisateur pointe spécifiquement le README principal/racine, c'est que l'IA a oublié de mettre à jour les **4 sections critiques** :
+1. "Sessions documentées" (ligne ~393)
+2. "Guides spécifiques" (ligne ~475)
+3. "Changelog" (ligne ~548)
+4. "Status final" (dernière ligne)
+
+**CE FICHIER EST LE PLUS VISIBLE (GitHub landing page) ET LE PLUS SOUVENT OUBLIÉ !**
 
 ---
 
@@ -146,14 +184,24 @@ git commit -m "feat: Add blendshapes controller + Update docs (INDEX, README, CU
 ```
 1. Faire la modification (code, fichier, etc.)
 2. Documenter dans la session (session_X/...)
-3. ⬇️ PUIS IMMÉDIATEMENT :
+3. COPIER les scripts finaux dans docs/session_X/scripts/ (OBLIGATOIRE)
+4. ⬇️ PUIS IMMÉDIATEMENT :
    a. Mettre à jour docs/INDEX.md
    b. Mettre à jour docs/README.md
-   c. Mettre à jour docs/CURRENT_STATE.md
-   d. Mettre à jour README.md principal si nécessaire
-4. Vérifier les liens entre fichiers
-5. Créer récapitulatif visuel pour l'utilisateur
+   c. Mettre à jour CURRENT_STATE.md (dans chat_transitions/chat_X/)
+   d. Mettre à jour README.md principal (RACINE) si fin de session :
+      - Section "Sessions documentées"
+      - Section "Guides spécifiques"
+      - Section "Changelog"
+      - Section "Status final"
+   e. Mettre à jour docs/START_HERE.md si progression changée
+5. Vérifier les liens entre fichiers
+6. Créer récapitulatif visuel pour l'utilisateur
 ```
+
+**⚠️ RÈGLE SPÉCIALE FIN DE SESSION :**
+Si tu termines une session, les 4 sections du README.md racine sont **OBLIGATOIRES**.
+**NE DIS JAMAIS "Terminé" sans avoir vérifié ces 4 sections !**
 
 ---
 

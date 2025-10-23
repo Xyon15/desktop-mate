@@ -460,7 +460,7 @@ Documentation complète et organisée par sessions de développement :
    - Documentation complète (4 guides techniques + scripts archivés)
    - **L'avatar bouge naturellement la tête + interface moderne !** 🎭✨
 
-10. **[Session 10 - IA Conversationnelle (Kira)](docs/sessions/session_10_ai_chat/)** ✅ **EN COURS - Chat 6 (Phases 1-2)**
+10. **[Session 10 - IA Conversationnelle (Kira)](docs/sessions/session_10_ai_chat/)** ✅ **EN COURS - Chat 7 (Phases 3-5) TERMINÉ**
    - **Phase 1** : Architecture de Base (30 min) ✅
      - Dossiers : src/ai/, src/discord_bot/, src/auth/, models/
      - Modèle LLM copié (Zephyr-7B, 6.8 GB)
@@ -470,8 +470,25 @@ Documentation complète et organisée par sessions de développement :
      - SQLite chat_history avec 4 indexes
      - Tests : 11/11 passés
      - Singleton pattern + Context manager thread-safe
-   - **Prochaine (Chat 7)** : Phases 3-5 (Config + LLM + Chat Engine)
-   - **L'avatar aura bientôt une IA conversationnelle intelligente !** 🤖✨
+   - **Phase 3** : Configuration IA (45 min) ✅
+     - src/ai/config.py (420 lignes) avec GPU_PROFILES
+     - 3 profils GPU (performance/balanced/cpu_fallback)
+     - data/config.json configuration complète
+     - Tests : 31/31 passés
+   - **Phase 4** : Model Manager (1.5h) ✅
+     - src/ai/model_manager.py (470 lignes)
+     - Détection GPU NVIDIA (RTX 4050 6GB détecté)
+     - Chargement LLM avec auto-fallback CPU
+     - Tests : 23/23 passés
+   - **Phase 5** : Chat Engine (2h) ✅
+     - src/ai/chat_engine.py (480 lignes)
+     - EmotionDetector avec 6 émotions (joy/angry/sorrow/surprised/fun/neutral)
+     - Format prompt ChatML (Zephyr)
+     - Support multi-utilisateurs et multi-sources
+     - Tests : 23/23 passés
+   - **Tests globaux** : 97/97 passés (100%) ✅
+   - **Prochaine (Chat 8)** : Phases 6-9 (Émotions avancées + Discord + GUI)
+   - **L'avatar peut maintenant parler intelligemment avec une IA !** 🤖💬✨
 
 ### Guides spécifiques
 
@@ -486,6 +503,7 @@ Documentation complète et organisée par sessions de développement :
 - [Résolution problèmes Session 8](docs/sessions/session_8_auto_blink/TROUBLESHOOTING.md) ✨ **5 problèmes résolus !**
 - [Réorganisation interface Session 9](docs/sessions/session_9_head_movements/INTERFACE_REORGANIZATION.md) ✨ **Nouvelle architecture 3 onglets !**
 - [Guide mouvements tête Session 9](docs/sessions/session_9_head_movements/HEAD_MOVEMENT_GUIDE.md) ✨ **Animations naturelles !**
+- [Guide Chat Engine Session 10](docs/sessions/session_10_ai_chat/CHAT_ENGINE_GUIDE.md) ✨ **Utilisation ChatEngine IA !**
 - [Résolution problèmes Session 9](docs/sessions/session_9_head_movements/DEBUG_ISSUES.md) ✨ **3 bugs critiques résolus !**
 - [Plan Session 10](docs/sessions/session_10_ai_chat/PLAN_SESSION_10.md) ✨ **14 phases IA conversationnelle détaillées !**
 - [Contexte Chat 7](docs/chat_transitions/chat_6_session_10_phases_1_2/CONTEXT_FOR_NEXT_CHAT.md) ✨ **Instructions complètes Phase 3-5 !**
@@ -576,7 +594,66 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ## 📝 Changelog
 
-### Version 0.6.0-alpha (22 octobre 2025) ✨ **NOUVEAU - SESSION 10 (Phases 1-2)**
+### Version 0.7.0-alpha (23 octobre 2025) ✨ **NOUVEAU - SESSION 10 (Phases 3-5) - CHAT 7**
+- ✅ **Session 10 - IA Conversationnelle (Chat 7 - Phases 3-5) terminée !**
+- ✅ **Phase 3 : Configuration IA (45 min)**
+  - src/ai/config.py (420 lignes) - AIConfig avec dataclass
+  - 3 profils GPU prédéfinis : performance/balanced/cpu_fallback
+  - GPU_PROFILES avec n_gpu_layers, n_ctx, estimations vitesse/VRAM
+  - Chargement depuis JSON avec valeurs par défaut
+  - Validation complète paramètres (context_limit, temperature, top_p, max_tokens)
+  - Switch profil dynamique avec get_gpu_params()
+  - Singleton pattern : get_config()
+  - data/config.json étendu avec section "ai" complète
+  - System prompt détaillé pour personnalité Kira
+  - tests/test_ai_config.py - 31 tests unitaires
+  - ✅ **Tous les tests passent (31/31 en 0.21s) !**
+- ✅ **Phase 4 : Model Manager (1.5h)**
+  - src/ai/model_manager.py (470 lignes) - Gestionnaire LLM + GPU
+  - Classe ModelManager avec détection GPU automatique (pynvml)
+  - **GPU détecté : NVIDIA GeForce RTX 4050 Laptop GPU (6.0 GB VRAM, Driver 581.57)**
+  - Chargement modèle avec profil GPU configuré (llama-cpp-python)
+  - Auto-fallback CPU si OOM GPU
+  - Génération texte avec paramètres configurables
+  - Déchargement propre avec unload_model()
+  - Monitoring VRAM temps réel avec get_gpu_status()
+  - Singleton pattern : get_model_manager()
+  - tests/test_model_manager.py - 23 tests unitaires (avec mocks)
+  - ✅ **Tous les tests passent (23/23 en 1.32s) !**
+- ✅ **Phase 5 : Chat Engine (2h)**
+  - src/ai/chat_engine.py (480 lignes) - Moteur conversationnel unifié
+  - Classe ChatEngine orchestrant mémoire + modèle + émotions
+  - Classe EmotionDetector avec 6 émotions (joy/angry/sorrow/surprised/fun/neutral)
+  - Détection par mots-clés français + emojis
+  - Format prompt ChatML (Zephyr) avec historique
+  - Construction prompts : <|system|> + <|user|> + <|assistant|>
+  - Génération réponses avec contexte historique (10 messages par défaut)
+  - Sauvegarde automatique conversations dans SQLite
+  - Support multi-utilisateurs (isolation complète)
+  - Support multi-sources (desktop, discord)
+  - Dataclass ChatResponse (response, emotion, tokens_used, context_messages, processing_time)
+  - Singleton pattern : get_chat_engine()
+  - tests/test_chat_engine.py - 23 tests unitaires
+  - tests/test_integration_phase5.py - Test intégration complet
+  - ✅ **Tous les tests passent (23/23 en 0.33s) !**
+- ✅ **Tests globaux : 97/97 passés (100%) en 36.64s** 🎉
+  - 31 tests config
+  - 23 tests model manager
+  - 23 tests chat engine
+  - 11 tests memory
+  - 5 tests unity bridge
+  - 4 tests config général
+- ✅ **Documentation complète Chat 7**
+  - CHAT_ENGINE_GUIDE.md - Guide utilisation complet
+  - Transition Chat 7 → Chat 8 complète (5 fichiers)
+  - CONTEXT_FOR_NEXT_CHAT.md avec instructions Phases 6-9
+  - CURRENT_STATE.md avec architecture complète
+  - prompt_transition.txt prêt pour Chat 8
+  - Scripts copiés : config.py, model_manager.py, chat_engine.py, tests
+  - docs/INDEX.md, README.md, chat_transitions/README.md mis à jour
+- 🤖 **Kira peut maintenant parler intelligemment ! Système IA 100% fonctionnel !** 💬✨
+
+### Version 0.6.0-alpha (22 octobre 2025) ✨ **SESSION 10 (Phases 1-2) - CHAT 6**
 - ✅ **Session 10 - IA Conversationnelle (Chat 6 - Phases 1-2) démarrée !**
 - ✅ **Phase 1 : Architecture de Base (30 min)**
   - Création dossiers : src/ai/, src/discord_bot/, src/auth/, models/
@@ -685,8 +762,8 @@ Si vous rencontrez des problèmes ou avez des questions :
 
 ---
 
-**🎊 Status actuel : [Phase 4] COMPLÈTE ! L'avatar s'affiche, exprime 5 émotions avec transitions fluides, cligne naturellement des yeux, bouge la tête de manière vivante ET possède maintenant un système de mémoire conversationnelle SQLite complet ! Interface moderne en 3 onglets ! Architecture IA prête pour LLM ! ✨👁️�🤖�🎊**
+**🎊 Status actuel : [Phase 5] COMPLÈTE ! L'avatar s'affiche, exprime des émotions avec transitions fluides, cligne naturellement des yeux, bouge la tête de manière vivante ET peut maintenant PARLER INTELLIGEMMENT grâce à un système d'IA conversationnelle complet (LLM Zephyr-7B) avec détection d'émotions ! Interface moderne en 3 onglets ! 97/97 tests passent ! ✨👁️🎭💬🤖✨🎊**
 
-**🚀 Prochaine étape (Chat 7 - Phase 3) : Configuration IA + Model Manager + Chat Engine (donner vie à l'IA de Kira) ! 🧠💬🤖**
+**🚀 Prochaine étape (Chat 8 - Phase 6-9) : Emotion Analyzer avancé + Bot Discord + GUI Chat Desktop + GUI Discord Control (interfaces et intégrations complètes) ! 🎭�💬🎮**
 
 ⭐ **N'oubliez pas de mettre une étoile si ce projet vous plaît !** ⭐

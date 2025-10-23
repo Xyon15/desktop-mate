@@ -250,8 +250,24 @@ Si l'utilisateur dit :
 - ❌ "Tu as oublié la aussi" (en pointant sur README.md)
 - ❌ "Et le README racine ?"
 - ❌ "N'oublie pas de mettre à jour le README principal"
+- ❌ "Tu as oublié de mettre à jour le readme principal"
 
 → **TU AS ÉCHOUÉ** ! Le README.md racine doit **TOUJOURS** être mis à jour avec les 4 sections ci-dessus.
+
+### ⚠️ RÈGLE ANTI-OUBLI CRITIQUE
+
+**SI tu termines une session/phase ET que tu n'as PAS mis à jour README.md racine → TU AS ÉCHOUÉ !**
+
+**CHECKLIST OBLIGATOIRE AVANT DE DIRE "Terminé"** :
+```
+□ docs/INDEX.md mis à jour
+□ docs/README.md mis à jour
+□ README.md RACINE mis à jour (4 sections !)
+□ CURRENT_STATE.md dans chat_transitions/
+□ docs/session_N/ mis à jour
+```
+
+**Si UNE SEULE case manque → NE DIS PAS "Terminé" !**
 
 ### ✅ CHECKLIST README.md RACINE
 

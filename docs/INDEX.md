@@ -10,7 +10,7 @@
 docs/
 │
 ├── 📄 README.md                                    ← Commence ici !
-├── 📄 CURRENT_STATE.md                             ← État actuel du projet
+├── 📄 CURRENT_STATE.md                             ← État actuel : Session 10 Phases 1-5 ✅
 ├── 📄 START_HERE.md                                ← Point d'entrée
 ├── 📄 DOCUMENTATION_CHECKLIST.md                   ← ⚠️ Checklist docs (IMPORTANT!)
 ├── 📄 AI_DOCUMENTATION_PROMPT.md                   ← 🤖 Instructions IA (système)
@@ -95,6 +95,11 @@ docs/
 │       ├── README.md                               Vue d'ensemble session 10
 │       ├── PLAN_SESSION_10.md                      Plan complet détaillé (14 phases)
 │       └── scripts/                                Scripts de référence (à créer au fur et à mesure)
+│           ├── config.py                           Configuration IA ✅ (Phase 3)
+│           ├── model_manager.py                    Gestionnaire LLM + GPU ✅ (Phase 4)
+│           ├── chat_engine.py                      Chat Engine + Émotions ✅ (Phase 5)
+│           ├── test_chat_engine.py                 Tests Chat Engine ✅ (Phase 5)
+│           └── test_integration_phase5.py          Test intégration complète ✅ (Phase 5)
 │
 ├── 📁 chat_transitions/                           ← Transitions entre chats 🔄
 │   ├── README.md                                   Historique des chats
@@ -116,12 +121,20 @@ docs/
 │   │   ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 6
 │   │   ├── CURRENT_STATE.md                        État technique actuel
 │   │   └── prompt_transition.txt                   Prompt Chat 6
-│   └── chat_6_session_10_phases_1_2/               ← TRANSITION ACTUELLE (Chat 6 → Chat 7)
-│       ├── README.md                               Vue d'ensemble transition
-│       ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 7
-│       ├── CURRENT_STATE.md                        État technique après Phases 1-2
-│       ├── CHAT_SUMMARY.md                         Résumé Chat 6 (Phases 1-2)
-│       └── prompt_transition.txt                   Prompt Chat 7
+│   ├── chat_6_session_10_phases_1_2/               ← Chat 6 : Phases 1-2 ✅
+│   │   ├── README.md                               Vue d'ensemble transition
+│   │   ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 7
+│   │   ├── CURRENT_STATE.md                        État technique après Phases 1-2
+│   │   ├── CHAT_SUMMARY.md                         Résumé Chat 6 (Phases 1-2)
+│   │   └── prompt_transition.txt                   Prompt Chat 7
+│   ├── chat_7_session_10_phases_3_5/               ← Chat 7 : Phases 3-5 ✅
+│   │   ├── README.md                               Vue d'ensemble transition
+│   │   ├── CONTEXT_FOR_NEXT_CHAT.md                Contexte complet pour Chat 8
+│   │   ├── CURRENT_STATE.md                        État technique après Phases 3-5
+│   │   ├── CHAT_SUMMARY.md                         Résumé Chat 7 (Phases 3-5)
+│   │   └── prompt_transition.txt                   Prompt Chat 8
+│   └── chat_8_session_10_phases_6_9/               ← TRANSITION PROCHAINE (Chat 8)
+│       └── (À créer en fin Chat 8)
 │
 └── 📁 1st/                                        ← Archives premières notes
     ├── START_HERE.md
@@ -201,19 +214,21 @@ docs/
 |---------|----------|--------|---------------|
 | **9** | Mouvements Tête + Réorganisation Interface | ✅ Complet | `sessions/session_9_head_movements/README.md`, `HEAD_MOVEMENT_GUIDE.md` |
 
-### 🚀 Chat 6 - EN COURS (Session 10)
+### 🚀 Chat 7 - EN COURS (Session 10)
 
 | Session | Objectif | Statut | Fichiers clés |
 |---------|----------|--------|---------------|
-| **10** | IA Conversationnelle (Kira) - Phases 1-3 | � **EN COURS** - Phase 1 ✅ | `sessions/session_10_ai_chat/PLAN_SESSION_10.md` |
+| **10** | IA Conversationnelle (Kira) - Phases 3-5 | 🔄 **EN COURS** - Phase 3 ✅ | `sessions/session_10_ai_chat/PLAN_SESSION_10.md` |
 
 **Plan détaillé :** `sessions/session_10_ai_chat/PLAN_SESSION_10.md`
 
 **Phases Session 10** :
-- Phase 1 : Architecture de base ✅ TERMINÉE
-- Phase 2 : Base de données & Mémoire ⏳ À FAIRE
-- Phase 3 : Configuration IA ⏳ À FAIRE
-- Phases 4-14 : Voir PLAN_SESSION_10.md
+- Phase 1 : Architecture de base ✅ TERMINÉE (Chat 6)
+- Phase 2 : Base de données & Mémoire ✅ TERMINÉE (Chat 6)
+- Phase 3 : Configuration IA ✅ TERMINÉE (Chat 7)
+- Phase 4 : Model Manager ✅ TERMINÉE (Chat 7)
+- Phase 5 : Chat Engine ⏳ EN COURS
+- Phases 6-14 : Voir PLAN_SESSION_10.md
 
 ### 🔮 Chats Futurs (Sessions 11+)
 
@@ -242,6 +257,10 @@ docs/
 - **Clignement automatique des yeux** → `sessions/session_8_auto_blink/TECHNICAL_GUIDE.md`
 - **Animation SmoothStep (courbes Hermite)** → `sessions/session_8_auto_blink/TECHNICAL_GUIDE.md`
 - **Coroutines Unity (timing)** → `sessions/session_8_auto_blink/TECHNICAL_GUIDE.md`
+- **Configuration IA (profils GPU)** → `sessions/session_10_ai_chat/` + `src/ai/config.py`
+- **Mémoire conversationnelle (SQLite)** → `src/ai/memory.py`
+- **Gestionnaire LLM (chargement modèle)** → `src/ai/model_manager.py`
+- **Détection GPU NVIDIA** → `src/ai/model_manager.py` (pynvml)
 
 ### Par problème
 - **Library/ et Temp/ versionnés par erreur** → `sessions/session_0_git_configuration/GIT_UNITY_FIX.md`

@@ -20,7 +20,7 @@ numpy>=1.24.0
 
 # LLM Local & GPU Optimization
 llama-cpp-python>=0.2.0  # LLM local avec support GPU CUDA
-pynvml>=11.5.0           # Monitoring GPU NVIDIA
+nvidia-ml-py>=12.0.0     # Monitoring GPU NVIDIA (remplace pynvml)
 
 # Discord Bot
 discord.py>=2.3.0        # Bot Discord intégration

@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 try:
     import ctypes
     # Définir un AppUserModelID unique pour l'application
-    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('Xyon15.DesktopMate.1.0')
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('Xyon15.DesktopMate.0.7.0')
 except Exception as e:
     logger.warning(f"Impossible de définir AppUserModelID: {e}")
 
